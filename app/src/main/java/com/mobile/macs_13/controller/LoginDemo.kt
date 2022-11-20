@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.MainActivity
 import com.mobile.macs_13.R
+import com.mobile.macs_13.view.ChatView
 
 class LoginDemo : AppCompatActivity() {
 
@@ -47,7 +48,8 @@ class LoginDemo : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val loginIntent= Intent(this@LoginDemo, MainActivity::class.java)
+                    val loginIntent= Intent(this@LoginDemo, ChatView::class.java)
+                    finish()
                     startActivity(loginIntent)
 
                 } else {
