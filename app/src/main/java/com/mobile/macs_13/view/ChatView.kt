@@ -23,6 +23,7 @@ class ChatView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_view)
 
+        loginAuth = FirebaseAuth.getInstance()
         userDbRef= FirebaseDatabase.getInstance().getReference()
 
         userList= ArrayList()
@@ -33,7 +34,7 @@ class ChatView : AppCompatActivity() {
         userRecyclerView.adapter= userAdapter
 
 
-        userDbRef.child("user").addValueEventListener(object :ValueEventListener {
+        userDbRef.child("users").addValueEventListener(object :ValueEventListener {
 
 
             // Using snapshot to get the data from the database

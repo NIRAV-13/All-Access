@@ -8,4 +8,5 @@
     <string name="student">Student</string>
     <string name="sign_up">SIGN UP</string>
     <string name="name">Name</string>
+    <string name="type_message">Type Message...</string>
 </resources>
