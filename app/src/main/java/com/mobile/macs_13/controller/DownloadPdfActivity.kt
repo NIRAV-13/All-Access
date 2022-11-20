@@ -3,27 +3,23 @@ package com.mobile.macs_13.controller
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import com.android.volley.Request
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.mobile.macs_13.R
 import java.io.File
 
-class Uploadpdf : AppCompatActivity() {
+class DownloadPdfActivity : AppCompatActivity() {
     lateinit var button:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_uploadpdf)
+        setContentView(R.layout.activity_downloadpdf)
         var storageinstance = FirebaseStorage.getInstance()
         var permission = 1
         var requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){
@@ -38,8 +34,7 @@ class Uploadpdf : AppCompatActivity() {
             requestPermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
             if(permission==1){
                 val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-                val storageref = storageinstance.getReference()
-                var folder:File
+                val storageref = storageinstance.reference
                 storageref.child("temp/sample.pdf").downloadUrl.addOnSuccessListener {
                     val uri: Uri = Uri.parse(it.toString())
                     val request = DownloadManager.Request(uri)
