@@ -1,4 +1,4 @@
-package com.mobile.macs_13.cotroller
+package com.mobile.macs_13.controller
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
