@@ -10,12 +10,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.MainActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.view.ChatView
+import kotlin.math.sign
 
 class LoginDemo : AppCompatActivity() {
 
     private lateinit var edtEmail: EditText
     private lateinit var edtPass: EditText
     private lateinit var loginBtn: Button
+    private lateinit var signUpBtn: Button
     private lateinit var loginAuth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +33,7 @@ class LoginDemo : AppCompatActivity() {
         edtEmail= findViewById(R.id.edt_email)
         edtPass= findViewById(R.id.edt_password)
         loginBtn= findViewById(R.id.loginButton)
+        signUpBtn= findViewById(R.id.signUpButton)
 
        loginBtn.setOnClickListener{
            val email = edtEmail.text.toString()
@@ -38,6 +41,12 @@ class LoginDemo : AppCompatActivity() {
 
            login(email, passwd)
        }
+
+       signUpBtn.setOnClickListener{
+           val signUpIntent = Intent(this,SignUpDemo::class.java)
+           startActivity(signUpIntent)
+       }
+
     }
 
     private fun login(email: String, password: String) {

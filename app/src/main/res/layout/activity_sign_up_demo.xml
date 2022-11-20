@@ -4,19 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.LoginDemo">
+    tools:context=".controller.SignUpDemo">
+
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:hint="@string/name"
+        tools:ignore="MissingConstraints,TextFields"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/edt_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/edt_name"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:hint="@string/email"
-        tools:ignore="TextFields"
+        tools:ignore="MissingConstraints,TextFields"
         android:autofillHints="" />
 
     <EditText
@@ -30,23 +45,18 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:autofillHints="" />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:layout_below="@id/edt_password"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="160dp"/>
+        android:autofillHints=""
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"
-        android:layout_below="@id/loginButton"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="160dp"/>
+        android:layout_below="@id/edt_password"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="160dp"
+        tools:ignore="MissingConstraints" />
+
+
 </RelativeLayout>

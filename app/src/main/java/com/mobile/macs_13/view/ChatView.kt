@@ -43,7 +43,10 @@ class ChatView : AppCompatActivity() {
                 userList.clear()
                 for (postSnapshot in snapshot.children) {
                     val currentUser = postSnapshot.getValue(UserDemoModel::class.java)
-                    userList.add(currentUser!!)
+
+                    if(loginAuth.currentUser?.uid!=currentUser?.uid) {
+                        userList.add(currentUser!!)
+                    }
                 }
                 userAdapter.notifyDataSetChanged()
             }
