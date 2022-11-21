@@ -21,8 +21,8 @@ class ChatMessageAdapter(val context: Context, val messageList: ArrayList<ChatMe
         val receivedMessage = itemView.findViewById<TextView>(R.id.received_message)
     }
 
-    val SENT_MESSAGE = 1
-    val RECEIVE_MESSAGE = 2
+    val SENT_MESSAGE = 2
+    val RECEIVE_MESSAGE = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 

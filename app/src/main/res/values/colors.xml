@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#CCCCFF</color>
+    <color name="foggy">#484848</color>
+
 </resources>

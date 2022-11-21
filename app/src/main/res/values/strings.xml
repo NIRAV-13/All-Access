@@ -11,4 +11,6 @@
     <string name="type_message">Type Message...</string>
     <string name="received_message">Received Message</string>
     <string name="sent_message">Sent Message</string>
+    <string name="logout">Logout</string>
+    <string name="send_message_button">Send Message</string>
 </resources>

@@ -1,13 +1,17 @@
 package com.mobile.macs_13.view.chat
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.mobile.macs_13.R
+import com.mobile.macs_13.controller.chat.LoginDemo
 import com.mobile.macs_13.controller.chat.UserAdapter
 import com.mobile.macs_13.model.chat.UserDemoModel
 
@@ -55,6 +59,23 @@ class ChatView : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
+    }
 
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.logout, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if(item.itemId == R.id.logout){
+            loginAuth.signOut()
+            val logoutIntent = Intent(this@ChatView,LoginDemo::class.java)
+            finish()
+            startActivity(logoutIntent)
+            return true
+        }
+        return true
     }
 }

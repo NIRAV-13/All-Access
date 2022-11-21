@@ -11,7 +11,7 @@ class ChatMessageModel {
     constructor(message:String?,sendUser:String?)
     {
         this.message = message
-        this.sendUserID = sendUserID
+        this.sendUserID = sendUser
 
     }
 }

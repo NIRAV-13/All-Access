@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.mobile.macs_13.R
 import com.mobile.macs_13.model.chat.UserDemoModel
 
-class SignUpDemo : AppCompatActivity() {
+class  SignUpDemo : AppCompatActivity() {
 
     private lateinit var edtEmail: EditText
     private lateinit var edtPass: EditText
