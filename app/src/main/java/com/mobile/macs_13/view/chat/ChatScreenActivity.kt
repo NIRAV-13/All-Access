@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -55,6 +56,7 @@ class ChatScreenActivity : AppCompatActivity() {
         // to add the data to the recycler view for the chat messages
 
         msgDbRef.child("chats").child(senderMessageRoom!!).child("messages").addValueEventListener(object :ValueEventListener{
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 // to clear the previous value stored in the database
@@ -76,12 +78,21 @@ class ChatScreenActivity : AppCompatActivity() {
         // submitting the chat message to database
         sendMsgBtn.setOnClickListener{
 
+
             val chatMessage = sendMessageBox.text.toString()
-            val messageObject = ChatMessageModel(chatMessage,senderUID)
-            msgDbRef.child("chats").child(senderMessageRoom!!).child("messages").push().setValue(messageObject).addOnSuccessListener {
+
+
+            if(chatMessage.isBlank()){
+                Toast.makeText(this@ChatScreenActivity,"Please type some message!!", Toast.LENGTH_SHORT).show()
+            } else{
+                val messageObject = ChatMessageModel(chatMessage,senderUID)
+                msgDbRef.child("chats").child(senderMessageRoom!!).child("messages").push().setValue(messageObject).addOnSuccessListener {
                     msgDbRef.child("chats").child(receiverMessageRoom!!).child("messages").push().setValue(messageObject)
                 }
+            }
             sendMessageBox.setText("")
+
+
         }
 
     }
