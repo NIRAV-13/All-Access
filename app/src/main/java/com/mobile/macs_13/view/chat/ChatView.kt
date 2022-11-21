@@ -1,4 +1,4 @@
-package com.mobile.macs_13.view
+package com.mobile.macs_13.view.chat
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.mobile.macs_13.R
-import com.mobile.macs_13.controller.UserAdapter
-import com.mobile.macs_13.model.UserDemoModel
+import com.mobile.macs_13.controller.chat.UserAdapter
+import com.mobile.macs_13.model.chat.UserDemoModel
 
 class ChatView : AppCompatActivity() {
 

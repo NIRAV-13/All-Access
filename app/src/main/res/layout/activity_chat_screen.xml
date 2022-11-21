@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ChatScreenActivity">
+    tools:context=".view.chat.ChatScreenActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -33,12 +33,14 @@
             android:hint="@string/type_message"
             android:padding="10dp"
             android:layout_marginStart="10dp"
+            android:id="@+id/messageBox"
             android:background="@drawable/message_bg"/>
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/sendmsg"
+            android:id="@+id/sendMsgBtn"
             android:layout_weight="20"
             android:layout_marginRight="10dp"/>
     </LinearLayout>

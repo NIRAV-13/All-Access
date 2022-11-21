@@ -1,4 +1,4 @@
-package com.mobile.macs_13.controller
+package com.mobile.macs_13.controller.chat
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.mobile.macs_13.R
-import com.mobile.macs_13.model.UserDemoModel
-import com.mobile.macs_13.view.ChatView
+import com.mobile.macs_13.model.chat.UserDemoModel
 
 class SignUpDemo : AppCompatActivity() {
 

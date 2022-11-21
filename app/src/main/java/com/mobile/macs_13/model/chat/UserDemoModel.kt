@@ -1,5 +1,6 @@
-package com.mobile.macs_13.model
+package com.mobile.macs_13.model.chat
 
+// model for displaying the users in the recycler view
 class UserDemoModel {
 
     var name:String?= null

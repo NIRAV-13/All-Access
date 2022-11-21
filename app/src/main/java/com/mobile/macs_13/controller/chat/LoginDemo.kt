@@ -1,4 +1,4 @@
-package com.mobile.macs_13.controller
+package com.mobile.macs_13.controller.chat
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,12 +7,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.mobile.macs_13.MainActivity
 import com.mobile.macs_13.R
-import com.mobile.macs_13.view.ChatView
-import kotlin.math.sign
+import com.mobile.macs_13.view.chat.ChatView
 
-class LoginDemo : AppCompatActivity() {
+class  LoginDemo : AppCompatActivity() {
 
     private lateinit var edtEmail: EditText
     private lateinit var edtPass: EditText
@@ -43,7 +41,7 @@ class LoginDemo : AppCompatActivity() {
        }
 
        signUpBtn.setOnClickListener{
-           val signUpIntent = Intent(this,SignUpDemo::class.java)
+           val signUpIntent = Intent(this, SignUpDemo::class.java)
            startActivity(signUpIntent)
        }
 
