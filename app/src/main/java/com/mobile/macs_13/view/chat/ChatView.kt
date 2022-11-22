@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.mobile.macs_13.R
-import com.mobile.macs_13.controller.chat.LoginDemo
+import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.chat.UserAdapter
-import com.mobile.macs_13.model.chat.UserDemoModel
+import com.mobile.macs_13.model.chat.UserModel
 
 class ChatView : AppCompatActivity() {
 
     private lateinit var userRecyclerView: RecyclerView
-    private lateinit var userList: ArrayList<UserDemoModel>
+    private lateinit var userList: ArrayList<UserModel>
     private lateinit var userAdapter: UserAdapter
     private lateinit var userDbRef: DatabaseReference
     private lateinit var loginAuth : FirebaseAuth
@@ -47,7 +47,7 @@ class ChatView : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 userList.clear()
                 for (postSnapshot in snapshot.children) {
-                    val currentUser = postSnapshot.getValue(UserDemoModel::class.java)
+                    val currentUser = postSnapshot.getValue(UserModel::class.java)
 
                     if(loginAuth.currentUser?.uid!=currentUser?.uid) {
                         userList.add(currentUser!!)
@@ -71,7 +71,7 @@ class ChatView : AppCompatActivity() {
 
         if(item.itemId == R.id.logout){
             loginAuth.signOut()
-            val logoutIntent = Intent(this@ChatView,LoginDemo::class.java)
+            val logoutIntent = Intent(this@ChatView, Login::class.java)
             finish()
             startActivity(logoutIntent)
             return true

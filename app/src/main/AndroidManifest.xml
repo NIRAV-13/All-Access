@@ -20,7 +20,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.chat.SignUpDemo"
+            android:name=".controller.authentication.SignUp"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -34,7 +34,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.chat.LoginDemo"
+            android:name=".controller.authentication.Login"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
