@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.R
-import com.mobile.macs_13.model.chat.UserDemoModel
+import com.mobile.macs_13.model.chat.UserModel
 import com.mobile.macs_13.view.chat.ChatScreenActivity
 import com.mobile.macs_13.view.chat.ChatView
 
-class UserAdapter(val context: ChatView, val userList:ArrayList<UserDemoModel>): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(val context: ChatView, val userList:ArrayList<UserModel>): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     class UserViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         val textName= itemView.findViewById<TextView>(R.id.chat_name)
