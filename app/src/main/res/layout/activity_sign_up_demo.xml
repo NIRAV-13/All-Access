@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.chat.LoginDemo">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="130dp"
+        android:id="@+id/app_logo"
+        android:src="@drawable/stu_logo_png"
+        android:contentDescription="@string/student_accesibility_logo" />
+
+    <TextView
+        android:layout_below="@+id/app_logo"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/foggy"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:text="@string/stuaccess"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="60dp"
+        android:autofillHints=""
+        android:background="@drawable/message_bg"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="100dp"
+        android:layout_below="@+id/edt_name"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:autofillHints=""
+        android:background="@drawable/message_bg"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/edt_password"
+        android:layout_below="@+id/edt_email"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:autofillHints=""
+        android:background="@drawable/message_bg"
+        android:ems="10"
+        android:padding="8dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_below="@id/edt_password"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="163dp"
+        android:background="@drawable/send_msg_bg"
+        android:text="@string/sign_up" />
+
+</RelativeLayout>

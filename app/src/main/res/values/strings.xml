@@ -1,5 +1,19 @@
 <resources>
-    <string name="app_name">macs_13</string>
+    <string name="app_name">StuAccess</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="student">Student</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="name">Name</string>
+    <string name="type_message">Type Message...</string>
+    <string name="received_message">Received Message</string>
+    <string name="sent_message">Sent Message</string>
+    <string name="logout">Logout</string>
+    <string name="send_message_button">Send Message</string>
+    <string name="stuaccess">StuAccess</string>
+    <string name="student_accesibility_logo">Student Accesibility Logo</string>
+    <string name="new_user">New User?</string>
 </resources>
