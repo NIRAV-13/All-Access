@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.mobile.macs_13.R
+
+
 import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.chat.UserAdapter
 import com.mobile.macs_13.model.chat.UserModel
+
 
 class ChatView : AppCompatActivity() {
 
