@@ -1,19 +1,25 @@
 package com.mobile.macs_13.controller.authentication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.mobile.macs_13.R
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
+import com.mobile.macs_13.model.UserProfile
 import com.mobile.macs_13.view.chat.ChatView
 
 // https://firebase.google.com/docs/auth/android/start#kotlin+ktx
+// https://firebase.google.com/docs/firestore/query-data/get-data#kotlin+ktx
+// https://stackoverflow.com/questions/46995080/how-do-i-get-the-document-id-for-a-firestore-document-using-kotlin-data-classes
 
 class Login : AppCompatActivity() {
 
@@ -22,6 +28,7 @@ class Login : AppCompatActivity() {
     private lateinit var loginBtn: Button
     private lateinit var signUpBtn: Button
     private lateinit var loginAuth: FirebaseAuth
+    private val TAG = "Login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +51,8 @@ class Login : AppCompatActivity() {
             if (email.isNotEmpty() && passwd.isNotEmpty())
                 login(email, passwd)
             else
-                Toast.makeText(this@Login, "Please enter email and password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Login, "Please enter email and password", Toast.LENGTH_SHORT)
+                    .show()
         }
 
         signUpBtn.setOnClickListener {
@@ -61,18 +69,38 @@ class Login : AppCompatActivity() {
         if (currentUser != null) {
             Log.e("Login", "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser)
 
+            val mFirestore = FirebaseFirestore.getInstance()
+            mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
+
+            mFirestore
+                .collection("User Profile")
+                .document(currentUser.uid)
+                .get()
+                .addOnSuccessListener { documents ->
+                    try {
+                        if (documents?.data?.get("Type") == 1) {
+//                            TODO: Navigate to student home page
+                            val loginIntent = Intent(this@Login, ChatView::class.java)
+                            finish()
+                            startActivity(loginIntent)
+                        } else {
+//                            TODO: Navigate to advidor home page
+                            val loginIntent = Intent(this@Login, ChatView::class.java)
+                            finish()
+                            startActivity(loginIntent)
+                        }
+                    } catch (ex: Exception) {
+                        Log.e(TAG, "", ex)
+                    }
+                }
 
 
-            val loginIntent = Intent(this@Login, ChatView::class.java)
-            finish()
-            startActivity(loginIntent)
         }
     }
 
     private fun login(email: String, password: String) {
 
         // logic for user login
-
         loginAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
