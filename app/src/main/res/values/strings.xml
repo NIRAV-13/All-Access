@@ -16,4 +16,7 @@
     <string name="stuaccess">StuAccess</string>
     <string name="student_accesibility_logo">Student Accesibility Logo</string>
     <string name="new_user">New User?</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="about_us">About Us</string>
+    <string name="dalca">\@dal.ca</string>
 </resources>

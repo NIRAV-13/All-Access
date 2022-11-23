@@ -1,22 +1,31 @@
 package com.mobile.macs_13.controller.authentication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.mobile.macs_13.R
+import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.view.chat.ChatView
 
-class  Login : AppCompatActivity() {
+// https://firebase.google.com/docs/auth/android/start#kotlin+ktx
+// https://firebase.google.com/docs/firestore/query-data/get-data#kotlin+ktx
+// https://stackoverflow.com/questions/46995080/how-do-i-get-the-document-id-for-a-firestore-document-using-kotlin-data-classes
+
+class Login : AppCompatActivity() {
 
     private lateinit var edtEmail: EditText
     private lateinit var edtPass: EditText
     private lateinit var loginBtn: Button
-    private lateinit var signUpBtn: Button
-    private lateinit var loginAuth : FirebaseAuth
+    private lateinit var aboutUsBtn: Button
+    private lateinit var loginAuth: FirebaseAuth
+    private val TAG = "Login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,42 +35,80 @@ class  Login : AppCompatActivity() {
         supportActionBar?.hide()
 
         // initialize firebase authentication
-        loginAuth= FirebaseAuth.getInstance()
+        loginAuth = FirebaseAuth.getInstance()
 
-        edtEmail= findViewById(R.id.edt_email)
-        edtPass= findViewById(R.id.edt_password)
-        loginBtn= findViewById(R.id.loginButton)
-        signUpBtn= findViewById(R.id.signUpButton)
+        edtEmail = findViewById(R.id.edt_email)
+        edtPass = findViewById(R.id.edt_password)
+        loginBtn = findViewById(R.id.loginButton)
+        aboutUsBtn = findViewById(R.id.aboutUsButton)
 
-       loginBtn.setOnClickListener{
-           val email = edtEmail.text.toString()
-           val passwd= edtPass.text.toString()
+        loginBtn.setOnClickListener {
+            val email = edtEmail.text.toString()
+            val passwd = edtPass.text.toString()
+            if (email.isNotEmpty() && passwd.isNotEmpty())
+                login(email, passwd)
+            else
+                Toast.makeText(this@Login, "Please enter email and password", Toast.LENGTH_SHORT)
+                    .show()
+        }
 
-           login(email, passwd)
-       }
+        aboutUsBtn.setOnClickListener {
+            val aboutUsIntent = Intent(this, AboutUs::class.java)
+            startActivity(aboutUsIntent)
+        }
 
-       signUpBtn.setOnClickListener{
-           val signUpIntent = Intent(this, SignUp::class.java)
-           startActivity(signUpIntent)
-       }
+    }
 
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = loginAuth.currentUser
+        if (currentUser != null) {
+            Log.e("Login", "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser)
+
+            val mFirestore = FirebaseFirestore.getInstance()
+            mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
+
+            mFirestore
+                .collection("User Profile")
+                .document(currentUser.uid)
+                .get()
+                .addOnSuccessListener { documents ->
+                    try {
+                        if (documents?.data?.get("Type") == 1) {
+//                            TODO: Navigate to student home page
+                            val loginIntent = Intent(this@Login, ChatView::class.java)
+                            finish()
+                            startActivity(loginIntent)
+                        } else {
+//                            TODO: Navigate to advidor home page
+                            val loginIntent = Intent(this@Login, ChatView::class.java)
+                            finish()
+                            startActivity(loginIntent)
+                        }
+                    } catch (ex: Exception) {
+                        Log.e(TAG, "", ex)
+                    }
+                }
+
+
+        }
     }
 
     private fun login(email: String, password: String) {
 
         // logic for user login
-
         loginAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val loginIntent= Intent(this@Login, ChatView::class.java)
+                    val loginIntent = Intent(this@Login, ChatView::class.java)
                     finish()
                     startActivity(loginIntent)
 
                 } else {
                     // If sign in fails, display a message to the user.
-                   Toast.makeText(this@Login,"User doesn't exist!",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Login, "User doesn't exist!", Toast.LENGTH_SHORT).show()
                 }
             }
     }
