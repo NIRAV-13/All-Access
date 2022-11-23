@@ -8,13 +8,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.mobile.macs_13.R
-import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
-import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.view.chat.ChatView
 
 // https://firebase.google.com/docs/auth/android/start#kotlin+ktx
@@ -26,7 +23,7 @@ class Login : AppCompatActivity() {
     private lateinit var edtEmail: EditText
     private lateinit var edtPass: EditText
     private lateinit var loginBtn: Button
-    private lateinit var signUpBtn: Button
+    private lateinit var aboutUsBtn: Button
     private lateinit var loginAuth: FirebaseAuth
     private val TAG = "Login"
 
@@ -43,7 +40,7 @@ class Login : AppCompatActivity() {
         edtEmail = findViewById(R.id.edt_email)
         edtPass = findViewById(R.id.edt_password)
         loginBtn = findViewById(R.id.loginButton)
-        signUpBtn = findViewById(R.id.signUpButton)
+        aboutUsBtn = findViewById(R.id.aboutUsButton)
 
         loginBtn.setOnClickListener {
             val email = edtEmail.text.toString()
@@ -55,9 +52,9 @@ class Login : AppCompatActivity() {
                     .show()
         }
 
-        signUpBtn.setOnClickListener {
-            val signUpIntent = Intent(this, SignUp::class.java)
-            startActivity(signUpIntent)
+        aboutUsBtn.setOnClickListener {
+            val aboutUsIntent = Intent(this, AboutUs::class.java)
+            startActivity(aboutUsIntent)
         }
 
     }
