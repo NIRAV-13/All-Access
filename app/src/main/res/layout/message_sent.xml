@@ -19,8 +19,11 @@
             android:id="@+id/sent_message"
             android:textSize="15sp"
             android:padding="10dp"
-            android:textColor="@color/black"
-            android:text="@string/sent_message"/>
+            android:textColor="@color/white"
+            android:text="@string/sent_message"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMaxTextSize="100dp"
+            android:autoSizeMinTextSize="12sp"/>
 
     </RelativeLayout>
 

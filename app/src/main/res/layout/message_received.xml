@@ -16,10 +16,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/received_message"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:padding="10dp"
-            android:text="@string/received_message"/>
+            android:text="@string/received_message"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="100dp" />
 
     </RelativeLayout>
 

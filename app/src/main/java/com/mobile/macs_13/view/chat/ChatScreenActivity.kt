@@ -77,11 +77,7 @@ class ChatScreenActivity : AppCompatActivity() {
 
         // submitting the chat message to database
         sendMsgBtn.setOnClickListener{
-
-
             val chatMessage = sendMessageBox.text.toString()
-
-
             if(chatMessage.isBlank()){
                 Toast.makeText(this@ChatScreenActivity,"Please type some message!!", Toast.LENGTH_SHORT).show()
             } else{
@@ -91,7 +87,6 @@ class ChatScreenActivity : AppCompatActivity() {
                 }
             }
             sendMessageBox.setText("")
-
 
         }
 
