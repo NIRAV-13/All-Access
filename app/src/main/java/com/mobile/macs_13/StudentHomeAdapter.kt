@@ -13,7 +13,6 @@ class StudentHomeAdapter(private val notifList: ArrayList<StudentNotificationDat
 
     inner class NotifViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-
         val notifTitle: TextView = itemView.findViewById(R.id.student_notif_title)
         val notifText: TextView = itemView.findViewById(R.id.student_notif_text)
 

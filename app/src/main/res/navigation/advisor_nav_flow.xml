@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/advisor_nav_flow"
+    app:startDestination="@id/advisorHomeFragment">
+
+    <fragment
+        android:id="@+id/advisorHomeFragment"
+        android:name="com.mobile.macs_13.AdvisorHomeFragment"
+        android:label="fragment_advisor_home"
+        tools:layout="@layout/fragment_advisor_home" >
+        <action
+            android:id="@+id/action_advisorHomeFragment_to_requestDetailsFragment"
+            app:destination="@id/requestDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestDetailsFragment"
+        android:name="com.mobile.macs_13.RequestDetailsFragment"
+        android:label="fragment_request_details"
+        tools:layout="@layout/fragment_request_details" />
+</navigation>
