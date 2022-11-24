@@ -1,13 +1,15 @@
 package com.mobile.macs_13
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
 import com.mobile.macs_13.model.StudentNotificationData
 
 
@@ -20,10 +22,17 @@ class AdvisorHomeFragment : Fragment() {
 
     private lateinit var adapter: AdvisorHomeAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var accomRequestList: ArrayList<AccomRequest>
 
-    val dummy = arrayListOf<AppointmentRequest>(
-        AppointmentRequest("Test", "Data", "Some details", "jkbjk"),
-        AppointmentRequest("Test 2", "Data", "kjnkfn", "jfnlkvmk")
+
+    val dummy = arrayListOf<AccomRequest>(
+        AccomRequest(
+            "Test",
+            "Data",
+            "Some details",
+            "jkb"
+        ),
+        AccomRequest("Test 2", "Data", "kjnkfn", "jfnlkvmk")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,4 +57,43 @@ class AdvisorHomeFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+    private fun getLink(): String {
+
+        var imageLinkFromFireStore = ""
+        val db = FirebaseFirestore.getInstance()
+        val mAuth = FirebaseAuth.getInstance()
+        val currentUserID = "1001"
+        //mAuth.currentUser?.uid
+
+//        db.collection("StudentProfileImages").document(currentUserID)
+//            .addSnapshotListener(object : EventListener<DocumentSnapshot> {
+//                override fun onEvent(value: DocumentSnapshot?, error: FirebaseFirestoreException?) {
+//
+//                    if (error != null) {
+//                        Log.d(
+//                            "Error",
+//                            "Some Error in Connection to FireStore ${error.message.toString()}"
+//                        )
+//                        return
+//                    }
+//
+//                    if (value != null) {
+//                        if (value.id == currentUserID) {
+//                            imageLinkFromFireStore = value.data?.get("link").toString()
+//                            Log.d("Info", "LINK : $imageLinkFromFireStore")
+//                        }
+//                    }
+//                }
+//            })
+
+        db.collection("StudentProfileImages").document(currentUserID)
+            .get().addOnCompleteListener { task ->
+                if (task.isComplete) {
+                    imageLinkFromFireStore = task.result.data?.get("link").toString()
+                }
+            }
+
+        Log.d("Info", "LINK $imageLinkFromFireStore")
+        return imageLinkFromFireStore
+    }
 }

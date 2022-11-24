@@ -1,9 +1,9 @@
 package com.mobile.macs_13
 
-data class AppointmentRequest(
+data class AccomRequest(
     val requesterName: String,
     val requesterCourse: String, val requestDetails: String,
-    val imageLink: String
+    var imageLink: String
 ) {
 
 }
