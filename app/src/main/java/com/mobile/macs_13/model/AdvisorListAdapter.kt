@@ -18,7 +18,6 @@ import com.mobile.macs_13.view.StudentBookAppointmentHome
 class AdvisorListAdapter(private val advisors: MutableList<Advisor>) :RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>(){
 
 
-    private lateinit var onSelectAdvisor : onSelectAdvisor
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdvisorListAdapter.ViewHolder {
 
@@ -56,7 +55,7 @@ class AdvisorListAdapter(private val advisors: MutableList<Advisor>) :RecyclerVi
             fun onClick(advisor: Advisor) {
 
                 val intent = Intent(binding.root.context, StudentBookAppointment:: class.java)
-                intent.putExtra("advisorEmail", advisor.advisorName)
+                intent.putExtra("advisorEmail", advisor.advisorEmail)
                 binding.root.context.startActivity(intent)
 
             }
