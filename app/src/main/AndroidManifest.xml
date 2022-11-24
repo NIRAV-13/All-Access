@@ -13,6 +13,16 @@
         android:theme="@style/Theme.macs_13"
         tools:targetApi="31">
         <activity
+            android:name=".StudentBookAppointmentHome"
+            android:exported="false"
+            android:label="@string/title_activity_student_book_appointment_home"
+            android:theme="@style/Theme.macs_13.NoActionBar" />
+        <activity
+            android:name=".StudentBookAppointment"
+            android:exported="false"
+            android:label="@string/title_activity_student_book_appointment"
+            android:theme="@style/Theme.macs_13.NoActionBar" />
+        <activity
             android:name=".view.chat.ChatScreenActivity"
             android:exported="false">
             <meta-data
@@ -20,10 +30,8 @@
                 android:value="" />
         </activity>
         <activity
-
             android:name=".controller.authentication.SignUp"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -35,7 +43,20 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
+        <activity
+            android:name=".view.StudentBookAppointment"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.StudentBookAppointmentHome"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".controller.authentication.Login"
             android:exported="true">
