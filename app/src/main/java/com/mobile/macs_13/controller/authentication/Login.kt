@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,7 @@ class Login : AppCompatActivity() {
     private lateinit var edtPass: EditText
     private lateinit var loginBtn: Button
     private lateinit var aboutUsBtn: Button
+    private lateinit var forgotpswd: TextView
     private lateinit var loginAuth: FirebaseAuth
     private val TAG = "Login"
 
@@ -41,6 +43,7 @@ class Login : AppCompatActivity() {
         edtPass = findViewById(R.id.edt_password)
         loginBtn = findViewById(R.id.loginButton)
         aboutUsBtn = findViewById(R.id.aboutUsButton)
+        forgotpswd = findViewById(R.id.forgot_pswd)
 
         loginBtn.setOnClickListener {
             val email = edtEmail.text.toString()
@@ -55,6 +58,11 @@ class Login : AppCompatActivity() {
         aboutUsBtn.setOnClickListener {
             val aboutUsIntent = Intent(this, AboutUs::class.java)
             startActivity(aboutUsIntent)
+        }
+
+        forgotpswd.setOnClickListener {
+            val forgotPswdIntent = Intent(this, ForgotPassword::class.java)
+            startActivity(forgotPswdIntent)
         }
 
     }
@@ -111,5 +119,9 @@ class Login : AppCompatActivity() {
                     Toast.makeText(this@Login, "User doesn't exist!", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun passwordReset(email: String){
+        //TODO
     }
 }
