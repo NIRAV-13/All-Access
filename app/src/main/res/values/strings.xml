@@ -27,4 +27,6 @@
     <string name="app_requester_course">Requester Course</string>
     <string name="app_request_details">Request Details</string>
     <string name="app_request_open">Check Request</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_closed">Drawer Closed</string>
 </resources>
