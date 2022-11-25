@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserFeedbackActivity">
+
+    <EditText
+        android:id="@+id/edt_advisor"
+        android:layout_width="373dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="18dp"
+        android:ems="10"
+        android:hint="What is the advisor name?"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edt_discussion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_discussion"
+        android:layout_width="375dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="What discussion was done?"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edt_duration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_advisor" />
+
+    <EditText
+        android:id="@+id/edt_duration"
+        android:layout_width="364dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="19dp"
+        android:ems="10"
+        android:hint="duration of a meeting"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edt_subj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_discussion" />
+
+    <EditText
+        android:id="@+id/edt_subj"
+        android:layout_width="369dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="subject name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_duration" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="374dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/edt_suggestion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_subj" />
+
+    <EditText
+        android:id="@+id/edt_suggestion"
+        android:layout_width="355dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="96dp"
+        android:ems="10"
+        android:hint="Do you have any suggestion?"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="216dp"
+        android:layout_marginBottom="6dp"
+        android:text="submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_suggestion" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
