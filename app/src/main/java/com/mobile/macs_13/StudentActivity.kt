@@ -18,6 +18,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.controller.authentication.Login
+import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.UserProfile
 
 
 class StudentActivity : AppCompatActivity() {
@@ -122,6 +124,7 @@ class StudentActivity : AppCompatActivity() {
         else if(item.itemId == R.id.logout){
             loginAuth.signOut()
             val logoutIntent = Intent(this, Login::class.java)
+            User.setCurrentUserProfile(UserProfile())
             finish()
             startActivity(logoutIntent)
             return true
