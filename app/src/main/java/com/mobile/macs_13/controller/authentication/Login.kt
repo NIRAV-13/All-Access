@@ -113,9 +113,7 @@ class Login : AppCompatActivity() {
                         startActivity(advisorHomePageIntent)
                     }
                     else{
-                        val instructorHomePageIntent = Intent(this@Login, StudentActivity::class.java)
-                        finish()
-                        startActivity(instructorHomePageIntent)
+                        Log.d("YOLO", User.getCurrentUserProfile().toString())
                     }
                     
 

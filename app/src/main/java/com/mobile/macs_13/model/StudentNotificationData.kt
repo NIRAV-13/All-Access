@@ -1,6 +1,7 @@
 package com.mobile.macs_13.model
 
-data class StudentNotificationData(val notifTitle: String? = null, val notifText: String? = null) {
+data class StudentNotificationData(val notifTitle: String? = null, val notifText: String? = null) :
+    java.io.Serializable {
 
 
     override fun toString(): String {
