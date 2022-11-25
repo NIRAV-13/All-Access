@@ -15,6 +15,7 @@ import com.mobile.macs_13.AdvisorActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.controller.about.AboutUs
+import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
 
 // https://firebase.google.com/docs/auth/android/start#kotlin+ktx
@@ -29,9 +30,7 @@ class Login : AppCompatActivity() {
     private lateinit var aboutUsBtn: Button
     private lateinit var forgotpswd: TextView
     private lateinit var loginAuth: FirebaseAuth
-    private lateinit var user: UserProfile
     private val TAG = "Login"
-    val USER_PROFILE = "User Profile"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,26 +96,24 @@ class Login : AppCompatActivity() {
                             .document(currentUser.uid)
                             .get()
                             .addOnSuccessListener { documents ->
-                                user = documents.toObject(UserProfile::class.java)!!
-                                Log.d("USER", user.toString())
+                                val userProfile = documents.toObject(UserProfile::class.java)!!
+                                User.setCurrentUserProfile(userProfile)
+                                Log.d("USER", User.getCurrentUserProfile().toString())
                             }
                     }
 
-                    if(user.type==1){
+                    if(User.getCurrentUserProfile().type ==1){
                         val studentHomePageIntent = Intent(this@Login, StudentActivity::class.java)
-                        studentHomePageIntent.putExtra(USER_PROFILE, user)
                         finish()
                         startActivity(studentHomePageIntent)  
                     }
-                    else if(user.type==2){
+                    else if(User.getCurrentUserProfile().type==2){
                         val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
-                        advisorHomePageIntent.putExtra(USER_PROFILE, user)
                         finish()
                         startActivity(advisorHomePageIntent)
                     }
                     else{
                         val instructorHomePageIntent = Intent(this@Login, StudentActivity::class.java)
-                        instructorHomePageIntent.putExtra(USER_PROFILE, user)
                         finish()
                         startActivity(instructorHomePageIntent)
                     }
