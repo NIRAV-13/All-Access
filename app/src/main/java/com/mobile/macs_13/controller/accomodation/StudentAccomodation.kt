@@ -15,8 +15,8 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mobile.macs_13.R
-import com.mobile.macs_13.controller.accomodation.StudentHome
-import com.mobile.macs_13.model.AdvisorAccomodationModel
+import com.mobile.macs_13.StudentActivity
+
 
 class StudentAccomodation : AppCompatActivity() {
 
@@ -96,7 +96,7 @@ class StudentAccomodation : AppCompatActivity() {
 
         cancelBtn.setOnClickListener{
 
-            val backIntent = Intent(this@StudentAccomodation, StudentHome::class.java)
+            val backIntent = Intent(this@StudentAccomodation, StudentActivity::class.java)
             startActivity(backIntent)
         }
 

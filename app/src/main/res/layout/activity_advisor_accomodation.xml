@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.accomodationfeature.AdvisorAccomodation">
+    tools:context=".controller.accomodation.AdvisorAccomodation">
 
     <TextView
         android:layout_width="match_parent"
@@ -102,3 +102,138 @@
         android:text="Term:"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/course_name"
+        android:id="@+id/stud_term"
+        android:text="2nd Term"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/year_head"
+        android:textStyle="bold"
+        android:layout_below="@+id/term_head"
+        android:text="Year:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_term"
+        android:id="@+id/stud_year"
+        android:text="1st Year"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email_head"
+        android:layout_below="@+id/year_head"
+        android:textStyle="bold"
+        android:text="Email:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_year"
+        android:id="@+id/stud_email"
+        android:text="alexferguson@dal.ca"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone_head"
+        android:textStyle="bold"
+        android:layout_below="@+id/email_head"
+        android:text="Phone:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_email"
+        android:id="@+id/stud_phone"
+        android:text="1234567890"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/doc_head"
+        android:textStyle="bold"
+        android:layout_below="@+id/phone_head"
+        android:text="Documents:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_phone"
+        android:id="@+id/stud_doc"
+        android:text="Student Documents"
+        android:autoLink="web"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/reason_head"
+        android:textStyle="bold"
+        android:layout_below="@+id/doc_head"
+        android:text="Reason:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_doc"
+        android:id="@+id/stud_reason"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_reason"
+        android:layout_marginTop="30dp"
+        android:text="Reject"
+        android:background="@color/reject"
+        android:id="@+id/adv_reject"
+        android:textColor="@color/white"
+        android:layout_marginStart="230dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_reason"
+        android:layout_marginTop="30dp"
+        android:text="Accept"
+        android:background="@color/accept"
+        android:layout_marginStart="105dp"
+        android:textColor="@color/white"
+
+        android:id="@+id/adv_accept"
+        />
+
+</RelativeLayout>

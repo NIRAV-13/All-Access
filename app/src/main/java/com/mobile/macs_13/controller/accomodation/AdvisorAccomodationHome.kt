@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mobile.macs_13.R
+import com.mobile.macs_13.controller.accomodation.AdvisorAccomodation
 
 class AdvisorAccomodationHome : AppCompatActivity() {
 
@@ -21,7 +22,6 @@ class AdvisorAccomodationHome : AppCompatActivity() {
         //to remove the action bar
         supportActionBar?.hide()
 
-        studReqBtn = findViewById(R.id.stud_request_btn)
         studReqBtn.setOnClickListener{
 
             val email = "alexjones@dal.ca"
