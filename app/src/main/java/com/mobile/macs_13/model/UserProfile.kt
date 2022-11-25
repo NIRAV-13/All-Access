@@ -15,9 +15,10 @@ data class UserProfile (
      var course : String? = null,
     var year  : String? = null,
     var imageLink: String? = null,
+    var term: String? = null,
     var type   : Int?    = null
 ){
     override fun toString(): String {
-        return "UserProfile(uid=$uid, name=$name, email=$email, phone=$phone, program=$program, course=$course, year=$year, imageLink=$imageLink, type=$type)"
+        return "UserProfile(uid=$uid, name=$name, email=$email, phone=$phone, program=$program, course=$course, year=$year, imageLink=$imageLink, term=$term, type=$type)"
     }
 }
