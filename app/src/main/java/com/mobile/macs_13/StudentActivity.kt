@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.mobile.macs_13.controller.DownloadFile
 import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
@@ -59,6 +60,17 @@ class StudentActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
+            if(menuItem.itemId == R.id.feeback_item){
+                val feedbackIntent = Intent(this, UserFeedbackActivity::class.java)
+                finish()
+                startActivity(feedbackIntent)
+            }
+
+            if(menuItem.itemId == R.id.documents_item){
+                val documentsIntent = Intent(this, DownloadFile::class.java)
+                finish()
+                startActivity(documentsIntent)
+            }
             menuItem.isChecked = true
             drawerLayout.close()
             true
