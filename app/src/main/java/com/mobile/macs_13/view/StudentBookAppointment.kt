@@ -1,14 +1,19 @@
 package com.mobile.macs_13.view
 
+
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.controller.AdvisorController
 import com.mobile.macs_13.controller.StudentController
 import com.mobile.macs_13.model.AvailableAppointmentList
 import com.mobile.macs_13.model.SlotDetail
+import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.AppointmentDetails
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.time.LocalDate
@@ -27,6 +32,7 @@ class StudentBookAppointment : AppCompatActivity(){
     private val advisorController :AdvisorController = AdvisorController()
     private lateinit var slotDetail: SlotDetail
     private var slotDetailMap : HashMap<String, SlotDetail> = HashMap()
+    private var advisor: UserProfile = UserProfile()
 
     private fun setCalender(){
 
@@ -40,49 +46,58 @@ class StudentBookAppointment : AppCompatActivity(){
     }
 
 
+    @RequiresApi(33)
     private fun setAvailableSlots(midNightStartTime: Long, midNightEndTime: Long) {
 
-        val advisorEmail = this.intent.getStringExtra("advisorEmail").toString()
+        advisor = this.intent.getSerializableExtra("advisor",UserProfile::class.java)!!
+
+        val advisorEmail = advisor.email.toString()
+
+        studentController.fetchAvailability(advisorEmail, midNightStartTime, midNightEndTime) { status ->
+
+            if(status){
+
+                val availabilityList = AvailableAppointmentList.getAvailability()
+
+                for (i in availabilityList){
+
+                    val f: NumberFormat = DecimalFormat("00")
+
+                    val startDate = Date(i.startTime.seconds*1000)
+                    val endDate = Date(i.endTime.seconds*1000)
+
+                    val startHour = f.format(startDate.hours)
+                    val startMinute = f.format(startDate.minutes)
+
+                    val endHour = f.format(endDate.hours)
+                    val endMinute = f.format(endDate.minutes)
+
+                    val availabilityId = i.availabilityId
+
+                    slotDetail = SlotDetail(availabilityId, startHour, startMinute, endHour, endMinute)
 
 
+                    val option = slotDetail.toString()
+                    timeOptions.add(option)
+                    slotDetailMap[option] = slotDetail
 
-        studentController.fetchAvailability(advisorEmail, midNightStartTime, midNightEndTime) { success ->
+                }
 
-            val availabilityList = AvailableAppointmentList.getAvailability()
+                val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeOptions)
+                spinnerSlots = findViewById(R.id.spinner)
 
+                spinnerSlots.adapter = spinnerAdapter;
 
-            for (i in availabilityList){
-
-                val f: NumberFormat = DecimalFormat("00")
-
-                val startDate = Date(i.startTime.seconds*1000)
-                val endDate = Date(i.endTime.seconds*1000)
-
-                val startHour = f.format(startDate.hours)
-                val startMinute = f.format(startDate.minutes)
-
-                val endHour = f.format(endDate.hours)
-                val endMinute = f.format(endDate.minutes)
-
-                val availabilityId = i.availabilityId
-
-                slotDetail = SlotDetail(availabilityId, startHour, startMinute, endHour, endMinute)
-
-
-                val option = slotDetail.toString()
-                timeOptions.add(option)
-                slotDetailMap[option] = slotDetail
             }
-
-            val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeOptions)
-            spinnerSlots = findViewById(R.id.spinner)
-
-            spinnerSlots.adapter = spinnerAdapter;
+            else{
+                Log.d("data","fetch availability error.")
+            }
 
         }
     }
 
 
+    @RequiresApi(33)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -163,14 +178,29 @@ class StudentBookAppointment : AppCompatActivity(){
 
             val endTime = endCal.time
 
-            var advisorEmail = this.intent.getStringExtra("advisorEmail")
 
-            studentController.bookAppointment(advisorEmail.toString(),
-                "test@dal.ca",
+            advisor = this.intent.getSerializableExtra("advisor",UserProfile::class.java)!!
+
+            val student = User.getCurrentUserProfile()
+
+            val appointmentDetails = AppointmentDetails(
+                advisor.name,
+                advisor.email,
+                advisor.phone,
+                advisor.imageLink,
+                student.email,
+                student.name,
+                student.phone,
+                student.program,
+                student.course,
+                student.year,
+                student.imageLink,
                 startTime,
                 endTime,
-                true,
-                this.baseContext){ bookStatus ->
+                true
+            )
+            studentController.bookAppointment(
+                appointmentDetails){ bookStatus ->
 
                     if(bookStatus){
                         advisorController.changeAvailabilityToFalse(slotDetail.availabilityId){ changeAvailableStatus ->

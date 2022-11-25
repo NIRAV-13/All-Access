@@ -23,7 +23,7 @@ class StudentBookAppointmentHome : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.advisorListRecyclerView)
         recyclerView.setHasFixedSize(true)
-        advisorListAdapter = AdvisorListAdapter(AdvisorList.getAdvisors())
+        advisorListAdapter = AdvisorListAdapter()
         recyclerView.layoutManager = LinearLayoutManager(this.baseContext)
         recyclerView.adapter = advisorListAdapter
 

@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.mobile.macs_13.model.*
 import java.util.*
 
@@ -44,9 +45,8 @@ class StudentController {
 
     }
 
-    fun bookAppointment(advisorEmail: String, studentEmail: String, startTime: Date, endTime: Date, status: Boolean,  context: Context?, function: (Boolean) -> Unit){
+    fun bookAppointment(appointmentDetails: AppointmentDetails, function: (Boolean) -> Unit){
 
-        val appointmentDetails = AppointmentDetails(advisorEmail = advisorEmail, studentEmail = studentEmail, startTime = startTime, endTime = endTime, status = status)
         var db = FirebaseFirestore.getInstance()
 
         db.collection("AppointmentDetails")
@@ -107,14 +107,13 @@ class StudentController {
 
                 for (document in documents){
 
-                    val advisorEmail = document.data["advisorEmail"] as String
-                    val advisorCampus = document.data["advisorCampus"] as String
-                    val advisorName = document.data["advisorName"] as String
-                    val advisorPassword = document.data["advisorPassword"] as String
-                    val advisorUniversityName = document.data["advisorUniversityName"] as String
+//                    val advisorEmail = document.data["advisorEmail"] as String
+//                    val advisorCampus = document.data["advisorCampus"] as String
+//                    val advisorName = document.data["advisorName"] as String
+//                    val advisorPassword = document.data["advisorPassword"] as String
+//                    val advisorUniversityName = document.data["advisorUniversityName"] as String
 
-                    val advisor = Advisor(
-                        advisorEmail, advisorName, advisorPassword, advisorCampus, advisorUniversityName)
+                    val advisor = UserProfile(document.toObject())
 
                     AdvisorList.addAdvisor(advisor)
 

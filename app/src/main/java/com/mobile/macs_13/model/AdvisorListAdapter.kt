@@ -12,12 +12,13 @@ import com.mobile.macs_13.databinding.AdvisorListItemBinding
 import com.mobile.macs_13.databinding.ActivityStudentBookAppointmentHomeBinding
 
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.auth.User
 import com.mobile.macs_13.view.StudentBookAppointment
 import com.mobile.macs_13.view.StudentBookAppointmentHome
 
-class AdvisorListAdapter(private val advisors: MutableList<Advisor>) :RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>(){
+class AdvisorListAdapter() :RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>(){
 
-
+    private val advisors: MutableList<UserProfile> = AdvisorList.getAdvisors()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdvisorListAdapter.ViewHolder {
 
@@ -43,19 +44,19 @@ class AdvisorListAdapter(private val advisors: MutableList<Advisor>) :RecyclerVi
     inner class ViewHolder(val binding: AdvisorListItemBinding):
         RecyclerView.ViewHolder(binding.root){
 
-            fun bindItem(advisor: Advisor){
+            fun bindItem(advisor: UserProfile){
 
-                binding.nameText.text = advisor.advisorName
-                binding.emailText.text = advisor.advisorEmail
+                binding.nameText.text = advisor.name
+                binding.emailText.text = advisor.email
 
                 binding.button2.setOnClickListener { onClick(advisor) }
             }
 
 
-            fun onClick(advisor: Advisor) {
+            fun onClick(advisor: UserProfile) {
 
                 val intent = Intent(binding.root.context, StudentBookAppointment:: class.java)
-                intent.putExtra("advisorEmail", advisor.advisorEmail)
+                intent.putExtra("advisor", advisor)
                 binding.root.context.startActivity(intent)
 
             }
