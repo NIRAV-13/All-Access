@@ -15,6 +15,7 @@ import com.mobile.macs_13.AdvisorActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.controller.about.AboutUs
+import com.mobile.macs_13.model.UserProfile
 
 // https://firebase.google.com/docs/auth/android/start#kotlin+ktx
 // https://firebase.google.com/docs/firestore/query-data/get-data#kotlin+ktx
@@ -28,7 +29,9 @@ class Login : AppCompatActivity() {
     private lateinit var aboutUsBtn: Button
     private lateinit var forgotpswd: TextView
     private lateinit var loginAuth: FirebaseAuth
+    private lateinit var user: UserProfile
     private val TAG = "Login"
+    val USER_PROFILE = "User Profile"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,37 +75,7 @@ class Login : AppCompatActivity() {
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = loginAuth.currentUser
-        if (currentUser != null) {
-            Log.e("Login", "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser)
 
-            val mFirestore = FirebaseFirestore.getInstance()
-            mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
-
-            mFirestore
-                .collection("User Profile")
-                .document(currentUser.uid)
-                .get()
-                .addOnSuccessListener { documents ->
-                    try {
-                        if (documents?.data?.get("Type") == 1) {
-//                            TODO: Navigate to student home page
-                            val loginIntent = Intent(this@Login, StudentActivity::class.java)
-                            finish()
-                            startActivity(loginIntent)
-                        } else {
-//                            TODO: Navigate to advidor home page
-                            val loginIntent = Intent(this@Login, AdvisorActivity::class.java)
-                            finish()
-                            startActivity(loginIntent)
-                        }
-                    } catch (ex: Exception) {
-                        Log.e(TAG, "", ex)
-                    }
-                }
-
-
-        }
     }
 
     private fun login(email: String, password: String) {
@@ -112,18 +85,47 @@ class Login : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val loginIntent = Intent(this@Login, StudentActivity::class.java)
-                    finish()
-                    startActivity(loginIntent)
+                    val currentUser = loginAuth.currentUser
+                    if (currentUser != null) {
+                        Log.e("Login", "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser)
+
+                        val mFirestore = FirebaseFirestore.getInstance()
+                        mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
+
+                        mFirestore
+                            .collection("User Profile")
+                            .document(currentUser.uid)
+                            .get()
+                            .addOnSuccessListener { documents ->
+                                user = documents.toObject(UserProfile::class.java)!!
+                                Log.d("USER", user.toString())
+                            }
+                    }
+
+                    if(user.type==1){
+                        val studentHomePageIntent = Intent(this@Login, StudentActivity::class.java)
+                        studentHomePageIntent.putExtra(USER_PROFILE, user)
+                        finish()
+                        startActivity(studentHomePageIntent)  
+                    }
+                    else if(user.type==2){
+                        val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
+                        advisorHomePageIntent.putExtra(USER_PROFILE, user)
+                        finish()
+                        startActivity(advisorHomePageIntent)
+                    }
+                    else{
+                        val instructorHomePageIntent = Intent(this@Login, StudentActivity::class.java)
+                        instructorHomePageIntent.putExtra(USER_PROFILE, user)
+                        finish()
+                        startActivity(instructorHomePageIntent)
+                    }
+                    
 
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this@Login, "User doesn't exist!", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
-
-    private fun passwordReset(email: String){
-        //TODO
     }
 }
