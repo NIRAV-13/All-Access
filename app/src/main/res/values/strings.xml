@@ -16,4 +16,17 @@
     <string name="stuaccess">StuAccess</string>
     <string name="student_accesibility_logo">Student Accesibility Logo</string>
     <string name="new_user">New User?</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="about_us">About Us</string>
+    <string name="about_us_desc">Lorem ipsum dolor sit amet. Et error expedita a aliquam voluptatibus ad recusandae labore ut quisquam quia sit quis neque. Non alias quis est rerum dolor et nesciunt accusamus sit consequatur consequatur sit quas aliquam. Ab consequatur facilis eum odit tempora eum porro labore quo voluptatibus perferendis rem facere nobis in nulla laboriosam. Est debitis facere ut sapiente commodi id deleniti sapiente aut pariatur vitae!</string>
+    <string name="dalca">\@dal.ca</string>
+    <string name="student_home_notif">Notification Here</string>
+    <string name="student_name_placeholder">Hello! Student Name</string>
+    <string name="advisor_name_placeholder">Hello! Advisor Name</string>
+    <string name="app_requester_name">Requester Name</string>
+    <string name="app_requester_course">Requester Course</string>
+    <string name="app_request_details">Request Details</string>
+    <string name="app_request_open">Check Request</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_closed">Drawer Closed</string>
 </resources>

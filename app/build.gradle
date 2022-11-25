@@ -76,4 +76,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // GSON
+    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("org.osmdroid:osmdroid-android:6.1.14")
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 }
