@@ -29,4 +29,8 @@
     <string name="app_request_open">Check Request</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_closed">Drawer Closed</string>
+    <string-array name="options">
+        <item> Yes </item>
+        <item> No </item>
+    </string-array>
 </resources>
