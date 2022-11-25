@@ -166,7 +166,7 @@ class StudentBookAppointment : AppCompatActivity(){
             var advisorEmail = this.intent.getStringExtra("advisorEmail")
 
             studentController.bookAppointment(advisorEmail.toString(),
-                "test@gmail.com",
+                "test@dal.ca",
                 startTime,
                 endTime,
                 true,

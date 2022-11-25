@@ -36,4 +36,5 @@
         <item>14:00 to 14:30</item>
         <item>14:30 to 15:00</item>
     </string-array>
+    <string name="title_activity_student_appointment_list">StudentAppointmentList</string>
 </resources>

@@ -12,10 +12,41 @@ import java.util.*
 class StudentController {
 
 
+    fun fetchAppointments(studentEmail: String, function: (Boolean) -> Unit){
+
+        var db = FirebaseFirestore.getInstance()
+        db.collection("AppointmentDetails")
+            .whereEqualTo("studentEmail", studentEmail)
+            .get()
+            .addOnSuccessListener {
+                    documents ->
+
+                for (document in documents){
+
+                    val advisorEmail = document.data["advisorEmail"] as String
+                    val startTime = (document.data["startTime"] as Timestamp).toDate()
+                    val endTime = (document.data["endTime"] as Timestamp).toDate()
+                    val studentEmail = document.data["studentEmail"] as String
+                    val status = document.data["status"] as Boolean
+
+                    val appointmentDetails = AppointmentDetails(document.id,
+                        advisorEmail, studentEmail, startTime, endTime, status)
+
+                    StudentAppointmentList.addAppointment(appointmentDetails)
+
+                }
+                function(true)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("firebase", "Error getting documents: ", exception)
+                function(false)
+            }
+
+    }
 
     fun bookAppointment(advisorEmail: String, studentEmail: String, startTime: Date, endTime: Date, status: Boolean,  context: Context?, function: (Boolean) -> Unit){
 
-        val appointmentDetails = AppointmentDetails(advisorEmail, studentEmail, startTime, endTime, status)
+        val appointmentDetails = AppointmentDetails(advisorEmail = advisorEmail, studentEmail = studentEmail, startTime = startTime, endTime = endTime, status = status)
         var db = FirebaseFirestore.getInstance()
 
         db.collection("AppointmentDetails")

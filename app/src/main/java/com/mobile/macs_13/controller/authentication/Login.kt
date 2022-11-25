@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.R
+import com.mobile.macs_13.view.StudentAppointmentListActivity
 import com.mobile.macs_13.view.StudentBookAppointmentHome
 import com.mobile.macs_13.view.chat.ChatView
 
@@ -43,7 +44,7 @@ class  Login : AppCompatActivity() {
 
        signUpBtn.setOnClickListener{
 //           val signUpIntent = Intent(this, SignUp::class.java)
-           val test = Intent(this, StudentBookAppointmentHome::class.java)
+           val test = Intent(this, StudentAppointmentListActivity::class.java)
            startActivity(test)
 
        }
