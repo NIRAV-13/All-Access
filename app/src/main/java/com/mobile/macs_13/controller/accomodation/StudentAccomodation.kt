@@ -16,6 +16,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mobile.macs_13.R
 import com.mobile.macs_13.StudentActivity
+import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.StudentAccomRequestModel
 
 
 class StudentAccomodation : AppCompatActivity() {
@@ -60,7 +62,8 @@ class StudentAccomodation : AppCompatActivity() {
             // user profile database same data class object.
             // accomodocation form details.
 //            getUserData(AdvisorAccomodationModel(studName,))
-
+            val studRequest : StudentAccomRequestModel = StudentAccomRequestModel(User.getCurrentUserProfile().name,User.getCurrentUserProfile().email, User.getCurrentUserProfile().course, User.getCurrentUserProfile().program, User.getCurrentUserProfile().term, User.getCurrentUserProfile().year, User.getCurrentUserProfile().phone,User.getCurrentUserProfile().uid,studImpact,studConsent)
+            }
             val studentMap = hashMapOf(
                 "StudentName" to studName,
                 "StudentEmail" to studEmail,
