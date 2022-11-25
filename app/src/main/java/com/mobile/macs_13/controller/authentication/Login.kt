@@ -62,6 +62,7 @@ class Login : AppCompatActivity() {
 
         forgotpswd.setOnClickListener {
             val forgotPswdIntent = Intent(this, ForgotPassword::class.java)
+            forgotPswdIntent.setFlags(forgotPswdIntent.getFlags() or Intent.FLAG_ACTIVITY_NO_HISTORY)
             startActivity(forgotPswdIntent)
         }
 
