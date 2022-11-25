@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.accomodationfeature.AdvisorAccomodation">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Requests for Approval"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/request_approval"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Name:"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/request_approval"
+        android:id="@+id/accom_stud_name_head"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/request_approval"
+        android:text="Alex Ferguson"
+        android:id="@+id/accom_stud_name"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_below="@+id/accom_stud_name"
+        android:text="University:"
+        android:id="@+id/univ_name_head"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accom_stud_name"
+        android:id="@+id/univ_name"
+        android:text="Dalhousie University"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/prog_name_head"
+        android:textStyle="bold"
+        android:layout_below="@+id/univ_name_head"
+        android:text="Program:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/univ_name"
+        android:id="@+id/prog_name"
+        android:text="Bachelor of Computer Science"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/course_name_head"
+        android:textStyle="bold"
+        android:layout_below="@+id/prog_name_head"
+        android:text="Course:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prog_name"
+        android:id="@+id/course_name"
+        android:text="CSCI 1005 Intro to Computer Science"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="110dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/term_head"
+        android:textStyle="bold"
+        android:layout_below="@+id/course_name_head"
+        android:text="Term:"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"/>
