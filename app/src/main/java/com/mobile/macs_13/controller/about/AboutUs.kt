@@ -1,6 +1,5 @@
 package com.mobile.macs_13.controller.about
 
-import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -17,19 +16,8 @@ import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 
 //https://github.com/osmdroid/osmdroid/wiki/How-to-use-the-osmdroid-library-(Java)
+class AboutUs : AppCompatActivity() {
 
-
-
-class  AboutUs : AppCompatActivity() {
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_about_us)
-//
-//
-//    }
-
-    private val REQUEST_PERMISSIONS_REQUEST_CODE = 1
     private var map: MapView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,13 +39,7 @@ class  AboutUs : AppCompatActivity() {
         setContentView(R.layout.activity_about_us)
         map = findViewById<View>(R.id.map) as MapView
         map!!.setTileSource(TileSourceFactory.MAPNIK)
-        requestPermissionsIfNecessary(
-            arrayOf( // if you need to show the current location, uncomment the line below
-                // Manifest.permission.ACCESS_FINE_LOCATION,
-                // WRITE_EXTERNAL_STORAGE is required in order to show the map
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
-            )
-        )
+
         val mapController = map!!.controller
         mapController.setZoom(19)
         val startPoint = GeoPoint(44.6366, -63.5917)
@@ -88,44 +70,6 @@ class  AboutUs : AppCompatActivity() {
         //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //Configuration.getInstance().save(this, prefs);
         map!!.onPause() //needed for compass, my location overlays, v6.0.0 and up
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String?>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        val permissionsToRequest: ArrayList<String?> = ArrayList()
-        for (i in grantResults.indices) {
-            permissionsToRequest.add(permissions[i])
-        }
-        if (permissionsToRequest.size > 0) {
-            ActivityCompat.requestPermissions(
-                this,
-                permissionsToRequest.toArray(arrayOfNulls(0)),
-                REQUEST_PERMISSIONS_REQUEST_CODE
-            )
-        }
-    }
-
-    private fun requestPermissionsIfNecessary(permissions: Array<String>) {
-        val permissionsToRequest: ArrayList<String> = ArrayList()
-        for (permission in permissions) {
-            if (ContextCompat.checkSelfPermission(this, permission)
-                != PackageManager.PERMISSION_GRANTED
-            ) {
-                // Permission is not granted
-                permissionsToRequest.add(permission)
-            }
-        }
-        if (permissionsToRequest.size > 0) {
-            ActivityCompat.requestPermissions(
-                this,
-                permissionsToRequest.toArray(arrayOfNulls(0)),
-                REQUEST_PERMISSIONS_REQUEST_CODE
-            )
-        }
     }
 
 }
