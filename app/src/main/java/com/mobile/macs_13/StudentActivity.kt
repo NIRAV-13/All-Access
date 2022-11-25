@@ -1,19 +1,24 @@
 package com.mobile.macs_13
 
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.mobile.macs_13.controller.authentication.Login
 
 
 class StudentActivity : AppCompatActivity() {
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var  drawerLayout: DrawerLayout
+    private lateinit var loginAuth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student)
@@ -26,6 +31,8 @@ class StudentActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(mActionBarDrawerToggle)
         mActionBarDrawerToggle.setDrawerIndicatorEnabled(true)
         mActionBarDrawerToggle.syncState()
+
+        loginAuth = FirebaseAuth.getInstance()
 
         val navigationView = findViewById<NavigationView>(R.id.navigationView)
 
@@ -52,6 +59,19 @@ class StudentActivity : AppCompatActivity() {
             drawerLayout.openDrawer(Gravity.LEFT);
             return true
         }
+        else if(item.itemId == R.id.logout){
+            loginAuth.signOut()
+            val logoutIntent = Intent(this, Login::class.java)
+            finish()
+            startActivity(logoutIntent)
+            return true
+        }
         return super.onOptionsItemSelected(item);
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.logout, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
 }
