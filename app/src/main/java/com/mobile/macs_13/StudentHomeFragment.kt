@@ -24,15 +24,14 @@ class StudentHomeFragment : Fragment(R.layout.fragment_student_home) {
     private lateinit var recyclerView: RecyclerView
     private lateinit var notificationList: ArrayList<StudentNotificationData>
 
-    val dummy = arrayListOf<StudentNotificationData>(
+/*    val dummy = arrayListOf<StudentNotificationData>(
         StudentNotificationData("Test", "Data"),
         StudentNotificationData("Test 2", "Data")
-    )
+    )*/
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getNotificationListFromDB()
     }
 
     override fun onCreateView(
@@ -45,6 +44,7 @@ class StudentHomeFragment : Fragment(R.layout.fragment_student_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getNotificationListFromDB()
         val layoutManager = LinearLayoutManager(context)
         recyclerView = view.findViewById(R.id.student_home_rv)
         recyclerView.layoutManager = layoutManager
@@ -71,7 +71,7 @@ class StudentHomeFragment : Fragment(R.layout.fragment_student_home) {
 
                     for (document: DocumentChange in value?.documentChanges!!) {
 
-                        if (document.type == DocumentChange.Type.ADDED || document.type == DocumentChange.Type.MODIFIED || document.type == DocumentChange.Type.REMOVED) {
+                        if (document.type == DocumentChange.Type.ADDED || document.type == DocumentChange.Type.MODIFIED /*|| document.type == DocumentChange.Type.REMOVED*/) {
                             notificationList.add(document.document.toObject(StudentNotificationData::class.java))
                         }
                     }
