@@ -57,43 +57,5 @@ class AdvisorHomeFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    private fun getLink(): String {
-
-        var imageLinkFromFireStore = ""
-        val db = FirebaseFirestore.getInstance()
-        val mAuth = FirebaseAuth.getInstance()
-        val currentUserID = "1001"
-        //mAuth.currentUser?.uid
-
-//        db.collection("StudentProfileImages").document(currentUserID)
-//            .addSnapshotListener(object : EventListener<DocumentSnapshot> {
-//                override fun onEvent(value: DocumentSnapshot?, error: FirebaseFirestoreException?) {
-//
-//                    if (error != null) {
-//                        Log.d(
-//                            "Error",
-//                            "Some Error in Connection to FireStore ${error.message.toString()}"
-//                        )
-//                        return
-//                    }
-//
-//                    if (value != null) {
-//                        if (value.id == currentUserID) {
-//                            imageLinkFromFireStore = value.data?.get("link").toString()
-//                            Log.d("Info", "LINK : $imageLinkFromFireStore")
-//                        }
-//                    }
-//                }
-//            })
-
-        db.collection("StudentProfileImages").document(currentUserID)
-            .get().addOnCompleteListener { task ->
-                if (task.isComplete) {
-                    imageLinkFromFireStore = task.result.data?.get("link").toString()
-                }
-            }
-
-        Log.d("Info", "LINK $imageLinkFromFireStore")
-        return imageLinkFromFireStore
-    }
+    
 }
