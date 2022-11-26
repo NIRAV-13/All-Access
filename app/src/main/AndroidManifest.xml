@@ -28,20 +28,16 @@
         <activity
             android:name=".view.StudentAppointmentAdvisorListActivity"
             android:exported="false"
-            android:label="@string/title_activity_student_appointment_list"
-            android:theme="@style/Theme.macs_13.NoActionBar" />
+            android:label="@string/title_activity_student_appointment_list" />
         <activity
             android:name=".view.StudentBookAppointmentHome"
             android:exported="false"
             android:label="@string/title_activity_student_book_appointment_home"
-            android:theme="@style/Theme.macs_13.NoActionBar" />
+            />
         <activity
             android:name=".view.StudentBookAppointment"
             android:exported="false"
-            android:label="@string/title_activity_student_book_appointment"
-            android:theme="@style/Theme.macs_13.NoActionBar" >
-            android:name=".AdvisorActivity"
-            android:exported="true">
+            android:label="@string/title_activity_student_book_appointment">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -132,6 +128,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity android:name=".controller.FileOperation.UploadFile"
             android:exported="true">
 
