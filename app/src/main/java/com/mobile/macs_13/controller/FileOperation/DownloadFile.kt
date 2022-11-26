@@ -7,11 +7,14 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.NonNull
 import com.google.firebase.storage.FirebaseStorage
 import com.mobile.macs_13.R
+import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.controller.FileOperation.UploadFile
 
 import java.io.File
@@ -25,6 +28,10 @@ class DownloadFile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download_file)
+
+        supportActionBar?.title = "Documents"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         guidebutton = findViewById(R.id.button2)
         accomodationbutton = findViewById(R.id.button3)
         uploadbutton = findViewById(R.id.button5)
@@ -69,6 +76,17 @@ class DownloadFile : AppCompatActivity() {
             println(it.toString())
             Toast.makeText(this, "File download failure", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onOptionsItemSelected(@NonNull item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                val intent = Intent(this, StudentActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

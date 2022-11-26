@@ -129,22 +129,6 @@
                 android:value="" />
         </activity>
 
-        <activity
-            android:name=".UserFeedbackActivity"
-            android:exported="true"
-            tools:ignore="DuplicateActivity">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-
-        <activity
-            android:name=".controller.DownloadFile"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity android:name=".controller.FileOperation.UploadFile"
             android:exported="true">
 

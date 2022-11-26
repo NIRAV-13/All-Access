@@ -8,12 +8,14 @@ import android.net.Uri
 import android.net.Uri.EMPTY
 import android.os.Bundle
 import android.text.Editable
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -33,6 +35,10 @@ class UploadFile : AppCompatActivity() {
         uri = Uri.EMPTY
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload_file)
+
+        //to display action bar
+        supportActionBar?.title = "Documents"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mStorage = FirebaseStorage.getInstance().getReference("uploads")
         button = findViewById(R.id.uploadButton)
         choosebtn = findViewById(R.id.chooseButton)
@@ -91,5 +97,15 @@ class UploadFile : AppCompatActivity() {
             }.addOnFailureListener{
                 Toast.makeText(this, "Fail to upload", Toast.LENGTH_LONG).show()
             }
+    }
+
+    override fun onOptionsItemSelected(@NonNull item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
