@@ -2,9 +2,7 @@ package com.mobile.macs_13.model
 
 import android.content.Intent
 import android.util.Log
-import com.mobile.macs_13.R
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 
 import com.mobile.macs_13.databinding.AdvisorListItemBinding
@@ -43,10 +41,10 @@ class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) :Recycl
         fun bindItem(advisor: UserProfile){
 
             Log.d("advisor","$advisor")
-                binding.nameText.text = advisor.name
-                binding.emailText.text = advisor.email
+                binding.advisorNameText.text = advisor.name
+                binding.advisorEmailText.text = advisor.email
 
-                binding.button2.setOnClickListener { onClick(advisor) }
+                binding.selectAdvisor.setOnClickListener { onClick(advisor) }
             }
 
 

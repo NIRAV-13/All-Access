@@ -10,10 +10,10 @@ class AdvisorController {
 
     var db = FirebaseFirestore.getInstance()
 
-    fun changeAvailabilityToFalse(availabilityId: String, function: (Boolean) -> Unit){
+    fun changeAvailabilityToFalse(availabilityId: String?, function: (Boolean) -> Unit){
 
         db.collection("Availability")
-            .document(availabilityId)
+            .document(availabilityId.toString())
             .update("isAvailable", false)
             .addOnSuccessListener {
                 function(true)

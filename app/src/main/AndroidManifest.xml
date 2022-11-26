@@ -18,6 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.macs_13"
         tools:targetApi="31">
+
+        <activity
+            android:name=".view.StudentBookAppointmentFormActivity"
+            android:exported="false" />
         <activity
             android:name=".AdvisorProfileActivity"
             android:exported="false">
@@ -26,6 +30,16 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.StudentBookAppointmentHome"
+            android:exported="false"
+            android:label="@string/title_activity_student_book_appointment_home"
+            />
+        <activity
+            android:name=".view.StudentBookAppointment"
+            android:exported="false"
+            android:label="@string/title_activity_student_book_appointment"
+            android:theme="@style/Theme.macs_13.NoActionBar"
+            tools:ignore="ExtraText">
             android:name=".AdvisorActivity"
             android:exported="false">
             <meta-data
@@ -40,33 +54,18 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.StudentAppointmentAdvisorListActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".StudentProfileActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-            <!--           <intent-filter>
-                       <action android:name="android.intent.action.MAIN" />
-                       <category android:name="android.intent.category.LAUNCHER" />
-                       </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".view.StudentAppointmentAdvisorListActivity"
-            android:exported="false"
-            android:label="@string/title_activity_student_appointment_list" />
-        <activity
-            android:name=".view.StudentBookAppointmentHome"
-            android:exported="false"
-            android:label="@string/title_activity_student_book_appointment_home"
-            />
-        <activity
-            android:name=".view.StudentBookAppointment"
-            android:exported="false"
-            android:label="@string/title_activity_student_book_appointment">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-
         </activity>
         <activity
             android:name=".StudentActivity"
@@ -119,6 +118,16 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".AdvisorActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+
         <activity
             android:name=".controller.authentication.Login"
             android:exported="true">
@@ -157,7 +166,6 @@
         <activity android:name=".controller.FileOperation.UploadFile"
             android:exported="true">
 
-                        </activity>
-                    </application>
-
-                </manifest>
+        </activity>
+    </application>
+</manifest>
