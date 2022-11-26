@@ -46,6 +46,7 @@ class AdvisorHomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_advisor_home, container, false)
     }
+/*
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,6 +57,7 @@ class AdvisorHomeFragment : Fragment() {
         adapter = AdvisorHomeAdapter(dummy)
         recyclerView.adapter = adapter
     }
+*/
 
     
 }
