@@ -18,13 +18,14 @@ import com.mobile.macs_13.R
 import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
+import java.util.*
 
 
 class StudentAccomodation : AppCompatActivity() {
 
-    private lateinit var edtStudName: EditText
+    private lateinit var edtStudName: TextView
     private lateinit var edtStudEmail: TextView
-    private lateinit var edtStudPrefName: EditText
+    private lateinit var edtStudPrefName: TextView
     private lateinit var edtStudImpact: EditText
     private lateinit var edtStudConsent: EditText
     private lateinit var submitBtn: Button
@@ -52,7 +53,7 @@ class StudentAccomodation : AppCompatActivity() {
 
             val studEmail = "alexjones@dal.ca"
 
-            edtStudEmail.text = studEmail
+            edtStudEmail.text = User.getCurrentUserProfile().email
             val studName = edtStudName.text.toString().trim()
             val studPrefName = edtStudPrefName.text.toString().trim()
             val studImpact = edtStudImpact.text.toString().trim()
@@ -62,33 +63,30 @@ class StudentAccomodation : AppCompatActivity() {
             // user profile database same data class object.
             // accomodocation form details.
 //            getUserData(AdvisorAccomodationModel(studName,))
-            val studRequest : StudentAccomRequestModel = StudentAccomRequestModel(User.getCurrentUserProfile().name,User.getCurrentUserProfile().email, User.getCurrentUserProfile().course, User.getCurrentUserProfile().program, User.getCurrentUserProfile().term, User.getCurrentUserProfile().year, User.getCurrentUserProfile().phone,User.getCurrentUserProfile().uid,studImpact,studConsent)
-            }
-            val studentMap = hashMapOf(
-                "StudentName" to studName,
-                "StudentEmail" to studEmail,
-                "PreferredName" to studPrefName,
-                "Impact" to studImpact,
-                "Consent" to studConsent,
-                "TimeStamp" to FieldValue.serverTimestamp(),
-                "status" to status
-            )
+            var studRequest : StudentAccomRequestModel = StudentAccomRequestModel(User.getCurrentUserProfile().uid,
+                User.getCurrentUserProfile().name,
+                User.getCurrentUserProfile().email,
+                User.getCurrentUserProfile().phone,
+                User.getCurrentUserProfile().program,
+                User.getCurrentUserProfile().course,
+                User.getCurrentUserProfile().year,
+                User.getCurrentUserProfile().term,
+                studImpact,studConsent, Date())
+
 
             val name = edtStudName.text.toString()
             val prefName = edtStudPrefName.text.toString()
             val impact = edtStudImpact.text.toString()
             val consent = edtStudConsent.text.toString()
-            if (name.isBlank() || prefName.isBlank() || impact.isBlank() || consent.isBlank()) {
+            if (impact.isBlank() || consent.isBlank()) {
                 Toast.makeText(this, "Please enter all the details!!", Toast.LENGTH_SHORT).show()
             } else {
                 // getting current user id
 //            val currentUserID= FirebaseAuth.getInstance().currentUser?.uid!!
-                studDB.collection("Accomodation").document().set(studentMap)
+                studDB.collection("Accomodation").document().set(studRequest)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Request submitted successfully", Toast.LENGTH_SHORT).show()
-                        edtStudName.text.clear()
-                        edtStudPrefName.text.clear()
-                        edtStudImpact.text.clear()
+                       edtStudImpact.text.clear()
                         edtStudConsent.text.clear()
                     }
                     .addOnFailureListener {
