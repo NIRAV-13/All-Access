@@ -1,5 +1,6 @@
 package com.mobile.macs_13.controller.FileOperation
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.icu.text.UnicodeSet.EMPTY
@@ -79,6 +80,7 @@ class UploadFile : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     private fun upload(){
         var mRefrence = mStorage.child(uri.lastPathSegment.toString())
             mRefrence.putFile(uri).addOnSuccessListener { taskSnapshot: UploadTask.TaskSnapshot? ->
@@ -89,8 +91,5 @@ class UploadFile : AppCompatActivity() {
             }.addOnFailureListener{
                 Toast.makeText(this, "Fail to upload", Toast.LENGTH_LONG).show()
             }
-
-
-
     }
 }

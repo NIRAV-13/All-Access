@@ -67,7 +67,6 @@ class AdvisorHomeAdapter(private val appReqList: ArrayList<AccomRequest>) :
                     }
                 }
             })
-
         //holder.userImage.setImageResource(R.drawable.ic_avatar)
         holder.requesterName.text = currentRequest.requesterName
         holder.requesterCourse.text = currentRequest.requesterCourse

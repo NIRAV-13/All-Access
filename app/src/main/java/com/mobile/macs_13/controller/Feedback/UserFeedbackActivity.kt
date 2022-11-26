@@ -48,6 +48,7 @@ class UserFeedbackActivity : AppCompatActivity() {
     private fun saveData(){
         val data = FeedbackModel(advisor, discussion, duration, subj, suggestion, meeting)
         db.collection("user_feedback").document().set(data).addOnSuccessListener {
+            Toast.makeText(this, "Feedback Sent", Toast.LENGTH_LONG).show()
             val intent = Intent(this, StudentActivity::class.java)
             startActivity(intent)
         }.addOnFailureListener{
