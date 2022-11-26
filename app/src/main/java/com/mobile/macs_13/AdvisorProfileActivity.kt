@@ -1,9 +1,12 @@
 package com.mobile.macs_13
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.NonNull
 import com.bumptech.glide.Glide
 import com.mobile.macs_13.controller.utils.User
 
@@ -11,6 +14,9 @@ class AdvisorProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor_profile)
+
+        supportActionBar?.title = "Profile"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val advisorImage = findViewById<ImageView>(R.id.advisor_profile_image)
         val advisorName = findViewById<TextView>(R.id.advisor_profile_name)
@@ -27,5 +33,16 @@ class AdvisorProfileActivity : AppCompatActivity() {
         advisorEmail.text = "EMAIL - " + User.getCurrentUserProfile().email
         advisorPhone.text = "PHONE - " + User.getCurrentUserProfile().phone
         advisorProgram.text = "PROGRAM - " + User.getCurrentUserProfile().program
+    }
+
+    override fun onOptionsItemSelected(@NonNull item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                val intent = Intent(this, AdvisorActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
