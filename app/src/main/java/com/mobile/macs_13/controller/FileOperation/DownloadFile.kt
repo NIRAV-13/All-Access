@@ -32,7 +32,7 @@ class DownloadFile : AppCompatActivity() {
                 downloadfile("Guide_for_Accomodation.pdf")
         }
         accomodationbutton.setOnClickListener{
-            downloadfile("Accomodation_Request.pdf")
+            downloadfile("Accomodation Request.pdf")
         }
         val staticText1 = findViewById<TextView>(R.id.info_text) as TextView
         staticText1.text =
@@ -56,7 +56,7 @@ class DownloadFile : AppCompatActivity() {
             val uri: Uri = Uri.parse(it.toString())
             val request = DownloadManager.Request(uri)
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
-                .setMimeType("application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                .setMimeType("application/pdf")
                 .setAllowedOverRoaming(false)
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                 .setDestinationInExternalPublicDir(
