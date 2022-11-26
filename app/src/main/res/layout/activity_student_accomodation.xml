@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.accomodationfeature.StudentAccomodation">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Accommodation Requests"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/request_approval"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student Email"
+        android:textSize="18dp"
+        android:id="@+id/name_head"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/name_head"
+        android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
+        android:id="@+id/stud_email"
+        android:paddingStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/message_bg"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student Name"
+        android:textSize="18sp"
+        android:layout_below="@+id/stud_email"
+        android:paddingStart="10dp"
+        android:id="@+id/stud_name"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/stud_name"
+        android:layout_marginStart="20dp"
+        android:id="@+id/edt_stud_pref_name"
+        android:layout_marginEnd="20dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/message_bg"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Impact on Academics"
+        android:textSize="18dp"
+        android:layout_below="@+id/edt_stud_pref_name"
+        android:id="@+id/impact_on_acad_head"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_below="@+id/impact_on_acad_head"
+        android:layout_marginStart="20dp"
+        android:inputType="textMultiLine"
+        android:id="@+id/impact_on_acad"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/message_bg"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Note: Please use the documents section to download the request form and then upload it with the doctor's signature."
+        android:textSize="15dp"
+        android:layout_below="@+id/impact_on_acad"
+        android:id="@+id/upload_doc_head"
+        android:layout_marginTop="25dp"
+        android:paddingLeft="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="Consent"
+        android:layout_below="@+id/upload_doc_head"
+        android:id="@+id/consent_head"
+        android:layout_marginTop="25dp"
+        android:paddingLeft="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/consent_head"
+        android:layout_marginStart="20dp"
+        android:id="@+id/stud_consent"
+        android:layout_marginEnd="20dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/message_bg"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_consent"
+        android:layout_marginTop="20dp"
+        android:text="Submit"
+        android:id="@+id/accom_submit_btn"
+        android:layout_marginStart="220dp"
+        android:background="@drawable/send_msg_bg"
+        android:textColor="@color/altwhite"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_consent"
+        android:layout_marginTop="20dp"
+        android:text="Cancel"
+        android:layout_marginStart="80dp"
+        android:id="@+id/accom_cancel_btn"
+        android:background="@drawable/send_msg_bg"
+        android:textColor="@color/altwhite"
+        />
+
+
+
+
+</RelativeLayout>

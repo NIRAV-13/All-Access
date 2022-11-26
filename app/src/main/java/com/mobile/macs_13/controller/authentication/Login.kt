@@ -98,7 +98,7 @@ class Login : AppCompatActivity() {
                             .addOnSuccessListener { documents ->
                                 val userProfile = documents.toObject(UserProfile::class.java)!!
                                 User.setCurrentUserProfile(userProfile)
-                                Log.d("USER", User.getCurrentUserProfile().toString())
+                                Log.d("USER", User.getCurrentUserProfile().uid.toString())
                             }
                     }
 
@@ -113,9 +113,7 @@ class Login : AppCompatActivity() {
                         startActivity(advisorHomePageIntent)
                     }
                     else{
-                        val instructorHomePageIntent = Intent(this@Login, StudentActivity::class.java)
-                        finish()
-                        startActivity(instructorHomePageIntent)
+                        Log.d("YOLO", User.getCurrentUserProfile().toString())
                     }
                     
 
