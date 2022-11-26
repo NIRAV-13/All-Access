@@ -1,12 +1,11 @@
 package com.mobile.macs_13.model
 
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mobile.macs_13.view.StudentBookAppointment
-import com.mobile.macs_13.databinding.StudentAppointmentListItemBinding;
+import com.mobile.macs_13.databinding.StudentAppointmentListItemBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class StudentAppointmentListAdapter() : RecyclerView.Adapter<StudentAppointmentListAdapter.ViewHolder>(){
 
@@ -41,7 +40,11 @@ class StudentAppointmentListAdapter() : RecyclerView.Adapter<StudentAppointmentL
         fun bindItem(appointmentDetail: AppointmentDetails){
 
             binding.advisorEmailText.text = appointmentDetail.advisorEmail
-            binding.appointmentTime.text = appointmentDetail.appointmentStartTime.toString()
+
+            val pattern = "MM-dd-yyyy hh:mm:ss a"
+            val simpleDateFormat = SimpleDateFormat(pattern)
+            val date = simpleDateFormat.format(appointmentDetail.appointmentStartTime)
+            binding.appointmentTime.text = date.toString()
 
             binding.remindButton.setOnClickListener { onClick(appointmentDetail) }
         }
