@@ -1,6 +1,7 @@
 package com.mobile.macs_13.model
 
 import com.google.firebase.firestore.DocumentId
+import java.io.Serializable
 import java.util.*
 
 data class AppointmentDetails(var advisorName : String? = null,
@@ -17,4 +18,5 @@ data class AppointmentDetails(var advisorName : String? = null,
                               var appointmentStartTime: Date? = null,
                               var appointmentEndTime: Date? = null,
                               var appointmentStatus: Boolean? = null,
-                              @DocumentId val appointmentId: String? = null)
+                              var appointmentReason: String? = null,
+                              @DocumentId val appointmentId: String? = null) : Serializable

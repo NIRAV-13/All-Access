@@ -43,12 +43,12 @@ class StudentController {
 
     }
 
-    fun bookAppointment(appointmentDetails: AppointmentDetails, function: (Boolean) -> Unit){
+    fun bookAppointment(appointmentDetails: AppointmentDetails?, function: (Boolean) -> Unit){
 
         var db = FirebaseFirestore.getInstance()
 
         db.collection("AppointmentDetails")
-            .add(appointmentDetails)
+            .add(appointmentDetails!!)
             .addOnSuccessListener {
                 function(true)
             }

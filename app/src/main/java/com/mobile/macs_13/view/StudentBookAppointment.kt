@@ -145,7 +145,7 @@ class StudentBookAppointment : AppCompatActivity(){
 
         submitButton.setOnClickListener {
 
-            val selectedDate = Date (lastSelectedCalendar.time.time)
+            val selectedDate = Date(lastSelectedCalendar.time.time)
 
             val calendar: Calendar = GregorianCalendar()
             calendar.time = selectedDate
@@ -187,7 +187,7 @@ class StudentBookAppointment : AppCompatActivity(){
 
             val student = User.getCurrentUserProfile()
 
-            Log.d("data","$student")
+            Log.d("data", "$student")
             val appointmentDetails = AppointmentDetails(
                 advisor?.name,
                 advisor?.email,
@@ -204,29 +204,14 @@ class StudentBookAppointment : AppCompatActivity(){
                 endTime,
                 true
             )
-            studentController.bookAppointment(
-                appointmentDetails){ bookStatus ->
 
-                    if(bookStatus){
-                        advisorController.changeAvailabilityToFalse(slotDetail.availabilityId){ changeAvailableStatus ->
+            val studentBookAppointmentFormIntent = Intent(this, StudentBookAppointmentFormActivity::class.java)
+            studentBookAppointmentFormIntent.putExtra("appointmentDetails", appointmentDetails)
+            studentBookAppointmentFormIntent.putExtra("slotDetail", slotDetail)
 
-                            if(changeAvailableStatus){
-                                val studentActivityIntent = Intent(this, StudentActivity::class.java)
-                                startActivity(studentActivityIntent)
-                            }
-                            else{
-                                Toast.makeText(this,"Appointment availability issue. Check with dal support.", Toast.LENGTH_SHORT)
-                            }
-                        }
-                    }
-                    else{
-                        Toast.makeText(this,"Appointment book issue. Check with dal support.", Toast.LENGTH_SHORT)
-                    }
-
-            }
+            startActivity(studentBookAppointmentFormIntent)
 
         }
-
     }
 
 }

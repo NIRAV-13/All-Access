@@ -52,7 +52,6 @@ class StudentBookAppointmentHome : AppCompatActivity() {
             startActivity(advisorListIntent)
         }
 
-
     }
 
 }
