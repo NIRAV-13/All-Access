@@ -3,12 +3,14 @@ package com.mobile.macs_13
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.NonNull
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mobile.macs_13.model.FeedbackModel
 
@@ -26,6 +28,10 @@ class UserFeedbackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_feedback)
+
+        supportActionBar?.title = "Feedback"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         optiondropdown=findViewById(R.id.spinner);
         var adapter = ArrayAdapter.createFromResource(this, R.array.options,
             androidx.transition.R.layout.support_simple_spinner_dropdown_item)
@@ -46,11 +52,23 @@ class UserFeedbackActivity : AppCompatActivity() {
     private fun saveData(){
         val data = FeedbackModel(advisor, discussion, duration, subj, suggestion, meeting)
         db.collection("user_feedback").document().set(data).addOnSuccessListener {
+            Toast.makeText(this, "Feedback Sent", Toast.LENGTH_LONG).show()
             val intent = Intent(this, StudentActivity::class.java)
             startActivity(intent)
         }.addOnFailureListener{
             Toast.makeText(this, "Error occurred",Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    override fun onOptionsItemSelected(@NonNull item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                val intent = Intent(this, StudentActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -38,7 +38,8 @@ class StudentAccomodation : AppCompatActivity() {
         setContentView(R.layout.activity_student_accomodation)
 
         //to remove the action bar
-        supportActionBar?.hide()
+
+        supportActionBar?.title = "Accomodation"
 
 
         edtStudEmail = findViewById(R.id.stud_email)
