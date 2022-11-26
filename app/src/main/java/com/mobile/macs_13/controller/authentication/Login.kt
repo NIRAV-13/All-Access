@@ -51,8 +51,10 @@ class Login : AppCompatActivity() {
         loginBtn.setOnClickListener {
             val email = edtEmail.text.toString()
             val passwd = edtPass.text.toString()
-            if (email.isNotEmpty() && passwd.isNotEmpty())
+            if (email.isNotEmpty() && passwd.isNotEmpty()) {
+                Log.d("YOLO2", email)
                 login(email, passwd)
+            }
             else
                 Toast.makeText(this@Login, "Please enter email and password", Toast.LENGTH_SHORT)
                     .show()

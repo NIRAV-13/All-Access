@@ -26,6 +26,8 @@ class UserFeedbackActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_feedback)
+
+        supportActionBar?.title = "Feedback"
         optiondropdown=findViewById(R.id.spinner);
         var adapter = ArrayAdapter.createFromResource(this, R.array.options,
             androidx.transition.R.layout.support_simple_spinner_dropdown_item)
