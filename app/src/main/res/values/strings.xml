@@ -29,4 +29,5 @@
     <string name="app_request_open">Check Request</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_closed">Drawer Closed</string>
+    <string name="student_profile_title">Student Profile</string>
 </resources>
