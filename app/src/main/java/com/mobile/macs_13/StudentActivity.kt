@@ -17,9 +17,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.view.StudentBookAppointmentHome
 
 
 class StudentActivity : AppCompatActivity() {
@@ -59,6 +61,12 @@ class StudentActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
+
+            if(menuItem.itemId == R.id.appointment_item){
+                val studentAppointmentHome = Intent(this, StudentBookAppointmentHome::class.java)
+                startActivity(studentAppointmentHome)
+            }
+
             menuItem.isChecked = true
             drawerLayout.close()
             true

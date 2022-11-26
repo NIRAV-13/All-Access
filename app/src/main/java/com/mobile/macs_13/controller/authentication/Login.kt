@@ -13,16 +13,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.mobile.macs_13.AdvisorActivity
 import com.mobile.macs_13.R
-<<<<<<< HEAD
-import com.mobile.macs_13.view.StudentAppointmentListActivity
-import com.mobile.macs_13.view.StudentBookAppointmentHome
-import com.mobile.macs_13.view.chat.ChatView
-=======
 import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
->>>>>>> dev
 
 // https://firebase.google.com/docs/auth/android/start#kotlin+ktx
 // https://firebase.google.com/docs/firestore/query-data/get-data#kotlin+ktx
@@ -69,14 +63,6 @@ class Login : AppCompatActivity() {
             startActivity(aboutUsIntent)
         }
 
-<<<<<<< HEAD
-       signUpBtn.setOnClickListener{
-//           val signUpIntent = Intent(this, SignUp::class.java)
-           val test = Intent(this, StudentAppointmentListActivity::class.java)
-           startActivity(test)
-
-       }
-=======
         forgotpswd.setOnClickListener {
             val forgotPswdIntent = Intent(this, ForgotPassword::class.java)
             forgotPswdIntent.setFlags(forgotPswdIntent.getFlags() or Intent.FLAG_ACTIVITY_NO_HISTORY)
@@ -88,7 +74,6 @@ class Login : AppCompatActivity() {
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
->>>>>>> dev
 
     }
 

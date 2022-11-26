@@ -24,14 +24,12 @@ class StudentController {
 
                 for (document in documents){
 
-                    val advisorEmail = document.data["advisorEmail"] as String
-                    val startTime = (document.data["startTime"] as Timestamp).toDate()
-                    val endTime = (document.data["endTime"] as Timestamp).toDate()
-                    val studentEmail = document.data["studentEmail"] as String
-                    val status = document.data["status"] as Boolean
-
-                    val appointmentDetails = AppointmentDetails(document.id,
-                        advisorEmail, studentEmail, startTime, endTime, status)
+//                    val advisorEmail = document.data["advisorEmail"] as String
+//                    val startTime = (document.data["startTime"] as Timestamp).toDate()
+//                    val endTime = (document.data["endTime"] as Timestamp).toDate()
+//                    val studentEmail = document.data["studentEmail"] as String
+//                    val status = document.data["status"] as Boolean
+                    val appointmentDetails = document.toObject(AppointmentDetails::class.java)
 
                     StudentAppointmentList.addAppointment(appointmentDetails)
 
@@ -61,7 +59,7 @@ class StudentController {
 
     }
 
-    fun fetchAvailability( advisorEmail: String , midNighStartTime: Long, midNightEndTime: Long, function: (Boolean) -> Unit){
+    fun fetchAvailability( advisorEmail: String , startTime: Long, midNightEndTime: Long, function: (Boolean) -> Unit){
 
         AvailableAppointmentList.getAvailability().clear()
         var db = FirebaseFirestore.getInstance()
@@ -69,7 +67,7 @@ class StudentController {
         db.collection("Availability")
             .whereEqualTo("advisorEmail", advisorEmail)
             .whereEqualTo("isAvailable",true)
-            .whereGreaterThanOrEqualTo("startTime", Date(midNighStartTime))
+            .whereGreaterThanOrEqualTo("startTime", Date(startTime))
             .whereLessThanOrEqualTo("startTime", Date(midNightEndTime))
             .get()
             .addOnSuccessListener {
@@ -99,6 +97,7 @@ class StudentController {
 
     fun fetchAdvisorList(function: (Boolean) -> Unit) {
 
+
         var db = FirebaseFirestore.getInstance()
         db.collection("Advisor")
             .get()
@@ -106,17 +105,9 @@ class StudentController {
                     documents ->
 
                 for (document in documents){
-
-//                    val advisorEmail = document.data["advisorEmail"] as String
-//                    val advisorCampus = document.data["advisorCampus"] as String
-//                    val advisorName = document.data["advisorName"] as String
-//                    val advisorPassword = document.data["advisorPassword"] as String
-//                    val advisorUniversityName = document.data["advisorUniversityName"] as String
-
-                    val advisor = UserProfile(document.toObject())
-
+                    Log.d("data","$document")
+                    val advisor = document.toObject(UserProfile::class.java)
                     AdvisorList.addAdvisor(advisor)
-
                 }
                 function(true)
             }

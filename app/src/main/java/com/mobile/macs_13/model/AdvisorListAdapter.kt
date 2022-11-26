@@ -6,19 +6,14 @@ import com.mobile.macs_13.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 
 import com.mobile.macs_13.databinding.AdvisorListItemBinding
-import com.mobile.macs_13.databinding.ActivityStudentBookAppointmentHomeBinding
 
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.auth.User
 import com.mobile.macs_13.view.StudentBookAppointment
-import com.mobile.macs_13.view.StudentBookAppointmentHome
 
-class AdvisorListAdapter() :RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>(){
+class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) :RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>(){
 
-    private val advisors: MutableList<UserProfile> = AdvisorList.getAdvisors()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdvisorListAdapter.ViewHolder {
 
@@ -38,14 +33,16 @@ class AdvisorListAdapter() :RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>(
     }
 
     override fun getItemCount(): Int {
+        Log.d("size","${advisors.size}")
         return advisors.size
     }
 
     inner class ViewHolder(val binding: AdvisorListItemBinding):
         RecyclerView.ViewHolder(binding.root){
 
-            fun bindItem(advisor: UserProfile){
+        fun bindItem(advisor: UserProfile){
 
+            Log.d("advisor","$advisor")
                 binding.nameText.text = advisor.name
                 binding.emailText.text = advisor.email
 

@@ -41,7 +41,7 @@ class StudentAppointmentListAdapter() : RecyclerView.Adapter<StudentAppointmentL
         fun bindItem(appointmentDetail: AppointmentDetails){
 
             binding.advisorEmailText.text = appointmentDetail.advisorEmail
-            binding.appointmentTime.text = appointmentDetail.startTime.toString()
+            binding.appointmentTime.text = appointmentDetail.appointmentStartTime.toString()
 
             binding.remindButton.setOnClickListener { onClick(appointmentDetail) }
         }

@@ -1,14 +1,17 @@
 package com.mobile.macs_13.view
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.mobile.macs_13.R
+import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.controller.AdvisorController
 import com.mobile.macs_13.controller.StudentController
+import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.model.AvailableAppointmentList
 import com.mobile.macs_13.model.SlotDetail
 import com.mobile.macs_13.model.UserProfile
@@ -47,13 +50,14 @@ class StudentBookAppointment : AppCompatActivity(){
 
 
     @RequiresApi(33)
-    private fun setAvailableSlots(midNightStartTime: Long, midNightEndTime: Long) {
+    private fun setAvailableSlots(startTime: Long, midNightEndTime: Long) {
 
-        advisor = this.intent.getSerializableExtra("advisor",UserProfile::class.java)!!
+        val advisor = intent.getSerializableExtra("advisor") as UserProfile?
 
-        val advisorEmail = advisor.email.toString()
+        Log.d("data","$advisor")
+        val advisorEmail = advisor?.email.toString()
 
-        studentController.fetchAvailability(advisorEmail, midNightStartTime, midNightEndTime) { status ->
+        studentController.fetchAvailability(advisorEmail, startTime, midNightEndTime) { status ->
 
             if(status){
 
@@ -131,8 +135,8 @@ class StudentBookAppointment : AppCompatActivity(){
             val zoneId = ZoneId.systemDefault();
             val midNightStartTime = midNightDate.atZone(zoneId).toEpochSecond() *  1000
             val midNightEndTime = midNightStartTime + (24* 60 *60 * 1000)
-
-            setAvailableSlots(midNightStartTime, midNightEndTime)
+            val startTime = System.currentTimeMillis()
+            setAvailableSlots(startTime, midNightEndTime)
 
         })
 
@@ -179,15 +183,16 @@ class StudentBookAppointment : AppCompatActivity(){
             val endTime = endCal.time
 
 
-            advisor = this.intent.getSerializableExtra("advisor",UserProfile::class.java)!!
+            val advisor = intent.getSerializableExtra("advisor") as UserProfile?
 
             val student = User.getCurrentUserProfile()
 
+            Log.d("data","$student")
             val appointmentDetails = AppointmentDetails(
-                advisor.name,
-                advisor.email,
-                advisor.phone,
-                advisor.imageLink,
+                advisor?.name,
+                advisor?.email,
+                advisor?.phone,
+                advisor?.imageLink,
                 student.email,
                 student.name,
                 student.phone,
@@ -206,8 +211,8 @@ class StudentBookAppointment : AppCompatActivity(){
                         advisorController.changeAvailabilityToFalse(slotDetail.availabilityId){ changeAvailableStatus ->
 
                             if(changeAvailableStatus){
-                                // navigate or what?
-                                Log.d("SUCCESS","APPOINTMENT BOOKED SUCCESSFULLY.")
+                                val studentActivityIntent = Intent(this, StudentActivity::class.java)
+                                startActivity(studentActivityIntent)
                             }
                             else{
                                 Toast.makeText(this,"Appointment availability issue. Check with dal support.", Toast.LENGTH_SHORT)
