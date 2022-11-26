@@ -15,12 +15,15 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.accomodationfeature.StudentAccomodation
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.controller.DownloadFile
+import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.view.StudentBookAppointmentHome
 
 
 class StudentActivity : AppCompatActivity() {
@@ -71,6 +74,18 @@ class StudentActivity : AppCompatActivity() {
                 finish()
                 startActivity(documentsIntent)
             }
+
+            if(menuItem.itemId == R.id.accommodation_item){
+                val accomodationIntent = Intent(this, StudentAccomodation::class.java)
+                finish()
+                startActivity(accomodationIntent)
+            }
+
+            if(menuItem.itemId == R.id.appointment_item){
+                val studentAppointmentHome = Intent(this, StudentBookAppointmentHome::class.java)
+                startActivity(studentAppointmentHome)
+            }
+
             menuItem.isChecked = true
             drawerLayout.close()
             true
