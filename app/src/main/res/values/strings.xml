@@ -51,6 +51,7 @@
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_closed">Drawer Closed</string>
     <string name="student_profile_title">Student Profile</string>
+    <string name="advisor_profile_title">Advisor Profile</string>
     <string-array name="options">
         <item> Yes </item>
         <item> No </item>
