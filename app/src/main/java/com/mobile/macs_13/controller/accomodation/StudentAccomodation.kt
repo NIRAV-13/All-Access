@@ -38,22 +38,27 @@ class StudentAccomodation : AppCompatActivity() {
         setContentView(R.layout.activity_student_accomodation)
 
         //to remove the action bar
-        supportActionBar?.hide()
+
+        supportActionBar?.title = "Accomodation"
 
 
         edtStudEmail = findViewById(R.id.stud_email)
         edtStudName = findViewById(R.id.stud_name)
-        edtStudPrefName= findViewById(R.id.edt_stud_pref_name)
+        edtStudPrefName = findViewById(R.id.edt_stud_pref_name)
         edtStudImpact = findViewById(R.id.impact_on_acad)
         edtStudConsent = findViewById(R.id.stud_consent)
         submitBtn = findViewById(R.id.accom_submit_btn)
         cancelBtn = findViewById(R.id.accom_cancel_btn)
 
+        edtStudEmail.text = User.getCurrentUserProfile().email
+        edtStudPrefName.text = User.getCurrentUserProfile().name
+        Log.d("USER", User.getCurrentUserProfile().uid.toString())
+
         submitBtn.setOnClickListener {
 
             val studEmail = "alexjones@dal.ca"
 
-            edtStudEmail.text = User.getCurrentUserProfile().email
+
             val studName = edtStudName.text.toString().trim()
             val studPrefName = edtStudPrefName.text.toString().trim()
             val studImpact = edtStudImpact.text.toString().trim()
@@ -62,8 +67,10 @@ class StudentAccomodation : AppCompatActivity() {
 
             // user profile database same data class object.
             // accomodocation form details.
-//            getUserData(AdvisorAccomodationModel(studName,))
-            var studRequest : StudentAccomRequestModel = StudentAccomRequestModel(User.getCurrentUserProfile().uid,
+            // getUserData(AdvisorAccomodationModel(studName,))
+
+            var studRequest: StudentAccomRequestModel = StudentAccomRequestModel(
+                User.getCurrentUserProfile().uid,
                 User.getCurrentUserProfile().name,
                 User.getCurrentUserProfile().email,
                 User.getCurrentUserProfile().phone,
@@ -71,22 +78,20 @@ class StudentAccomodation : AppCompatActivity() {
                 User.getCurrentUserProfile().course,
                 User.getCurrentUserProfile().year,
                 User.getCurrentUserProfile().term,
-                studImpact,studConsent, Date(), status)
+                User.getCurrentUserProfile().imageLink,
+                studImpact, studConsent, status, Date()
+            )
 
-
-            val name = edtStudName.text.toString()
-            val prefName = edtStudPrefName.text.toString()
-            val impact = edtStudImpact.text.toString()
-            val consent = edtStudConsent.text.toString()
-            if (impact.isBlank() || consent.isBlank()) {
+            if (studImpact.isBlank() || studConsent.isBlank()) {
                 Toast.makeText(this, "Please enter all the details!!", Toast.LENGTH_SHORT).show()
             } else {
                 // getting current user id
-//            val currentUserID= FirebaseAuth.getInstance().currentUser?.uid!!
+                // val currentUserID= FirebaseAuth.getInstance().currentUser?.uid!!
                 studDB.collection("Accomodation").document().set(studRequest)
                     .addOnSuccessListener {
-                        Toast.makeText(this, "Request submitted successfully", Toast.LENGTH_SHORT).show()
-                       edtStudImpact.text.clear()
+                        Toast.makeText(this, "Request submitted successfully", Toast.LENGTH_SHORT)
+                            .show()
+                        edtStudImpact.text.clear()
                         edtStudConsent.text.clear()
                     }
                     .addOnFailureListener {
@@ -95,7 +100,7 @@ class StudentAccomodation : AppCompatActivity() {
             }
         }
 
-        cancelBtn.setOnClickListener{
+        cancelBtn.setOnClickListener {
 
             val backIntent = Intent(this@StudentAccomodation, StudentActivity::class.java)
             startActivity(backIntent)

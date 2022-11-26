@@ -32,6 +32,7 @@
         android:layout_height="40dp"
         android:layout_below="@+id/name_head"
         android:layout_marginStart="20dp"
+        android:paddingTop="10dp"
         android:id="@+id/stud_email"
         android:paddingStart="10dp"
         android:layout_marginEnd="20dp"
@@ -58,6 +59,7 @@
         android:id="@+id/edt_stud_pref_name"
         android:layout_marginEnd="20dp"
         android:paddingLeft="10dp"
+        android:paddingTop="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/message_bg"/>
 

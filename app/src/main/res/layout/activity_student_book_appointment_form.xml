@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.StudentBookAppointmentFormActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Appointment reason."
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/request_approval"/>
+
+    <TextView
+        android:id="@+id/name_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="120dp"
+        android:paddingLeft="10dp"
+        android:text="Your Email:"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/studEmailAppointmentView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/name_head"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/message_bg"
+        android:paddingStart="10dp" />
+
+    <TextView
+        android:id="@+id/studAdvisor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/studEmailAppointmentView"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:paddingStart="10dp"
+        android:text="Selected advisor:"
+        android:textSize="18sp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/selectedAdvisorView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/studAdvisor"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/message_bg"
+        android:paddingLeft="10dp" />
+
+
+    <TextView
+        android:id="@+id/selectedTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedAdvisorView"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:paddingStart="10dp"
+        android:text="Selected time:"
+        android:textSize="18sp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/selectedTimeView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/selectedTime"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/message_bg"
+        android:paddingLeft="10dp" />
+
+    <TextView
+        android:id="@+id/reasonForAppointment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedAdvisorView"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="129dp"
+        android:paddingLeft="10dp"
+        android:text="Reason for appointment(maximum 250 words):"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/reasonForAppointmentView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_below="@+id/reasonForAppointment"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:maxLength="250"
+        android:text =""
+        android:background="@drawable/message_bg"
+        android:inputType="textMultiLine"
+        android:paddingLeft="10dp" />
+
+
+
+    <Button
+        android:id="@+id/studentAppointmentSubmitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reasonForAppointmentView"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/send_msg_bg"
+        android:text="Submit"
+        android:textColor="@color/altwhite" />
+
+    <Button
+        android:id="@+id/studentAppointmentCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reasonForAppointmentView"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/send_msg_bg"
+        android:text="Cancel"
+        android:textColor="@color/altwhite" />
+
+
+</RelativeLayout>

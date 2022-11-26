@@ -4,54 +4,65 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
 import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.StudentAccomRequestModel
+import com.mobile.macs_13.model.StudentNotificationData
 import com.mobile.macs_13.model.UserProfile
 
 class AdvisorActivity : AppCompatActivity() {
 
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
-    lateinit var  drawerLayout: DrawerLayout
-    private lateinit var loginAuth : FirebaseAuth
+    lateinit var drawerLayout: DrawerLayout
+    private lateinit var loginAuth: FirebaseAuth
 
     private lateinit var adapter: AdvisorHomeAdapter
     private lateinit var recyclerView: RecyclerView
-    private lateinit var accomRequestList: ArrayList<AccomRequest>
+    private lateinit var accomRequestList: ArrayList<StudentAccomRequestModel>
 
-    val dummy = arrayListOf<AccomRequest>(
-        AccomRequest(
-            "Test",
-            "Data",
-            "Some details",
-            "jkb"
-        ),
-        AccomRequest("Test 2", "Data", "kjnkfn", "jfnlkvmk")
-    )
+//    val dummy = arrayListOf<AccomRequest>(
+//        AccomRequest(
+//            "Test",
+//            "Data",
+//            "Some details",
+//            "jkb"
+//        ),
+//        AccomRequest("Test 2", "Data", "kjnkfn", "jfnlkvmk")
+//    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor)
+        getRequestListFromDB()
 
         val layoutManager = LinearLayoutManager(this.baseContext)
         recyclerView = findViewById(R.id.advisor_home_rv)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        adapter = AdvisorHomeAdapter(dummy)
+        adapter = AdvisorHomeAdapter(accomRequestList)
         recyclerView.adapter = adapter
+
+        val advisorName = findViewById<TextView>(R.id.advisor_name)
+        advisorName.text = "Hello! ${User.getCurrentUserProfile().name}"
 
         val actionBar = supportActionBar
         actionBar!!.setDisplayHomeAsUpEnabled(true)
 
         drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
-        mActionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout,  R.string.drawer_open, R.string.drawer_closed)
+        mActionBarDrawerToggle =
+            ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_closed)
         drawerLayout.addDrawerListener(mActionBarDrawerToggle)
         mActionBarDrawerToggle.setDrawerIndicatorEnabled(true)
         mActionBarDrawerToggle.syncState()
@@ -62,11 +73,51 @@ class AdvisorActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
+
+            if (menuItem.itemId == R.id.profile_item) {
+                val advisorProfile = Intent(this, AdvisorProfileActivity::class.java)
+                startActivity(advisorProfile)
+            }
+
             menuItem.isChecked = true
             drawerLayout.close()
             true
         }
 
+
+    }
+
+    private fun getRequestListFromDB() {
+
+        accomRequestList = arrayListOf<StudentAccomRequestModel>()
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("Accomodation")
+            .orderBy("timeStamp", Query.Direction.DESCENDING)
+            .whereEqualTo("status", "inProgress")
+            .addSnapshotListener(object : EventListener<QuerySnapshot> {
+                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+
+                    if (error != null) {
+                        Log.d(
+                            "Error",
+                            "Some Error in Connection to FireStore ${error.message.toString()}"
+                        )
+                        return
+                    }
+
+                    for (document: DocumentChange in value?.documentChanges!!) {
+
+                        if (document.type == DocumentChange.Type.ADDED || document.type == DocumentChange.Type.MODIFIED /*|| document.type == DocumentChange.Type.REMOVED*/) {
+                            accomRequestList.add(document.document.toObject(StudentAccomRequestModel::class.java))
+                        }
+                    }
+
+                    Log.d("LIST", accomRequestList.size.toString())
+                    adapter.notifyDataSetChanged()
+                }
+
+            })
 
     }
 
@@ -79,8 +130,7 @@ class AdvisorActivity : AppCompatActivity() {
         if (item.getItemId() == android.R.id.home) { // use android.R.id
             drawerLayout.openDrawer(Gravity.LEFT);
             return true
-        }
-        else if(item.itemId == R.id.logout){
+        } else if (item.itemId == R.id.logout) {
             loginAuth.signOut()
             val logoutIntent = Intent(this, Login::class.java)
             User.setCurrentUserProfile(UserProfile())

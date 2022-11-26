@@ -23,7 +23,7 @@
             <item
                 android:id="@+id/feeback_item"
                 android:icon="@drawable/ic_feedback"
-                android:title="Feeback"
+                android:title="Feedback"
                 android:checkable="true">
             </item>
             <item
