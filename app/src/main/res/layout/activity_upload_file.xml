@@ -10,7 +10,7 @@
         android:id="@+id/chooseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#009688"
+        android:background="@color/black"
         android:text="Choose"
         android:textColor="#FDFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
         android:id="@+id/uploadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#009688"
+        android:background="@color/black"
         android:text="Upload"
         android:textColor="#FAFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
+        android:textColor="#000"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="59dp"
         android:layout_marginBottom="24dp"
@@ -73,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Document Type"
-        android:textColor="#009688"
+        android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,6 +99,7 @@
         <RadioButton
             android:id="@+id/radio_one"
             android:layout_width="wrap_content"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:text="Supporting Medical Documents" />
 
@@ -105,12 +107,14 @@
             android:id="@+id/radio_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:checked="true"
             android:text="Documents from Prior University" />
 
         <RadioButton
             android:id="@+id/radio_three"
             android:layout_width="wrap_content"
+            android:textColor="#000"
             android:layout_height="wrap_content"
             android:text="Other Documents/ Accomodation Requests" />
 

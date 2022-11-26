@@ -1,6 +1,5 @@
 package com.mobile.macs_13.controller
 
-import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
@@ -11,11 +10,10 @@ import android.os.Environment
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.storage.FirebaseStorage
 import com.mobile.macs_13.R
 import com.mobile.macs_13.controller.FileOperation.UploadFile
-import com.mobile.macs_13.controller.about.AboutUs
+
 import java.io.File
 
 class DownloadFile : AppCompatActivity() {
@@ -38,10 +36,10 @@ class DownloadFile : AppCompatActivity() {
         }
         val staticText1 = findViewById<TextView>(R.id.info_text) as TextView
         staticText1.text =
-            "The Booking for the accessibility form is given in pdf file step by step. Using this a successful booking for the advisor is done and further timing can be scheduled"
+            "The step-by-step booking approach for the assistance needed from the advisor"
         val staticText2 = findViewById<TextView>(R.id.info_text2) as TextView
         staticText2.text =
-            "The Accomodation form can be downloaded and submitted in the Upload Section by clicking on the option of Accomodation ";
+            "You can submit an accommodation request by filling out this form and uploading it as a file. Your completed form can be reviewed by the advisor. ";
 
 
         uploadbutton.setOnClickListener {
@@ -66,7 +64,6 @@ class DownloadFile : AppCompatActivity() {
                     File.separator + "$filename"
                 )
             downloadManager.enqueue(request)
-            println("ITTTTTT"+it.toString())
             Toast.makeText(this, "File downloaded", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             println(it.toString())
