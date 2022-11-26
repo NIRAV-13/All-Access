@@ -86,6 +86,11 @@ class StudentActivity : AppCompatActivity() {
                 startActivity(studentAppointmentHome)
             }
 
+            if(menuItem.itemId == R.id.profile_item){
+                val studentProfile = Intent(this, StudentProfileActivity::class.java)
+                startActivity(studentProfile)
+            }
+
             menuItem.isChecked = true
             drawerLayout.close()
             true
