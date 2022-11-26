@@ -98,7 +98,7 @@ class Login : AppCompatActivity() {
                             .addOnSuccessListener { documents ->
                                 val userProfile = documents.toObject(UserProfile::class.java)!!
                                 User.setCurrentUserProfile(userProfile)
-                                Log.d("USER", User.getCurrentUserProfile().toString())
+                                Log.d("USER", User.getCurrentUserProfile().uid.toString())
                             }
                     }
 

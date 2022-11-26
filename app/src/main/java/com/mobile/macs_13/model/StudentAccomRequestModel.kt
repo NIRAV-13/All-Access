@@ -4,14 +4,16 @@ import android.provider.ContactsContract.CommonDataKinds.Phone
 import java.util.Date
 
 
-data class StudentAccomRequestModel(var name:String?,
-                                    var email:String?,
-                                    var course : String?,
-                                    var program : String?,
-                                    var term : String?,
-                                    var year : String?,
-                                    var phone: String?,
-                                    var uid:String?,
-                                    var impact: String?,
-                                    var consent:String?,
-                                    var timeStamp : Date?)
+data class StudentAccomRequestModel (
+    var uid: String? = null,
+    var name   : String? = null,
+    var email  : String? = null,
+    var phone: String? = null,
+    var program  : String? = null,
+    var course : String? = null,
+    var year  : String? = null,
+    var term: String? = null,
+    var impact : String?= null,
+    var consent : String?= null,
+    var timeStamp: Date
+)

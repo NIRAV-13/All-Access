@@ -49,11 +49,15 @@ class StudentAccomodation : AppCompatActivity() {
         submitBtn = findViewById(R.id.accom_submit_btn)
         cancelBtn = findViewById(R.id.accom_cancel_btn)
 
+        edtStudEmail.text = User.getCurrentUserProfile().email
+        edtStudPrefName.text = User.getCurrentUserProfile().name
+        Log.d("USER", User.getCurrentUserProfile().uid.toString())
+
         submitBtn.setOnClickListener {
 
             val studEmail = "alexjones@dal.ca"
 
-            edtStudEmail.text = User.getCurrentUserProfile().email
+
             val studName = edtStudName.text.toString().trim()
             val studPrefName = edtStudPrefName.text.toString().trim()
             val studImpact = edtStudImpact.text.toString().trim()
@@ -63,6 +67,7 @@ class StudentAccomodation : AppCompatActivity() {
             // user profile database same data class object.
             // accomodocation form details.
 //            getUserData(AdvisorAccomodationModel(studName,))
+
             var studRequest : StudentAccomRequestModel = StudentAccomRequestModel(User.getCurrentUserProfile().uid,
                 User.getCurrentUserProfile().name,
                 User.getCurrentUserProfile().email,
