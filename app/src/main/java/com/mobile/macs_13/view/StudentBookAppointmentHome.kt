@@ -3,17 +3,15 @@ package com.mobile.macs_13.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.MenuItem
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mobile.macs_13.R
 import com.mobile.macs_13.controller.StudentController
-import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.controller.utils.User
-import com.mobile.macs_13.model.AdvisorList
-import com.mobile.macs_13.model.AdvisorListAdapter
 import com.mobile.macs_13.model.StudentAppointmentListAdapter
 
 class StudentBookAppointmentHome : AppCompatActivity() {
@@ -27,6 +25,8 @@ class StudentBookAppointmentHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_student_appointment_list)
+        supportActionBar?.title = "Appointments"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.studentAppointmentListRecyclerView)
         recyclerView.setHasFixedSize(true)
         studentAppointmentListAdapter = StudentAppointmentListAdapter()
@@ -52,6 +52,16 @@ class StudentBookAppointmentHome : AppCompatActivity() {
             startActivity(advisorListIntent)
         }
 
+    }
+
+    override fun onOptionsItemSelected(@NonNull item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

@@ -62,6 +62,12 @@ class AdvisorActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
+
+            if(menuItem.itemId == R.id.profile_item){
+                val advisorProfile = Intent(this, AdvisorProfileActivity::class.java)
+                startActivity(advisorProfile)
+            }
+
             menuItem.isChecked = true
             drawerLayout.close()
             true
