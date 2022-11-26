@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.Instructor.InstructorCourseView">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="372dp"
+        android:layout_height="34dp"
+
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="668dp"
+        android:text="Student With Accomodation  Request"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/CourseName"
+        android:layout_width="347dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="625dp"
+        android:text="Course Name: CSCI Mobile Computing"
+        android:textColor="@color/black"
+        android:textSize="19dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/term"
+        android:layout_width="228dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="600dp"
+        android:text="Semester: Fall 2022"
+        android:textColor="@color/black"
+        android:textSize="19dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TableLayout
+        android:layout_width="407dp"
+        android:layout_height="241dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="157dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="333dp"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ExtraText,MissingConstraints">
+
+
+        <!-- row 1-->
+        <TableRow android:background="@drawable/rectangelbox">
+
+            <TextView
+                android:id="@+id/StudentA"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="Adarsh"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/Termrow1"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="2nd Term"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="1st year"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/course"
+                android:layout_width="87dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="MACS"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+        </TableRow>
+
+        <!-- row 2-->
+        <TableRow android:background="@drawable/rectangelbox">
+
+            <TextView
+                android:id="@+id/StudentB"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="Meghna"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/Termrow2"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="3rd Term"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/yearrow2"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="2st year"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/courserow2"
+                android:layout_width="87dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="MACS"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/rectangelbox">
+
+            <TextView
+                android:id="@+id/StudentC"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="Ankush"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/Termrow3"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="3rd Term"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/yearrow3"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="2st year"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/courserow3"
+                android:layout_width="87dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="MACS"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+        </TableRow>
+
+        <TableRow android:background="@drawable/rectangelbox">
+
+            <TextView
+                android:id="@+id/StudentD"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="Ketul"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/Termrow4"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="3rd Term"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/yearrow4"
+                android:layout_width="106dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="3rd year"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/courserow4"
+                android:layout_width="87dp"
+                android:layout_height="33dp"
+                android:background="@drawable/rectangelbox"
+                android:gravity="center"
+                android:text="MACS"
+                android:textStyle="bold"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="207dp"
+                tools:layout_editor_absoluteY="117dp" />
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

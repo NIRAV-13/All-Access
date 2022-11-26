@@ -33,4 +33,15 @@
         <item> Yes </item>
         <item> No </item>
     </string-array>
+    <string-array name="selectSemester">
+        <item> Fall 2022 </item>
+        <item> Summer 2022 </item>
+        <item>Winter 2022</item>
+    </string-array>
+    <string-array name="selectCourse">
+        <item> CSCI 6603 Mobile Computing </item>
+        <item> CSCI 6609 Data Structure </item>
+        <item>CSCI 7001 Advance Communication </item>
+    </string-array>
+
 </resources>
