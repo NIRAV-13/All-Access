@@ -71,7 +71,7 @@ class StudentAccomodation : AppCompatActivity() {
                 User.getCurrentUserProfile().course,
                 User.getCurrentUserProfile().year,
                 User.getCurrentUserProfile().term,
-                studImpact,studConsent, Date())
+                studImpact,studConsent, Date(), status)
 
 
             val name = edtStudName.text.toString()
