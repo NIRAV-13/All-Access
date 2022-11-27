@@ -41,6 +41,30 @@ object AddRemindNotification {
 
     }
 
+    fun sendNotificationToAdvisor(appointmentDetails: AppointmentDetails, context: Context){
+
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        db.collection("AppointmentDetails").
+        document(appointmentDetails.appointmentId.toString())
+            .get()
+            .addOnSuccessListener { document ->
+
+                val documentData = document.data
+                val appointmentStartTimeStamp = (documentData?.get("appointmentStartTime") as Timestamp)
+                val appointmentTime = appointmentStartTimeStamp.seconds
+                val currentTime = System.currentTimeMillis()/1000
+                val studentName: String = documentData["studentName"] as String
+
+                sendNotificationTime = (appointmentTime - currentTime) - BUFFER_TIME_TO_SEND_NOTIFICATION_IN_SECONDS
+                this.oneTimeWork(appointmentStartTimeStamp,studentName, context)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("firebase", "Error getting documents: ", exception)
+            }
+
+    }
+
     private fun convertTimeStampToDate(time: Timestamp): String {
         val milliseconds = time.seconds * 1000 + time.nanoseconds / 1000000
         val sdf = SimpleDateFormat("M/dd/yyyy hh:mm:ss")
@@ -50,7 +74,7 @@ object AddRemindNotification {
     }
 
     @SuppressLint("RestrictedApi")
-    private fun oneTimeWork(appointmentTimeStamp: Timestamp, advisorName: String, context: Context) {
+    private fun oneTimeWork(appointmentTimeStamp: Timestamp, name: String, context: Context) {
 
 
 
@@ -61,7 +85,7 @@ object AddRemindNotification {
         val appointmentDate = convertTimeStampToDate(appointmentTimeStamp)
 
         val data = Data.Builder()
-            .putString("name",advisorName)
+            .putString("name",name)
             .putString("time", appointmentDate)
             .build()
 
