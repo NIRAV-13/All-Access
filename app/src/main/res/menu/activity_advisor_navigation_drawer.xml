@@ -16,7 +16,7 @@
                 android:checkable="true"/>
             <item
                 android:id="@+id/accommodation_item"
-                android:icon="@drawable/ic_home"
+                android:icon="@drawable/ic_accommodation"
                 android:title="Accomodation"
                 android:checkable="true"/>
             <item
