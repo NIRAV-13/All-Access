@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">StuAccess</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -57,7 +57,8 @@
         <item>Computer Science</item>
         <item>Engineering</item>
         <item>Commerce</item>
-    </string-array>![](C:/Users/ADARSH~1/AppData/Local/Temp/download.jpg)
+    </string-array>
+    ![](C:/Users/ADARSH~1/AppData/Local/Temp/download.jpg)
     <string-array name="selectCourse">
         <item> CSCI 6603 Mobile Computing </item>
         <item> CSCI 6609 Data Structure </item>
@@ -77,4 +78,15 @@
         <item> Yes </item>
         <item> No </item>
     </string-array>
+    <string-array name="selectSemInstructor">
+        <item> Fall 2022 </item>
+        <item> Summer 2022 </item>
+        <item>Winter 2022</item>
+    </string-array>
+    <string-array name="selectCourseInstructor">
+        <item> CSCI 6603 Mobile Computing </item>
+        <item> CSCI 6609 Data Structure </item>
+        <item>CSCI 7001 Advance Communication </item>
+    </string-array>
+
 </resources>
