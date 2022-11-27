@@ -34,8 +34,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/message_bg"
         android:paddingStart="10dp" />
+    <!--        android:background="@drawable/message_bg"-->
 
     <TextView
         android:id="@+id/studAdvisor"
@@ -57,7 +57,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/message_bg"
         android:paddingLeft="10dp" />
 
 
@@ -81,7 +80,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/message_bg"
         android:paddingLeft="10dp" />
 
     <TextView
@@ -97,38 +95,37 @@
 
     <EditText
         android:id="@+id/reasonForAppointmentView"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_width="377dp"
+        android:layout_height="109dp"
         android:layout_below="@+id/reasonForAppointment"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:maxLength="250"
-        android:text =""
         android:background="@drawable/message_bg"
         android:inputType="textMultiLine"
-        android:paddingLeft="10dp" />
-
+        android:maxLength="250"
+        android:paddingLeft="10dp"
+        android:text="" />
 
 
     <Button
         android:id="@+id/studentAppointmentSubmitButton"
-        android:layout_width="wrap_content"
+        android:layout_width="101dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/reasonForAppointmentView"
         android:layout_marginStart="220dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="42dp"
         android:background="@drawable/send_msg_bg"
         android:text="Submit"
         android:textColor="@color/altwhite" />
 
     <Button
         android:id="@+id/studentAppointmentCancelButton"
-        android:layout_width="wrap_content"
+        android:layout_width="98dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/reasonForAppointmentView"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="42dp"
         android:background="@drawable/send_msg_bg"
         android:text="Cancel"
         android:textColor="@color/altwhite" />
