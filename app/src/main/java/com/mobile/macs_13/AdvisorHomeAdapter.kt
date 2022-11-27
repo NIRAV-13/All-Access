@@ -18,6 +18,9 @@ import com.mobile.macs_13.model.StudentAccomRequestModel
 import com.mobile.macs_13.view.AccomodationListActivity
 import com.mobile.macs_13.view.StudentBookAppointment
 
+private val REQUESTER_NAME = "Student Name : "
+private val REQUEST_DETAILS = "Request Details: "
+
 class AdvisorHomeAdapter(private val appReqList: ArrayList<StudentAccomRequestModel>) :
     RecyclerView.Adapter<AdvisorHomeAdapter.RequestViewHolder>() {
 
@@ -46,9 +49,9 @@ class AdvisorHomeAdapter(private val appReqList: ArrayList<StudentAccomRequestMo
             .load(currentRequest.imageLink)
             .centerCrop().placeholder(R.drawable.ic_profile).fallback(R.drawable.ic_profile)
             .into(holder.userImage);
-        holder.requesterName.text = currentRequest.name
+        holder.requesterName.text = REQUESTER_NAME + currentRequest.name
         holder.requesterCourse.text = currentRequest.course
-        holder.requestDetails.text = currentRequest.impact
+        holder.requestDetails.text = REQUEST_DETAILS + currentRequest.impact
         holder.checkRequestButton.setOnClickListener { onClick(holder.itemView) }
     }
 

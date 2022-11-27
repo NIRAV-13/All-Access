@@ -43,7 +43,6 @@ class UploadPdfActivity : AppCompatActivity() {
                 uri = data!!.data!!
                 uriTxt.text = uri.toString()
                 upload()
-
             }
         }
 

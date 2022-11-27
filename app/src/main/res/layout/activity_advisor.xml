@@ -6,24 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start"
+    android:background="#E2E2F3"
     tools:context=".MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
 
         <TextView
             android:id="@+id/advisor_name"
             android:layout_width="232dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="125dp"
+            android:layout_marginStart="120dp"
             android:layout_marginTop="35dp"
             android:layout_marginEnd="243dp"
             android:layout_marginBottom="11dp"
             android:text="@string/advisor_name_placeholder"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold"
+            android:textColor="#000000"
             app:layout_constraintBottom_toTopOf="@+id/advisor_home_rv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +46,7 @@
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="#000000"
             app:layout_constraintBottom_toTopOf="@+id/advisor_home_rv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
