@@ -1,12 +1,13 @@
 package com.mobile.macs_13.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.controller.AdvisorController
@@ -70,18 +71,23 @@ class StudentBookAppointmentFormActivity : AppCompatActivity() {
                                 val studentNotificationData = StudentNotificationData(title, body)
 
                                 PushStudentNotification.pushStudentHomeNotification(studentNotificationData)
+                                Toast.makeText(this,"Appointment has been confirmed.", Toast.LENGTH_LONG).show()
+                                val handler = Handler()
+                                handler.postDelayed(Runnable {
+                                    val studentActivityIntent = Intent(this, StudentActivity::class.java)
+                                    startActivity(studentActivityIntent)
+                                },3000)
 
-                                val studentActivityIntent = Intent(this, StudentActivity::class.java)
-                                startActivity(studentActivityIntent)
+
 
                             }
                             else{
-                                Toast.makeText(this,"Something went wrong. Please try again later.", Toast.LENGTH_SHORT)
+                                Toast.makeText(this,"Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
                     else{
-                        Toast.makeText(this,"Something went wrong. Please try again later.", Toast.LENGTH_SHORT)
+                        Toast.makeText(this,"Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show()
                     }
 
                 }
@@ -95,6 +101,7 @@ class StudentBookAppointmentFormActivity : AppCompatActivity() {
             val studentActivityIntent = Intent(this, StudentActivity::class.java)
             startActivity(studentActivityIntent)
         }
+
 
     }
 }

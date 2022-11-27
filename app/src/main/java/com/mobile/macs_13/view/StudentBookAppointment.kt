@@ -61,8 +61,8 @@ class StudentBookAppointment : AppCompatActivity(){
 
                     val f: NumberFormat = DecimalFormat("00")
 
-                    val startDate = Date(i.startTime.seconds*1000)
-                    val endDate = Date(i.endTime.seconds*1000)
+                    val startDate = Date((i.startTime?.seconds)!! *1000)
+                    val endDate = Date((i.endTime?.seconds)!!*1000)
 
                     val startHour = f.format(startDate.hours)
                     val startMinute = f.format(startDate.minutes)
@@ -125,16 +125,17 @@ class StudentBookAppointment : AppCompatActivity(){
             } else {
                 lastSelectedCalendar = checkCalendar
 
+                val finalMonth = month.inc()
+                val midNightDate = LocalDate.of(year,finalMonth,dayOfMonth).atTime(LocalTime.MIDNIGHT)
+                val zoneId = ZoneId.systemDefault();
+                val midNightStartTime = midNightDate.atZone(zoneId).toEpochSecond() *  1000
+                val midNightEndTime = midNightStartTime + (24* 60 *60 * 1000)
+
+                setAvailableSlots(midNightStartTime, midNightEndTime)
+
+
             }
 
-            val finalMonth = month.inc()
-            val midNightDate = LocalDate.of(year,finalMonth,dayOfMonth).atTime(LocalTime.MIDNIGHT)
-            val zoneId = ZoneId.systemDefault();
-            val midNightStartTime = midNightDate.atZone(zoneId).toEpochSecond() *  1000
-            val midNightEndTime = midNightStartTime + (24* 60 *60 * 1000)
-            val startTime = System.currentTimeMillis()
-
-            setAvailableSlots(startTime, midNightEndTime)
 
         })
 

@@ -1,7 +1,9 @@
 package com.mobile.macs_13.model
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.work.*
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,7 +13,7 @@ import java.util.concurrent.TimeUnit
 
 object AddRemindNotification {
 
-    private val BUFFER_TIME_TO_SEND_NOTIFICATION_IN_SECONDS: Long = 3600
+    private val BUFFER_TIME_TO_SEND_NOTIFICATION_IN_SECONDS: Long = 1800
     private var sendNotificationTime: Long = 0
 
     fun sendNotification(appointmentDetails: AppointmentDetails, context: Context){
@@ -24,13 +26,14 @@ object AddRemindNotification {
             .addOnSuccessListener { document ->
 
                 val documentData = document.data
-                    val appointmentStartTimeStamp = (documentData?.get("startTime") as Timestamp)
+                    val appointmentStartTimeStamp = (documentData?.get("appointmentStartTime") as Timestamp)
                     val appointmentTime = appointmentStartTimeStamp.seconds
-                    val advisorEmail: String = documentData["advisorEmail"].toString()
-
                     val currentTime = System.currentTimeMillis()/1000
-                    sendNotificationTime = (appointmentTime - currentTime) - BUFFER_TIME_TO_SEND_NOTIFICATION_IN_SECONDS
-                    this.oneTimeWork(appointmentStartTimeStamp,advisorEmail, context)
+                    val advisorName: String = documentData["advisorName"] as String
+
+
+                sendNotificationTime = (appointmentTime - currentTime) - BUFFER_TIME_TO_SEND_NOTIFICATION_IN_SECONDS
+                    this.oneTimeWork(appointmentStartTimeStamp,advisorName, context)
                 }
             .addOnFailureListener { exception ->
                 Log.w("firebase", "Error getting documents: ", exception)
@@ -46,7 +49,10 @@ object AddRemindNotification {
         return date
     }
 
-    private fun oneTimeWork(appointmentTimeStamp: Timestamp, advisorEmail: String, context: Context) {
+    @SuppressLint("RestrictedApi")
+    private fun oneTimeWork(appointmentTimeStamp: Timestamp, advisorName: String, context: Context) {
+
+
 
         val constraints = Constraints.Builder().
         setRequiredNetworkType(NetworkType.NOT_REQUIRED)
@@ -55,9 +61,10 @@ object AddRemindNotification {
         val appointmentDate = convertTimeStampToDate(appointmentTimeStamp)
 
         val data = Data.Builder()
-            .putString("email",advisorEmail)
+            .putString("name",advisorName)
             .putString("time", appointmentDate)
             .build()
+
 
         val request = OneTimeWorkRequest.Builder(
             MyWorker::class.java

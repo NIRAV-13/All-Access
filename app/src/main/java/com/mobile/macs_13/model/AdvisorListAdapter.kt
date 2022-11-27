@@ -4,9 +4,13 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.mobile.macs_13.databinding.AdvisorListItemBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.macs_13.view.StudentBookAppointment
+import com.bumptech.glide.Glide
+import com.mobile.macs_13.R
+
 
 // Adapter class to show list of advisors in recycler view.
 class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) : RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>() {
@@ -25,7 +29,7 @@ class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) : Recyc
     // Overriding on onBindViewHolder.
     override fun onBindViewHolder(holder: AdvisorListAdapter.ViewHolder, position: Int) {
         val advisor = advisors[position]
-        holder.bindItem(advisor)
+        holder.bindItem(advisor, holder)
     }
 
     // Overriding on getItemCount.
@@ -37,7 +41,14 @@ class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) : Recyc
     inner class ViewHolder(private val binding: AdvisorListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         // Binding all items.
-        fun bindItem(advisor: UserProfile) {
+        fun bindItem(advisor: UserProfile, holder: ViewHolder) {
+
+            val view = holder.itemView.findViewById<ImageView>(R.id.advisorListImage)
+            Glide.with(holder.itemView)
+                .load(advisor.imageLink)
+                .centerCrop().placeholder(R.drawable.ic_profile).fallback(R.drawable.ic_profile)
+                .into(view);
+
             binding.advisorNameText.text = advisor.name
             binding.advisorEmailText.text = advisor.email
             binding.selectAdvisor.setOnClickListener { onClick(advisor) }
@@ -52,3 +63,4 @@ class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) : Recyc
 
     }
 }
+

@@ -122,7 +122,7 @@ class StudentActivity : AppCompatActivity() {
 
         notificationList = arrayListOf<StudentNotificationData>()
         val db = FirebaseFirestore.getInstance()
-        db.collection("StudentHomeNotifications").orderBy("timestamp")
+        db.collection("StudentHomeNotifications").orderBy("timestamp",Query.Direction.DESCENDING)
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
 

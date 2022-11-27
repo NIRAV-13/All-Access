@@ -13,7 +13,7 @@ class StudentController {
 
     // Fetching appointments for the student.
     fun fetchAppointments(studentEmail: String, function: (Boolean) -> Unit){
-
+        StudentAppointmentList.clearList()
         fireStoreDB.collection("AppointmentDetails")
             .whereEqualTo("studentEmail", studentEmail)
             .get()
@@ -53,7 +53,7 @@ class StudentController {
     fun fetchAvailability( advisorEmail: String , startTime: Long, midNightEndTime: Long, function: (Boolean) -> Unit){
 
         AvailableAppointmentList.getAvailability().clear()
-
+        Log.d("XYZ","$midNightEndTime")
         fireStoreDB.collection("Availability")
             .whereEqualTo("advisorEmail", advisorEmail)
             .whereEqualTo("isAvailable",true)
@@ -79,7 +79,7 @@ class StudentController {
 
     // Fetching list of available advisors.
     fun fetchAdvisorList(function: (Boolean) -> Unit) {
-
+        AdvisorList.clearList()
         fireStoreDB.collection("Advisor")
             .get()
             .addOnSuccessListener { documents ->

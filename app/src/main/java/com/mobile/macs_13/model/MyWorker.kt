@@ -5,9 +5,13 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context;
 import android.content.Intent
 import android.os.Build
+import android.util.Log
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.Worker
@@ -25,6 +29,7 @@ class MyWorker(context: Context, workerParameters: WorkerParameters) : Worker(co
 
     @SuppressLint("NewApi")
     override fun doWork(): Result {
+
         showNotification(inputData.getString("name"),  inputData.getString("time"))
         return Result.success();
     }
@@ -36,8 +41,12 @@ class MyWorker(context: Context, workerParameters: WorkerParameters) : Worker(co
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
+        val flags = when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> FLAG_UPDATE_CURRENT or FLAG_IMMUTABLE
+            else -> FLAG_UPDATE_CURRENT
+        }
 
-        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
+        val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, flags)
 
         val notificationText = "You have upcoming appointment with $name  at $time."
         val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)

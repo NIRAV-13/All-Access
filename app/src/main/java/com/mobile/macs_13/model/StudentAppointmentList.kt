@@ -18,4 +18,8 @@ object StudentAppointmentList {
         return appointmentList;
     }
 
+    fun clearList(){
+        appointmentList.clear()
+    }
+
 }
