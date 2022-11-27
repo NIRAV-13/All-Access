@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.Instructor.InstructorStudentAccomodation">
+
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="228dp"
+        android:layout_height="30dp"
+        android:text="Student Accomodation Information"
+        tools:ignore="MissingConstraints"
+        android:textColor="@color/black"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="25dp" />
+
+    <ScrollView
+        android:layout_width="404dp"
+        android:layout_height="637dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="78dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="228dp"
+                android:layout_height="30dp"
+                android:text="Student Name: Student B"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="228dp"
+                android:layout_height="30dp"
+                android:text="University: Dalhousie University"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Course: Master of Applied Computer Science"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="228dp"
+                android:layout_height="30dp"
+                android:text="Year: 1st Term"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="228dp"
+                android:layout_height="30dp"
+                android:text="Student Email: student@dal.ca"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="228dp"
+                android:layout_height="30dp"
+                android:text="Phone Number: 5463676435"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="305dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Accomodation Type: Deadline Extension"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="305dp"
+                android:layout_height="30dp"
+                android:text="Accomodation Status: Approved by Advisor"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="305dp"
+                android:layout_height="30dp"
+                android:text="Advisor Name:Adam Smith"
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
+                tools:ignore="DuplicateIds,MissingConstraints"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="25dp" />
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
