@@ -18,13 +18,46 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.macs_13"
         tools:targetApi="31">
-
         <activity
             android:name=".view.StudentBookAppointmentFormActivity"
             android:exported="false" />
         <activity
             android:name=".AdvisorProfileActivity"
-            android:exported="false">
+            android:exported="false"/>
+
+            <activity
+            android:name=".view.AccomodationListActivity"
+            android:exported="true">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".controller.accomodation.AdvisorAccomodation"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.accomodationfeature.AdvisorAccomodationHome"
+            android:exported="true">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.accomodationfeature.StudentAccomodation"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -32,8 +65,7 @@
         <activity
             android:name=".view.StudentBookAppointmentHome"
             android:exported="false"
-            android:label="@string/title_activity_student_book_appointment_home"
-            />
+            android:label="@string/title_activity_student_book_appointment_home" />
         <activity
             android:name=".view.StudentBookAppointment"
             android:exported="false"
@@ -41,13 +73,6 @@
             android:theme="@style/Theme.macs_13.NoActionBar"
             tools:ignore="ExtraText">
             android:name=".AdvisorActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name="com.example.accomodationfeature.StudentAccomodation"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -88,7 +113,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".UserFeedbackActivity"
             android:exported="false">
@@ -96,7 +120,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".controller.DownloadFile"
             android:exported="false">
@@ -118,7 +141,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".AdvisorActivity"
             android:exported="false">
@@ -126,8 +148,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
         <activity
             android:name=".controller.authentication.Login"
             android:exported="true">
@@ -162,10 +182,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <activity android:name=".controller.FileOperation.UploadFile"
-            android:exported="true">
-
-        </activity>
+        <activity
+            android:name=".controller.FileOperation.UploadFile"
+            android:exported="true"></activity>
     </application>
+
 </manifest>

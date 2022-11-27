@@ -13,4 +13,6 @@
     <color name="altblack">#171717</color>
     <color name="accept">#00A300</color>
     <color name="reject">#D10000</color>
+    <color name="download">#0000FF</color>
+
 </resources>

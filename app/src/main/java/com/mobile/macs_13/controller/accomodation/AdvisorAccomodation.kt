@@ -1,8 +1,12 @@
 package com.mobile.macs_13.controller.accomodation
 
 import android.annotation.SuppressLint
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -11,8 +15,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.mobile.macs_13.R
 import com.mobile.macs_13.controller.utils.User
+import java.io.File
 
 class AdvisorAccomodation : AppCompatActivity() {
 
@@ -33,6 +39,7 @@ class AdvisorAccomodation : AppCompatActivity() {
     private var accomDb = Firebase.firestore
     private lateinit var studDb : DatabaseReference
     private lateinit var mAuth: FirebaseAuth
+    private var storageinstance = FirebaseStorage.getInstance()
 //    val currentUserID = mAuth.currentUser
 
     @SuppressLint("SuspiciousIndentation")
@@ -53,39 +60,32 @@ class AdvisorAccomodation : AppCompatActivity() {
         studReason = findViewById(R.id.stud_reason)
         advAccept = findViewById(R.id.adv_accept)
         advReject = findViewById(R.id.adv_reject)
-
+        studDocuments.setOnClickListener {
+            downloadfile("Guide_for_Accomodation.pdf")
+        }
         supportActionBar?.hide()
         // getting data
-        val accomDbRef = accomDb.collection("Accomodation").document("zuiKPJimjaZEXQPmBgU9")
-        accomDbRef.get().addOnSuccessListener{
-            if(it!= null){
-                val stud_Name = it.data?.get("StudentName")?.toString()
-                val stud_Reason = it.data?.get("Impact")?.toString()
-                studName.text = stud_Name
-                studReason.text = stud_Reason
-            }
-        }
-            .addOnFailureListener{
-                Toast.makeText(this, "Data retrieval failed!! ", Toast.LENGTH_SHORT).show()
-            }
-
-        val studDbRef = accomDb.collection("User").document("zuiKPJimjaZEXQPmBgU9")
+        val studDbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
         studDbRef.get().addOnSuccessListener{
             if(it!= null){
                 val stud_course = it.data?.get("course")?.toString()
                 val stud_program = it.data?.get("program")?.toString()
-                val stud_univ = it.data?.get("university")?.toString()
                 val stud_phone = it.data?.get("phone")?.toString()
                 val stud_email = it.data?.get("email")?.toString()
                 val stud_year = it.data?.get("year")?.toString()
                 val stud_term = it.data?.get("term")?.toString()
+                val stud_Reason = it.data?.get("impact")?.toString()
+                val stud_name = it.data?.get("name")?.toString()
+//                val stud_Docs = it.data?.get("docs")?.toString()
+                studReason.text = stud_Reason
                 studPhone.text = stud_phone
                 studEmail.text = stud_email
-                studUniv.text = stud_univ
                 studTerm.text = stud_term
                 studYear.text = stud_year
                 studProgram.text = stud_program
                 studCourse.text = stud_course
+                studName.text = stud_name
+//                studDocuments.text = stud_Docs
 
             }
         }
@@ -107,7 +107,7 @@ class AdvisorAccomodation : AppCompatActivity() {
 
         advAccept.setOnClickListener{
 
-            val dbRef = accomDb.collection("Accomodation").document("zuiKPJimjaZEXQPmBgU9")
+            val dbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
             dbRef.get().addOnSuccessListener { documents ->
                 if (documents?.data?.get("status") == "Accepted" || documents?.data?.get("status") == "Rejected") {
                     Toast.makeText(
@@ -117,7 +117,7 @@ class AdvisorAccomodation : AppCompatActivity() {
                     ).show()
                 } else {
                     val accomDbRef =
-                        accomDb.collection("Accomodation").document("zuiKPJimjaZEXQPmBgU9")
+                        accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
                     accomDbRef.update(advisorAcceptMap).addOnSuccessListener {
 
                         Toast.makeText(
@@ -137,7 +137,7 @@ class AdvisorAccomodation : AppCompatActivity() {
 
         advReject.setOnClickListener{
 
-            val dbRef = accomDb.collection("Accomodation").document("zuiKPJimjaZEXQPmBgU9")
+            val dbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
             dbRef.get().addOnSuccessListener { documents ->
                 if (documents?.data?.get("status") == "Accepted" || documents?.data?.get("status") == "Rejected") {
                     Toast.makeText(
@@ -147,7 +147,7 @@ class AdvisorAccomodation : AppCompatActivity() {
                     ).show()
                 } else {
                     val accomDbRef =
-                        accomDb.collection("Accomodation").document("zuiKPJimjaZEXQPmBgU9")
+                        accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
                     accomDbRef.update(advisorRejectMap).addOnSuccessListener {
 
                         Toast.makeText(
@@ -168,7 +168,29 @@ class AdvisorAccomodation : AppCompatActivity() {
             }
         }
 
+    }
 
-
+    private fun downloadfile(filename:String){
+        val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val storageref = storageinstance.reference
+        println(storageref)
+        storageref.child("download_files/$filename").downloadUrl.addOnSuccessListener {
+            val uri: Uri = Uri.parse(it.toString())
+            val request = DownloadManager.Request(uri)
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
+                .setMimeType("application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+                .setAllowedOverRoaming(false)
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setDestinationInExternalPublicDir(
+                    Environment.DIRECTORY_DOCUMENTS,
+                    File.separator + "$filename"
+                )
+            downloadManager.enqueue(request)
+            println(it.toString())
+            Toast.makeText(this, "File downloaded", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            println(it.toString())
+            Toast.makeText(this, "File download failure", Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -52,6 +52,21 @@
     <string name="app_request_open">Check Request</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_closed">Drawer Closed</string>
+    <string-array name="selectProgram">
+        <item>Computer Science</item>
+        <item>Engineering</item>
+        <item>Commerce</item>
+    </string-array>![](C:/Users/ADARSH~1/AppData/Local/Temp/download.jpg)
+    <string-array name="selectCourse">
+        <item> CSCI 6603 Mobile Computing </item>
+        <item> CSCI 6609 Data Structure </item>
+        <item>CSCI 7001 Advance Communication </item>
+    </string-array>
+    <string-array name="selectYear">
+        <item> 1 </item>
+        <item> 2 </item>
+        <item>3</item>
+    </string-array>
     <string name="student_profile_title">Student Profile</string>
     <string name="advisor_profile_title">Advisor Profile</string>
     <string-array name="options">

@@ -1,5 +1,6 @@
 package com.mobile.macs_13
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
+import com.mobile.macs_13.view.AccomodationListActivity
+import com.mobile.macs_13.view.StudentBookAppointment
 
 class AdvisorHomeAdapter(private val appReqList: ArrayList<StudentAccomRequestModel>) :
     RecyclerView.Adapter<AdvisorHomeAdapter.RequestViewHolder>() {
@@ -51,8 +54,8 @@ class AdvisorHomeAdapter(private val appReqList: ArrayList<StudentAccomRequestMo
 
     private fun onClick(view: View) {
 
-        view.findNavController().navigate(R.id.requestDetailsFragment)
-
+        val intent = Intent(view.context, AccomodationListActivity:: class.java)
+        view.context.startActivity(intent)
     }
 
     override fun getItemCount(): Int {
