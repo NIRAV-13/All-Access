@@ -1,5 +1,6 @@
 package com.mobile.macs_13
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.StudentAccomRequestModel
+import com.mobile.macs_13.view.AccomodationListActivity
+import com.mobile.macs_13.view.StudentBookAppointment
 
-class AdvisorHomeAdapter(private val appReqList: ArrayList<AccomRequest>) :
+class AdvisorHomeAdapter(private val appReqList: ArrayList<StudentAccomRequestModel>) :
     RecyclerView.Adapter<AdvisorHomeAdapter.RequestViewHolder>() {
 
     inner class RequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,47 +42,20 @@ class AdvisorHomeAdapter(private val appReqList: ArrayList<AccomRequest>) :
 
         val currentRequest = appReqList[position]
 
-        val db = FirebaseFirestore.getInstance()
-        val mAuth = FirebaseAuth.getInstance()
-        val currentUserID = "1001"
-        //mAuth.currentUser?.uid
-
-
-        db.collection("StudentProfileImages").document(currentUserID)
-            .addSnapshotListener(object : EventListener<DocumentSnapshot> {
-                override fun onEvent(value: DocumentSnapshot?, error: FirebaseFirestoreException?) {
-
-                    if (error != null) {
-                        Log.d(
-                            "Error",
-                            "Some Error in Connection to FireStore ${error.message.toString()}"
-                        )
-                        return
-                    }
-
-                    if (value != null) {
-                        if (value.id == currentUserID) {
-                            currentRequest.imageLink = value.data?.get("link").toString()
-                            Glide
-                                .with(holder.itemView)
-                                .load(currentRequest.imageLink)
-                                .centerCrop()
-                                .into(holder.userImage);
-                        }
-                    }
-                }
-            })
-        //holder.userImage.setImageResource(R.drawable.ic_avatar)
-        holder.requesterName.text = currentRequest.requesterName
-        holder.requesterCourse.text = currentRequest.requesterCourse
-        holder.requestDetails.text = currentRequest.requestDetails
+        Glide.with(holder.itemView)
+            .load(currentRequest.imageLink)
+            .centerCrop().placeholder(R.drawable.ic_profile).fallback(R.drawable.ic_profile)
+            .into(holder.userImage);
+        holder.requesterName.text = currentRequest.name
+        holder.requesterCourse.text = currentRequest.course
+        holder.requestDetails.text = currentRequest.impact
         holder.checkRequestButton.setOnClickListener { onClick(holder.itemView) }
     }
 
     private fun onClick(view: View) {
 
-        view.findNavController().navigate(R.id.requestDetailsFragment)
-
+        val intent = Intent(view.context, AccomodationListActivity:: class.java)
+        view.context.startActivity(intent)
     }
 
     override fun getItemCount(): Int {

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
@@ -22,13 +23,13 @@ class instructorView : AppCompatActivity() {
         searchbutton = findViewById(R.id.button6)
 
         selectsemdropdown=findViewById(R.id.spinnerSelectSemester);
-        var adaptersem = ArrayAdapter.createFromResource(this, R.array.selectSemester,
+        var adaptersem = ArrayAdapter.createFromResource(this, R.array.selectSemInstructor,
             androidx.transition.R.layout.support_simple_spinner_dropdown_item)
         adaptersem.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
         selectsemdropdown.setAdapter(adaptersem);
 
         selectcoursedropdown=findViewById(R.id.spinnerSelectCourse);
-        var adaptercourse = ArrayAdapter.createFromResource(this, R.array.selectCourse,
+        var adaptercourse = ArrayAdapter.createFromResource(this, R.array.selectCourseInstructor,
             androidx.transition.R.layout.support_simple_spinner_dropdown_item)
         adaptercourse.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
         selectcoursedropdown.setAdapter(adaptercourse);
