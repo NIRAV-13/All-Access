@@ -11,19 +11,31 @@
         android:id="@+id/textView10"
         android:layout_width="228dp"
         android:layout_height="30dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="676dp"
         android:text="Student Accomodation Information"
-        tools:ignore="MissingConstraints"
         android:textColor="@color/black"
         android:textStyle="bold|italic"
-        tools:layout_editor_absoluteX="91dp"
-        tools:layout_editor_absoluteY="25dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <ScrollView
         android:layout_width="404dp"
         android:layout_height="637dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="78dp">
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
 
         <LinearLayout
@@ -120,6 +132,7 @@
                 tools:ignore="DuplicateIds,MissingConstraints"
                 tools:layout_editor_absoluteX="91dp"
                 tools:layout_editor_absoluteY="25dp" />
+
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="305dp"
@@ -130,9 +143,6 @@
                 tools:ignore="DuplicateIds,MissingConstraints"
                 tools:layout_editor_absoluteX="91dp"
                 tools:layout_editor_absoluteY="25dp" />
-
-
-
 
 
         </LinearLayout>

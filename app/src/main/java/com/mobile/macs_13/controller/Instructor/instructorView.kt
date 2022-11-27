@@ -34,7 +34,13 @@ class instructorView : AppCompatActivity() {
         selectcoursedropdown.setAdapter(adaptercourse);
 
         searchbutton.setOnClickListener {
+
+            val selectedSem = selectsemdropdown.selectedItem.toString()
+            val selectedCourse = selectcoursedropdown.selectedItem.toString()
+
             val searchDetailsIntent = Intent(this, InstructorCourseView::class.java)
+            searchDetailsIntent.putExtra("selectedSem",selectedSem)
+            searchDetailsIntent.putExtra("selectedCourse",selectedCourse)
             startActivity(searchDetailsIntent)
         }
     }
