@@ -1,6 +1,5 @@
 package com.mobile.macs_13
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,10 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
-import com.mobile.macs_13.controller.authentication.Login
+import com.mobile.macs_13.view.login.Login
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
-import com.mobile.macs_13.model.StudentNotificationData
 import com.mobile.macs_13.model.UserProfile
 
 class AdvisorActivity : AppCompatActivity() {
