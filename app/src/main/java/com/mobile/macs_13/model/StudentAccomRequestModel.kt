@@ -1,6 +1,7 @@
 package com.mobile.macs_13.model
 
 import android.provider.ContactsContract.CommonDataKinds.Phone
+import com.google.firebase.firestore.DocumentId
 import java.util.Date
 
 
@@ -17,5 +18,6 @@ data class StudentAccomRequestModel(
     var impact: String? = null,
     var consent: String? = null,
     var status: String?= null,
-    var timeStamp: Date? = null
+    var timeStamp: Date? = null,
+    @DocumentId var requestID:String? = null
 )

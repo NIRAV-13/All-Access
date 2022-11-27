@@ -3,10 +3,13 @@ package com.mobile.macs_13.controller.accomodation
 import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -18,6 +21,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.mobile.macs_13.R
 import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.AdvisorAccomRequestModel
+import com.mobile.macs_13.model.SlotDetail
+import com.mobile.macs_13.model.StudentAccomRequestModel
 import java.io.File
 
 class AdvisorAccomodation : AppCompatActivity() {
@@ -47,13 +53,15 @@ class AdvisorAccomodation : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor_accomodation)
 
+        val advisorAccommodation = this.intent.getSerializableExtra("advisorAccommodation") as AdvisorAccomRequestModel?
+
         mAuth = FirebaseAuth.getInstance()
         studName = findViewById(R.id.accom_stud_name)
         studUniv = findViewById(R.id.univ_name)
         studProgram = findViewById(R.id.prog_name)
         studCourse = findViewById(R.id.course_name)
         studTerm = findViewById(R.id.stud_term)
-        studEmail = findViewById(R.id.stud_email)
+        studEmail = findViewById(R.id.student_email)
         studYear = findViewById(R.id.stud_year)
         studPhone = findViewById(R.id.stud_phone)
         studDocuments = findViewById(R.id.stud_doc)
@@ -61,108 +69,98 @@ class AdvisorAccomodation : AppCompatActivity() {
         advAccept = findViewById(R.id.adv_accept)
         advReject = findViewById(R.id.adv_reject)
         studDocuments.setOnClickListener {
-            downloadfile("Guide_for_Accomodation.pdf")
+//            downloadfile("Guide_for_Accomodation.pdf")
         }
-        supportActionBar?.hide()
         // getting data
-        val studDbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
-        studDbRef.get().addOnSuccessListener{
-            if(it!= null){
-                val stud_course = it.data?.get("course")?.toString()
-                val stud_program = it.data?.get("program")?.toString()
-                val stud_phone = it.data?.get("phone")?.toString()
-                val stud_email = it.data?.get("email")?.toString()
-                val stud_year = it.data?.get("year")?.toString()
-                val stud_term = it.data?.get("term")?.toString()
-                val stud_Reason = it.data?.get("impact")?.toString()
-                val stud_name = it.data?.get("name")?.toString()
+
+                studName.text = advisorAccommodation?.studentName.toString()
+                studProgram.text = advisorAccommodation?.studentProgram.toString()
+                studCourse.text = advisorAccommodation?.studentCourse.toString()
+                studTerm.text = advisorAccommodation?.studentTerm.toString()
+                studYear.text = advisorAccommodation?.studentYear.toString()
+                studEmail.text = advisorAccommodation?.studentEmail.toString()
+                studPhone.text = advisorAccommodation?.studentPhone.toString()
+                studReason.text = advisorAccommodation?.studentImpact.toString()
+                studDocuments.text = advisorAccommodation?.studentDocs.toString()
 //                val stud_Docs = it.data?.get("docs")?.toString()
-                studReason.text = stud_Reason
-                studPhone.text = stud_phone
-                studEmail.text = stud_email
-                studTerm.text = stud_term
-                studYear.text = stud_year
-                studProgram.text = stud_program
-                studCourse.text = stud_course
-                studName.text = stud_name
-//                studDocuments.text = stud_Docs
 
-            }
-        }
-            .addOnFailureListener{
-                Toast.makeText(this, "Data retrieval failed!! ", Toast.LENGTH_SHORT).show()
-            }
 
-        val advisorAcceptMap = hashMapOf(
 
-            "status" to "Accepted",
-            "TimeStamp" to FieldValue.serverTimestamp()
-        )
-        val advisorRejectMap = hashMapOf(
+//            val reqObject: StudentAccomRequestModel = StudentAccomRequestModel()
 
-            "status" to "Rejected",
-            "TimeStamp" to FieldValue.serverTimestamp()
-        )
+//            val sendWithAdvisorDetails : AdvisorAccomRequestModel = AdvisorAccomRequestModel(reqObject.uid,
+//                reqObject.name, reqObject.email, reqObject.phone, reqObject.program, reqObject.course,
+//                reqObject.year, reqObject.term, null, reqObject.imageLink, reqObject.impact,
+//                reqObject.consent, reqObject.status, reqObject.timeStamp, User.getCurrentUserProfile().name, User.getCurrentUserProfile().email, User.getCurrentUserProfile().imageLink,
+//                User.getCurrentUserProfile().phone)
 
+
+
+        Log.d("XYZ","$advisorAccommodation")
 
         advAccept.setOnClickListener{
+            val dbRef = accomDb.collection("Accomodation").document(advisorAccommodation?.documentId!!)
 
-            val dbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
             dbRef.get().addOnSuccessListener { documents ->
-                if (documents?.data?.get("status") == "Accepted" || documents?.data?.get("status") == "Rejected") {
+
+                Log.d("DATA","${documents.data}")
+                val status = documents["status"] as String
+
+                if (status.equals("Accepted") || status.equals("Rejected")) {
                     Toast.makeText(
                         this@AdvisorAccomodation,
                         "You have already made a decision on this request!",
                         Toast.LENGTH_SHORT
                     ).show()
-                } else {
-                    val accomDbRef =
-                        accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
-                    accomDbRef.update(advisorAcceptMap).addOnSuccessListener {
+                }
 
+                else {
+
+                    advisorAccommodation?.studentStatus = "Accepted"
+                    dbRef.set(advisorAccommodation!!).addOnSuccessListener {
                         Toast.makeText(
                             this@AdvisorAccomodation,
                             "Student request accepted!",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                        .addOnFailureListener {
+                        .addOnFailureListener{
                             Toast.makeText(this@AdvisorAccomodation, "Error!", Toast.LENGTH_SHORT)
                                 .show()
                         }
 
                 }
             }
+
         }
 
         advReject.setOnClickListener{
 
-            val dbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
+            val dbRef = accomDb.collection("Accomodation").document(advisorAccommodation?.documentId.toString())
             dbRef.get().addOnSuccessListener { documents ->
-                if (documents?.data?.get("status") == "Accepted" || documents?.data?.get("status") == "Rejected") {
+
+                val status = documents["status"] as String
+
+                if (status.equals("Accepted") || status.equals("Rejected")) {
                     Toast.makeText(
                         this@AdvisorAccomodation,
                         "You have already made a decision on this request!",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    val accomDbRef =
-                        accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
-                    accomDbRef.update(advisorRejectMap).addOnSuccessListener {
-
+                    advisorAccommodation?.studentStatus = "Rejected"
+                    dbRef.set(advisorAccommodation!!).addOnSuccessListener {
                         Toast.makeText(
                             this@AdvisorAccomodation,
                             "Student request rejected!",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                        .addOnFailureListener {
-                            Toast.makeText(
-                                this@AdvisorAccomodation,
-                                "Error!",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                        .addOnFailureListener{
+                            Toast.makeText(this@AdvisorAccomodation, "Error!", Toast.LENGTH_SHORT)
+                                .show()
                         }
+
 
                 }
             }

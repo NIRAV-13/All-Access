@@ -1,12 +1,16 @@
 package com.mobile.macs_13
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.mobile.macs_13.controller.accomodation.AdvisorAccomodation
 import com.mobile.macs_13.model.AppointmentDetails
+import com.mobile.macs_13.view.chat.ChatView
 import java.text.DateFormat
 import java.util.*
 
@@ -46,6 +50,7 @@ class AdvisorAppointmentsAdapter(private val appointmentsList: ArrayList<Appoint
 
         // todo holder.reminderButton
         // todo holder.chatButton
+        holder.chatButton.setOnClickListener { onClickChat(holder.itemView) }
     }
 
     override fun getItemCount(): Int {
@@ -64,6 +69,12 @@ class AdvisorAppointmentsAdapter(private val appointmentsList: ArrayList<Appoint
         val locale = Locale("en", "EN")
         val dateFormat: DateFormat = DateFormat.getTimeInstance(DateFormat.DEFAULT, locale)
         return "From: ${dateFormat.format(sdate)} - ${dateFormat.format(edate)}"
+    }
+
+    private fun onClickChat(view: View) {
+
+        val intent = Intent(view.context, ChatView:: class.java)
+        view.context.startActivity(intent)
     }
 
 }
