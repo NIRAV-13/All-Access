@@ -20,6 +20,7 @@ import com.example.accomodationfeature.StudentAccomodation
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.controller.DownloadFile
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.view.login.Login
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
@@ -29,7 +30,6 @@ import com.mobile.macs_13.view.StudentBookAppointmentHome
 class StudentActivity : AppCompatActivity() {
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var  drawerLayout: DrawerLayout
-    private lateinit var loginAuth : FirebaseAuth
 
 
     private lateinit var adapter: StudentHomeAdapter
@@ -59,8 +59,6 @@ class StudentActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(mActionBarDrawerToggle)
         mActionBarDrawerToggle.setDrawerIndicatorEnabled(true)
         mActionBarDrawerToggle.syncState()
-
-        loginAuth = FirebaseAuth.getInstance()
 
         val navigationView = findViewById<NavigationView>(R.id.navigationView)
 
@@ -157,7 +155,7 @@ class StudentActivity : AppCompatActivity() {
             return true
         }
         else if(item.itemId == R.id.logout){
-            loginAuth.signOut()
+            FirebaseRefSingleton.getFirebaseAuth().signOut()
             val logoutIntent = Intent(this, Login::class.java)
             User.setCurrentUserProfile(UserProfile())
             finish()
