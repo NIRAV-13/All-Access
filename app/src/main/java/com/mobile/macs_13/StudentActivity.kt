@@ -12,6 +12,7 @@ import com.mobile.macs_13.model.StudentNotificationData
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -19,8 +20,7 @@ import com.example.accomodationfeature.StudentAccomodation
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.mobile.macs_13.controller.DownloadFile
-import com.mobile.macs_13.controller.about.AboutUs
-import com.mobile.macs_13.controller.authentication.Login
+import com.mobile.macs_13.view.login.Login
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
 import com.mobile.macs_13.view.StudentBookAppointmentHome
@@ -50,6 +50,9 @@ class StudentActivity : AppCompatActivity() {
 
         val actionBar = supportActionBar
         actionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        val studentName = findViewById<TextView>(R.id.student_name)
+        studentName.text = "Hello! ${User.getCurrentUserProfile().name}"
 
         drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         mActionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout,  R.string.drawer_open, R.string.drawer_closed)
