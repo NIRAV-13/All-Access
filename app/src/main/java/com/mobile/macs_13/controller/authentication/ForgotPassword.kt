@@ -2,6 +2,7 @@ package com.mobile.macs_13.controller.authentication
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -40,10 +41,17 @@ class ForgotPassword : AppCompatActivity() {
                                 "Email sent successfully, please reset your password",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            val loginIntent = Intent(this, Login::class.java)
+                            resetPasswordEmail.text.clear()
+                            Handler().postDelayed(Runnable {
+                                val loginIntent = Intent(this, Login::class.java)
 //                            https://stackoverflow.com/questions/12358485/android-open-activity-without-save-into-the-stack
-                            loginIntent.flags = loginIntent.flags or Intent.FLAG_ACTIVITY_NO_HISTORY
-                            startActivity(loginIntent)
+                                loginIntent.flags = loginIntent.flags or Intent.FLAG_ACTIVITY_NO_HISTORY
+                                startActivity(loginIntent)
+                            }, 3000)
+                           /* val loginIntent = Intent(this, Login::class.java)
+//                            https://stackoverflow.com/questions/12358485/android-open-activity-without-save-into-the-stack
+                            loginIntent.setFlags(loginIntent.getFlags() or Intent.FLAG_ACTIVITY_NO_HISTORY)
+                            startActivity(loginIntent)*/
                         } else {
                             Toast.makeText(
                                 this,
