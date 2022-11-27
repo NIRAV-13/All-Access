@@ -39,27 +39,21 @@ class StudentBookAppointmentFormActivity : AppCompatActivity() {
         userEmail.text = appointmentDetails?.studentEmail.toString()
         selectedAdvisorName.text = appointmentDetails?.advisorName.toString()
         selectedTime.text = appointmentDetails?.appointmentStartTime.toString()
-
         val reason = findViewById<EditText>(R.id.reasonForAppointmentView).text
 
         // On submit button click listener.
         val submitButton = findViewById<Button>(R.id.studentAppointmentSubmitButton)
         submitButton.setOnClickListener {
-
             if(reason.isBlank()) {
                 Toast.makeText(this,"Please provide reason for appointment.", Toast.LENGTH_SHORT).show()
             }
             else{
-
                 appointmentDetails?.appointmentReason = reason.toString()
                 val studentController = StudentController()
                 val advisorController = AdvisorController()
-
                 studentController.bookAppointment(
                     appointmentDetails){ bookStatus ->
-
                     if(bookStatus){
-
                         advisorController.changeAvailabilityToFalse(slotDetail?.availabilityId){ changeAvailableStatus ->
 
                             if(changeAvailableStatus){
@@ -89,7 +83,6 @@ class StudentBookAppointmentFormActivity : AppCompatActivity() {
                     else{
                         Toast.makeText(this,"Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show()
                     }
-
                 }
 
             }

@@ -3,24 +3,41 @@ package com.mobile.macs_13.controller.accomodation
 import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.mobile.macs_13.AdvisorActivity
+import com.mobile.macs_13.AdvisorAppointments
+import com.mobile.macs_13.AdvisorProfileActivity
 import com.mobile.macs_13.R
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.view.login.Login
 import java.io.File
 
 class AdvisorAccomodation : AppCompatActivity() {
+
+
+    lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
 
     private lateinit var studName: TextView
     private lateinit var studEmail: TextView
@@ -63,7 +80,44 @@ class AdvisorAccomodation : AppCompatActivity() {
         studDocuments.setOnClickListener {
             downloadfile("Guide_for_Accomodation.pdf")
         }
-        supportActionBar?.hide()
+        supportActionBar?.title = "Appointments"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        mActionBarDrawerToggle =
+            ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_closed)
+        drawerLayout.addDrawerListener(mActionBarDrawerToggle)
+        mActionBarDrawerToggle.setDrawerIndicatorEnabled(true)
+        mActionBarDrawerToggle.syncState()
+
+        val navigationView = findViewById<NavigationView>(R.id.navigationView)
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            // TODO: Handle menu item selected
+            if(menuItem.itemId == R.id.home_item){
+                val homeIntent = Intent(this, AdvisorActivity::class.java)
+                finish()
+                startActivity(homeIntent)
+            }
+            if (menuItem.itemId == R.id.profile_item) {
+                val advisorProfile = Intent(this, AdvisorProfileActivity::class.java)
+                startActivity(advisorProfile)
+            }
+
+            if (menuItem.itemId == R.id.appointment_item) {
+                val advisorAppt = Intent(this, AdvisorAppointments::class.java)
+                startActivity(advisorAppt)
+            }
+
+            if (menuItem.itemId == R.id.accommodation_item) {
+                val advisorAccommodation = Intent(this, AdvisorAccomodation::class.java)
+                startActivity(advisorAccommodation)
+            }
+
+            menuItem.isChecked = true
+            drawerLayout.close()
+            true
+        }
         // getting data
         val studDbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
         studDbRef.get().addOnSuccessListener{
@@ -192,5 +246,30 @@ class AdvisorAccomodation : AppCompatActivity() {
             println(it.toString())
             Toast.makeText(this, "File download failure", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        mActionBarDrawerToggle.syncState()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.getItemId() == android.R.id.home) { // use android.R.id
+            drawerLayout.openDrawer(Gravity.LEFT);
+            return true
+        } else if (item.itemId == R.id.logout) {
+            FirebaseRefSingleton.getFirebaseAuth().signOut()
+            val logoutIntent = Intent(this, Login::class.java)
+            User.setCurrentUserProfile(UserProfile())
+            finish()
+            startActivity(logoutIntent)
+            return true
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.logout, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">StuAccess</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -13,7 +13,7 @@
     <string name="sent_message">Sent Message</string>
     <string name="logout">Logout</string>
     <string name="send_message_button">Send Message</string>
-    <string name="stuaccess">StuAccess</string>
+    <string name="stuaccess">AllAccess</string>
     <string name="student_accesibility_logo">Student Accesibility Logo</string>
     <string name="new_user">New User?</string>
     <string name="title_activity_student_book_appointment">StudentBookAppointment</string>
@@ -57,7 +57,8 @@
         <item>Computer Science</item>
         <item>Engineering</item>
         <item>Commerce</item>
-    </string-array>![](C:/Users/ADARSH~1/AppData/Local/Temp/download.jpg)
+    </string-array>
+    ![](C:/Users/ADARSH~1/AppData/Local/Temp/download.jpg)
     <string-array name="selectCourse">
         <item> CSCI 6603 Mobile Computing </item>
         <item> CSCI 6609 Data Structure </item>
@@ -70,8 +71,22 @@
     </string-array>
     <string name="student_profile_title">Student Profile</string>
     <string name="advisor_profile_title">Advisor Profile</string>
+    <string name="can_t_login">Can\'t Login?</string>
+    <string name="forgotpswdText">Please provide your email. We\'ll send you a reset link.</string>
+    <string name="reset_password">Reset Password</string>
     <string-array name="options">
         <item> Yes </item>
         <item> No </item>
     </string-array>
+    <string-array name="selectSemInstructor">
+        <item> Fall 2022 </item>
+        <item> Summer 2022 </item>
+        <item>Winter 2022</item>
+    </string-array>
+    <string-array name="selectCourseInstructor">
+        <item> CSCI 6603 Mobile Computing </item>
+        <item> CSCI 6609 Data Structure </item>
+        <item>CSCI 7001 Advance Communication </item>
+    </string-array>
+
 </resources>

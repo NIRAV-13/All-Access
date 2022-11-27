@@ -4,13 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.accomodationfeature.StudentAccomodation
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.mobile.macs_13.R
+import com.mobile.macs_13.StudentActivity
+import com.mobile.macs_13.StudentProfileActivity
+import com.mobile.macs_13.UserFeedbackActivity
+import com.mobile.macs_13.controller.DownloadFile
 import com.mobile.macs_13.controller.StudentController
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAppointmentListAdapter
+import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.view.login.Login
 
 // Activity class for students to book appointment with advisor.
 class StudentBookAppointmentHome : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.mobile.macs_13.controller.authentication
+package com.mobile.macs_13.view.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,15 +8,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.mobile.macs_13.AdvisorActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.StudentActivity
+import com.mobile.macs_13.controller.Instructor.InstructorView
+import com.mobile.macs_13.controller.LoginController
 import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.controller.utils.User
-import com.mobile.macs_13.model.UserProfile
 
 // https://firebase.google.com/docs/auth/android/start#kotlin+ktx
 // https://firebase.google.com/docs/firestore/query-data/get-data#kotlin+ktx
@@ -29,8 +27,6 @@ class Login : AppCompatActivity() {
     private lateinit var loginBtn: Button
     private lateinit var aboutUsBtn: Button
     private lateinit var forgotpswd: TextView
-    private lateinit var loginAuth: FirebaseAuth
-    private val TAG = "Login"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +35,6 @@ class Login : AppCompatActivity() {
         //to remove the action bar
         supportActionBar?.hide()
 
-        // initialize firebase authentication
-        loginAuth = FirebaseAuth.getInstance()
 
         edtEmail = findViewById(R.id.edt_email)
         edtPass = findViewById(R.id.edt_password)
@@ -48,14 +42,33 @@ class Login : AppCompatActivity() {
         aboutUsBtn = findViewById(R.id.aboutUsButton)
         forgotpswd = findViewById(R.id.forgot_pswd)
 
+
+
         loginBtn.setOnClickListener {
             val email = edtEmail.text.toString()
             val passwd = edtPass.text.toString()
             if (email.isNotEmpty() && passwd.isNotEmpty()) {
-                Log.d("YOLO2", email)
-                login(email, passwd)
-            }
-            else
+                val loginController = LoginController()
+                loginController.login(email, passwd){
+                    success ->
+                    if(success){
+                        if (User.getCurrentUserProfile().type == 1) {
+                            val studentHomePageIntent = Intent(this@Login, StudentActivity::class.java)
+                            startActivity(studentHomePageIntent)
+                        } else if (User.getCurrentUserProfile().type == 2) {
+                            val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
+                            startActivity(advisorHomePageIntent)
+                        } else if(User.getCurrentUserProfile().type == 3) {
+                            val instructorHomePageIntent = Intent(this@Login, InstructorView::class.java)
+                            startActivity(instructorHomePageIntent)
+                        }
+                    }
+                    else {
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(this@Login, "User doesn't exist!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else
                 Toast.makeText(this@Login, "Please enter email and password", Toast.LENGTH_SHORT)
                     .show()
         }
@@ -79,8 +92,10 @@ class Login : AppCompatActivity() {
 
     }
 
-    private fun login(email: String, password: String) {
+    /*private fun login(email: String, password: String) {
 
+        val mFirestore = FirebaseFirestore.getInstance()
+        mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         // logic for user login
         loginAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -88,41 +103,38 @@ class Login : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val currentUser = loginAuth.currentUser
                     if (currentUser != null) {
-                        Log.e("Login", "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser)
-
-                        val mFirestore = FirebaseFirestore.getInstance()
-                        mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
+                        Log.e(
+                            "Login",
+                            "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser
+                        )
 
                         mFirestore
                             .collection("User Profile")
                             .document(currentUser.uid)
                             .get()
                             .addOnSuccessListener { documents ->
-                                val userProfile = documents.toObject(UserProfile::class.java)!!
-                                User.setCurrentUserProfile(userProfile)
+                                User.setCurrentUserProfile(documents.toObject(UserProfile::class.java)!!)
                                 Log.d("USER", User.getCurrentUserProfile().uid.toString())
                             }
                     }
 
-                    if(User.getCurrentUserProfile().type ==1){
+                    if (User.getCurrentUserProfile().type == 1) {
                         val studentHomePageIntent = Intent(this@Login, StudentActivity::class.java)
                         finish()
-                        startActivity(studentHomePageIntent)  
-                    }
-                    else if(User.getCurrentUserProfile().type==2){
+                        startActivity(studentHomePageIntent)
+                    } else if (User.getCurrentUserProfile().type == 2) {
                         val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
                         finish()
                         startActivity(advisorHomePageIntent)
-                    }
-                    else{
+                    } else {
                         Log.d("YOLO", User.getCurrentUserProfile().toString())
                     }
-                    
+
 
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(this@Login, "User doesn't exist!", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
+    }*/
 }
