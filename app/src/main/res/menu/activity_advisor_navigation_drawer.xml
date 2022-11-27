@@ -10,6 +10,11 @@
                 android:title="Appointment"
                 android:checkable="true"/>
             <item
+                android:id="@+id/accommodation_item"
+                android:icon="@drawable/ic_accomodation"
+                android:title="Accomodation"
+                android:checkable="true"/>
+            <item
                 android:id="@+id/profile_item"
                 android:icon="@drawable/ic_profile"
                 android:title="Profile"

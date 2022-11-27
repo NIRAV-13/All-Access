@@ -4,14 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import com.mobile.macs_13.R
-import com.mobile.macs_13.controller.FileOperation.UploadFile
 
-class instructorView : AppCompatActivity() {
+class InstructorView : AppCompatActivity() {
     private lateinit var selectsemdropdown: Spinner
     private lateinit var selectcoursedropdown: Spinner
     lateinit var  searchbutton : Button

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.mobile.macs_13.controller.AdvisorController
+import com.mobile.macs_13.controller.accomodation.AdvisorAccomodation
 import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.view.login.Login
 import com.mobile.macs_13.controller.utils.User
@@ -72,6 +73,11 @@ class AdvisorActivity : AppCompatActivity() {
             if (menuItem.itemId == R.id.appointment_item) {
                 val advisorAppt = Intent(this, AdvisorAppointments::class.java)
                 startActivity(advisorAppt)
+            }
+
+            if (menuItem.itemId == R.id.accommodation_item) {
+                val advisorAccommodation = Intent(this, AdvisorAccomodation::class.java)
+                startActivity(advisorAccommodation)
             }
 
             menuItem.isChecked = true

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mobile.macs_13.AdvisorActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.StudentActivity
+import com.mobile.macs_13.controller.Instructor.InstructorView
 import com.mobile.macs_13.controller.LoginController
 import com.mobile.macs_13.controller.about.AboutUs
 import com.mobile.macs_13.controller.utils.User
@@ -58,7 +59,8 @@ class Login : AppCompatActivity() {
                             val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
                             startActivity(advisorHomePageIntent)
                         } else {
-                            Log.d("YOLO", User.getCurrentUserProfile().toString())
+                            val instructorHomePageIntent = Intent(this@Login, InstructorView::class.java)
+                            startActivity(instructorHomePageIntent)
                         }
                     }
                     else {
