@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -59,19 +60,24 @@ class AccomodationListActivity : AppCompatActivity() {
         adapterYear.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
         selectYearDropdown.setAdapter(adapterYear);
 
-        accomCheckBtn = findViewById(R.id.accom_req_check)
-        accomCheckBtn.setOnClickListener{
+//        accomCheckBtn = findViewById(R.id.accom_req_check)
+//        accomCheckBtn.setOnClickListener{
+//
+//        }
 
-        }
         advisorController.fetchAccomodations(){status ->
             accomodationListAdapter.notifyDataSetChanged()
         }
-
+        Log.d("advisorController",advisorController.toString())
         accomodationListAdapter.onItemClick ={
             val accomIntent = Intent(this, AdvisorAccomodation::class.java)
-//            accomIntent.putExtra("accomodationRequest", it)
+            accomIntent.putExtra("Accomodation", it)
             startActivity(accomIntent)
         }
 
     }
+}
+
+private fun Parcelable.putExtra(s: String, it: AdvisorAccomRequestModel) {
+
 }
