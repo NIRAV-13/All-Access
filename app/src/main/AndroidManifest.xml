@@ -156,7 +156,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.authentication.Login"
+            android:name=".view.login.Login"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -183,7 +183,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.authentication.ForgotPassword"
+            android:name=".view.login.ForgotPassword"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
