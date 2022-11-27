@@ -1,6 +1,6 @@
 package com.mobile.macs_13
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,10 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.*
 import com.mobile.macs_13.controller.AdvisorController
-import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.view.login.Login
 import com.mobile.macs_13.controller.utils.User
@@ -84,40 +81,6 @@ class AdvisorActivity : AppCompatActivity() {
 
 
     }
-
-/*    private fun getRequestListFromDB() {
-
-        accomRequestList = arrayListOf<StudentAccomRequestModel>()
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection("Accomodation")
-            .orderBy("timeStamp", Query.Direction.DESCENDING)
-            .whereEqualTo("status", "inProgress")
-            .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-
-                    if (error != null) {
-                        Log.d(
-                            "Error",
-                            "Some Error in Connection to FireStore ${error.message.toString()}"
-                        )
-                        return
-                    }
-
-                    for (document: DocumentChange in value?.documentChanges!!) {
-
-                        if (document.type == DocumentChange.Type.ADDED || document.type == DocumentChange.Type.MODIFIED *//*|| document.type == DocumentChange.Type.REMOVED*//*) {
-                            accomRequestList.add(document.document.toObject(StudentAccomRequestModel::class.java))
-                        }
-                    }
-
-                    Log.d("LIST", accomRequestList.size.toString())
-                    adapter.notifyDataSetChanged()
-                }
-
-            })
-
-    }*/
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
