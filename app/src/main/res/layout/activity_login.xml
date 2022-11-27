@@ -14,10 +14,10 @@
         android:layout_marginEnd="130dp"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/student_accesibility_logo"
-        android:src="@drawable/stu_logo_png" />
+        android:src="@drawable/dal" />
 
     <TextView
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_below="@+id/app_logo"
         android:layout_centerHorizontal="true"
@@ -101,7 +101,9 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="74dp"
         android:background="@drawable/send_msg_bg"
+        android:backgroundTint="#FFEB3B"
         android:padding="8dp"
         android:text="@string/about_us"
-        android:textColor="@color/white" />
+        android:textStyle="bold"
+        android:textColor="@color/black" />
 </RelativeLayout>
