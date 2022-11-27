@@ -48,14 +48,15 @@ class Login : AppCompatActivity() {
         aboutUsBtn = findViewById(R.id.aboutUsButton)
         forgotpswd = findViewById(R.id.forgot_pswd)
 
+
+
         loginBtn.setOnClickListener {
             val email = edtEmail.text.toString()
             val passwd = edtPass.text.toString()
             if (email.isNotEmpty() && passwd.isNotEmpty()) {
-                Log.d("YOLO2", email)
+                // Log.d("YOLO2", email)
                 login(email, passwd)
-            }
-            else
+            } else
                 Toast.makeText(this@Login, "Please enter email and password", Toast.LENGTH_SHORT)
                     .show()
         }
@@ -81,6 +82,8 @@ class Login : AppCompatActivity() {
 
     private fun login(email: String, password: String) {
 
+        val mFirestore = FirebaseFirestore.getInstance()
+        mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
         // logic for user login
         loginAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -88,36 +91,33 @@ class Login : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     val currentUser = loginAuth.currentUser
                     if (currentUser != null) {
-                        Log.e("Login", "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser)
-
-                        val mFirestore = FirebaseFirestore.getInstance()
-                        mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
+                        Log.e(
+                            "Login",
+                            "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser
+                        )
 
                         mFirestore
                             .collection("User Profile")
                             .document(currentUser.uid)
                             .get()
                             .addOnSuccessListener { documents ->
-                                val userProfile = documents.toObject(UserProfile::class.java)!!
-                                User.setCurrentUserProfile(userProfile)
+                                User.setCurrentUserProfile(documents.toObject(UserProfile::class.java)!!)
                                 Log.d("USER", User.getCurrentUserProfile().uid.toString())
                             }
                     }
 
-                    if(User.getCurrentUserProfile().type ==1){
+                    if (User.getCurrentUserProfile().type == 1) {
                         val studentHomePageIntent = Intent(this@Login, StudentActivity::class.java)
                         finish()
-                        startActivity(studentHomePageIntent)  
-                    }
-                    else if(User.getCurrentUserProfile().type==2){
+                        startActivity(studentHomePageIntent)
+                    } else if (User.getCurrentUserProfile().type == 2) {
                         val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
                         finish()
                         startActivity(advisorHomePageIntent)
-                    }
-                    else{
+                    } else {
                         Log.d("YOLO", User.getCurrentUserProfile().toString())
                     }
-                    
+
 
                 } else {
                     // If sign in fails, display a message to the user.

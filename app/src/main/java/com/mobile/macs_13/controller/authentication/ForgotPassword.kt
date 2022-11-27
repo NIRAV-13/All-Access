@@ -13,18 +13,18 @@ import com.mobile.macs_13.R
 //Reference Link: https://www.youtube.com/watch?v=nVhPqPpgndM
 //https://stackoverflow.com/questions/12358485/android-open-activity-without-save-into-the-stack
 class ForgotPassword : AppCompatActivity() {
-    private lateinit var resetpswdBtn: Button
-    private lateinit var resetPasswordEmail: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgotpswd)
 
-        resetpswdBtn = findViewById(R.id.resetPassword)
-        resetPasswordEmail = findViewById(R.id.forgotpswdEmail)
-        Log.e("Forgot Password", "currentUser: " + resetPasswordEmail)
+
+        val resetpswdBtn: Button = findViewById(R.id.resetPassword)
+        val resetPasswordEmail: EditText = findViewById(R.id.forgotpswdEmail)
+
+        Log.e("Forgot Password", "currentUser: $resetPasswordEmail")
         resetpswdBtn.setOnClickListener {
             val email: String = resetPasswordEmail.text.toString().trim { it <= ' ' }
-            Log.e("Forgot Password", "currentUser: " + email)
+            Log.e("Forgot Password", "currentUser: $email")
             if (email.isEmpty()) {
                 Toast.makeText(
                     this,
@@ -42,7 +42,7 @@ class ForgotPassword : AppCompatActivity() {
                             ).show()
                             val loginIntent = Intent(this, Login::class.java)
 //                            https://stackoverflow.com/questions/12358485/android-open-activity-without-save-into-the-stack
-                            loginIntent.setFlags(loginIntent.getFlags() or Intent.FLAG_ACTIVITY_NO_HISTORY)
+                            loginIntent.flags = loginIntent.flags or Intent.FLAG_ACTIVITY_NO_HISTORY
                             startActivity(loginIntent)
                         } else {
                             Toast.makeText(
