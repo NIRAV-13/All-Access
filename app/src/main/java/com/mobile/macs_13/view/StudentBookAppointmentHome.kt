@@ -16,6 +16,7 @@ import com.example.accomodationfeature.StudentAccomodation
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.mobile.macs_13.R
+import com.mobile.macs_13.StudentActivity
 import com.mobile.macs_13.StudentProfileActivity
 import com.mobile.macs_13.UserFeedbackActivity
 import com.mobile.macs_13.controller.DownloadFile
@@ -59,6 +60,11 @@ class StudentBookAppointmentHome : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
+            if(menuItem.itemId == R.id.home_item){
+                val homeIntent = Intent(this, StudentActivity::class.java)
+                finish()
+                startActivity(homeIntent)
+            }
             if(menuItem.itemId == R.id.feeback_item){
                 val feedbackIntent = Intent(this, UserFeedbackActivity::class.java)
                 finish()

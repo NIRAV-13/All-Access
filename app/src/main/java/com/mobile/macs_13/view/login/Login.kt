@@ -58,7 +58,7 @@ class Login : AppCompatActivity() {
                         } else if (User.getCurrentUserProfile().type == 2) {
                             val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
                             startActivity(advisorHomePageIntent)
-                        } else {
+                        } else if(User.getCurrentUserProfile().type == 3) {
                             val instructorHomePageIntent = Intent(this@Login, InstructorView::class.java)
                             startActivity(instructorHomePageIntent)
                         }

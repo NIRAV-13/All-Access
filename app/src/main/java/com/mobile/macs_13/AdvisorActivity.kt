@@ -64,7 +64,11 @@ class AdvisorActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
-
+            if(menuItem.itemId == R.id.home_item){
+                val homeIntent = Intent(this, AdvisorActivity::class.java)
+                finish()
+                startActivity(homeIntent)
+            }
             if (menuItem.itemId == R.id.profile_item) {
                 val advisorProfile = Intent(this, AdvisorProfileActivity::class.java)
                 startActivity(advisorProfile)

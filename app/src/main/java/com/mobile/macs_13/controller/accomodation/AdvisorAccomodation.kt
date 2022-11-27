@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.mobile.macs_13.AdvisorActivity
 import com.mobile.macs_13.AdvisorAppointments
 import com.mobile.macs_13.AdvisorProfileActivity
 import com.mobile.macs_13.R
@@ -93,7 +94,11 @@ class AdvisorAccomodation : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
-
+            if(menuItem.itemId == R.id.home_item){
+                val homeIntent = Intent(this, AdvisorActivity::class.java)
+                finish()
+                startActivity(homeIntent)
+            }
             if (menuItem.itemId == R.id.profile_item) {
                 val advisorProfile = Intent(this, AdvisorProfileActivity::class.java)
                 startActivity(advisorProfile)
