@@ -23,19 +23,19 @@ class AdvisorController {
 
                 var advisorAccomRequestModel = AdvisorAccomRequestModel(
                     uid = document["uid"] as String ,
-                    studentName = document["name"] as String,
-                    studentEmail = document["email"] as String,
-                    studentPhone = document["phone"] as String,
-                    studentProgram = document["program"] as String,
-                    studentCourse = document["course"] as String,
-                    studentYear = document["year"] as String,
-                    studentTerm = document["term"] as String?,
-                    studentDocs = document["docs"] as String?,
-                    studentImageLink = document["imageLink"] as String,
-                    studentImpact = document["impact"] as String,
-                    studentConsent = document["consent"] as String,
-                    studentStatus =  document["status"] as String?,
-                    studentTimeStamp = (document["timeStamp"] as Timestamp).toDate(),
+                    name = document["name"] as String,
+                    email = document["email"] as String,
+                    phone = document["phone"] as String,
+                    program = document["program"] as String,
+                    course = document["course"] as String,
+                    year = document["year"] as String,
+                    term = document["term"] as String?,
+                    docs = document["docs"] as String?,
+                    imageLink = document["imageLink"] as String,
+                    impact = document["impact"] as String,
+                    consent = document["consent"] as String,
+                    status =  document["status"] as String?,
+                    timeStamp = (document["timeStamp"] as Timestamp).toDate(),
                     documentId = document.id
                 )
 //                val AdvisorAccomRequestModel = document.toObject(AdvisorAccomRequestModel::class.java)

@@ -51,13 +51,13 @@ class AccomodationListAdapter :
         val advisorAccomRequestModel = advisorAccomRequestModelList[position]
 
         Glide.with(holder.itemView)
-            .load(advisorAccomRequestModel.studentImageLink)
+            .load(advisorAccomRequestModel.imageLink)
             .centerCrop().placeholder(R.drawable.ic_profile).fallback(R.drawable.ic_profile)
             .into(holder.userImage);
 
-        holder.name.text = REQUESTER_NAME + advisorAccomRequestModel.studentName
-        holder.studentCourse.text = advisorAccomRequestModel.studentCourse
-        holder.studentImpact.text = REQUEST_DETAILS + advisorAccomRequestModel.studentImpact
+        holder.name.text = REQUESTER_NAME + advisorAccomRequestModel.name
+        holder.studentCourse.text = advisorAccomRequestModel.course
+        holder.studentImpact.text = REQUEST_DETAILS + advisorAccomRequestModel.impact
         holder.checkRequest.setOnClickListener{ view ->
             onClickCheckRequest(advisorAccomRequestModel, view)
         }

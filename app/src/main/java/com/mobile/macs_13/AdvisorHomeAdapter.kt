@@ -8,17 +8,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.*
 import com.mobile.macs_13.controller.accomodation.AdvisorAccomodation
-import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.AdvisorAccomRequestModel
 import com.mobile.macs_13.model.StudentAccomRequestModel
-import com.mobile.macs_13.view.AccomodationListActivity
-import com.mobile.macs_13.view.StudentBookAppointment
 
 private val REQUESTER_NAME = "Student Name : "
 private val REQUEST_DETAILS = "Request Details: "
@@ -60,11 +54,21 @@ class AdvisorHomeAdapter(private val appReqList: ArrayList<StudentAccomRequestMo
     private fun onClick(view: View, reqObject: StudentAccomRequestModel) {
 
         val intent = Intent(view.context, AdvisorAccomodation:: class.java)
-        val sendToAdvisor : AdvisorAccomRequestModel = AdvisorAccomRequestModel(reqObject.uid,
-            reqObject.name, reqObject.email, reqObject.phone, reqObject.program, reqObject.course,
-            reqObject.year, reqObject.term, null, reqObject.imageLink, reqObject.impact,
-        reqObject.consent, reqObject.status, reqObject.timeStamp, null, null, null,
-        null)
+        Log.d("HERE","${reqObject}")
+        val sendToAdvisor = AdvisorAccomRequestModel( uid = reqObject.uid,
+            name = reqObject.name, email = reqObject.email,
+            phone = reqObject.phone,
+            program = reqObject.program,
+            course = reqObject.course,
+            year = reqObject.year,
+            term = reqObject.term,
+            docs = null, imageLink = reqObject.imageLink,
+            impact = reqObject.impact,
+        consent = reqObject.consent,
+            status = reqObject.status,
+            timeStamp = null, advisorName = null, advisorEmail = null,
+        advisorImageLink = null,
+            documentId = reqObject.requestID)
         intent.putExtra("advisorAccommodation", sendToAdvisor )
         view.context.startActivity(intent)
     }
