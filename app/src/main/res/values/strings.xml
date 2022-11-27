@@ -46,6 +46,7 @@
     <string name="advisor_name_placeholder">Hello! Advisor Name</string>
     <string name="welcome_hello">Hello! </string>
     <string name="advisor_home_msg"> Here are the latest Requests for Accommodations.</string>
+    <string name="advisor_appointment_msg"> Here are your Upcoming Appointments.</string>
     <string name="app_requester_name">Requester Name</string>
     <string name="app_requester_course">Requester Course</string>
     <string name="app_request_details">Request Details</string>

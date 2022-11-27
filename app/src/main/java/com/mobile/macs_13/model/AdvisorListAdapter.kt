@@ -10,10 +10,14 @@ import com.mobile.macs_13.databinding.AdvisorListItemBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.macs_13.view.StudentBookAppointment
 
-class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) :RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>(){
+class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) :
+    RecyclerView.Adapter<AdvisorListAdapter.ViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdvisorListAdapter.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AdvisorListAdapter.ViewHolder {
 
         return ViewHolder(
             AdvisorListItemBinding.inflate(
@@ -31,30 +35,30 @@ class AdvisorListAdapter(private val advisors: MutableList<UserProfile>) :Recycl
     }
 
     override fun getItemCount(): Int {
-        Log.d("size","${advisors.size}")
+        Log.d("size", "${advisors.size}")
         return advisors.size
     }
 
-    inner class ViewHolder(val binding: AdvisorListItemBinding):
-        RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: AdvisorListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(advisor: UserProfile){
+        fun bindItem(advisor: UserProfile) {
 
-            Log.d("advisor","$advisor")
-                binding.advisorNameText.text = advisor.name
-                binding.advisorEmailText.text = advisor.email
+            Log.d("advisor", "$advisor")
+            binding.advisorNameText.text = advisor.name
+            binding.advisorEmailText.text = advisor.email
 
-                binding.selectAdvisor.setOnClickListener { onClick(advisor) }
-            }
+            binding.selectAdvisor.setOnClickListener { onClick(advisor) }
+        }
 
 
-            fun onClick(advisor: UserProfile) {
+        fun onClick(advisor: UserProfile) {
 
-                val intent = Intent(binding.root.context, StudentBookAppointment:: class.java)
-                intent.putExtra("advisor", advisor)
-                binding.root.context.startActivity(intent)
+            val intent = Intent(binding.root.context, StudentBookAppointment::class.java)
+            intent.putExtra("advisor", advisor)
+            binding.root.context.startActivity(intent)
 
-            }
+        }
 
     }
 }

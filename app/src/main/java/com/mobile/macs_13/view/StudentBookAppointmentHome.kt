@@ -16,7 +16,7 @@ import com.mobile.macs_13.model.StudentAppointmentListAdapter
 
 class StudentBookAppointmentHome : AppCompatActivity() {
 
-    private lateinit var recyclerView : RecyclerView
+    private lateinit var recyclerView: RecyclerView
     private var studentController: StudentController = StudentController()
     private lateinit var studentAppointmentListAdapter: StudentAppointmentListAdapter
 
@@ -37,11 +37,10 @@ class StudentBookAppointmentHome : AppCompatActivity() {
 
         studentController.fetchAppointments(user.email.toString()) { success ->
 
-            if(success){
+            if (success) {
                 studentAppointmentListAdapter.notifyDataSetChanged()
-            }
-            else{
-                Log.d("data","something went wrong.")
+            } else {
+                Log.d("data", "something went wrong.")
             }
         }
 

@@ -32,16 +32,6 @@ class AdvisorActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var accomRequestList: ArrayList<StudentAccomRequestModel>
 
-//    val dummy = arrayListOf<AccomRequest>(
-//        AccomRequest(
-//            "Test",
-//            "Data",
-//            "Some details",
-//            "jkb"
-//        ),
-//        AccomRequest("Test 2", "Data", "kjnkfn", "jfnlkvmk")
-//    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor)
@@ -77,6 +67,11 @@ class AdvisorActivity : AppCompatActivity() {
             if (menuItem.itemId == R.id.profile_item) {
                 val advisorProfile = Intent(this, AdvisorProfileActivity::class.java)
                 startActivity(advisorProfile)
+            }
+
+            if (menuItem.itemId == R.id.appointment_item) {
+                val advisorAppt = Intent(this, AdvisorAppointments::class.java)
+                startActivity(advisorAppt)
             }
 
             menuItem.isChecked = true
