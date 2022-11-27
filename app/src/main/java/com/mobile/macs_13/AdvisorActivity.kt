@@ -10,13 +10,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.compose.ui.platform.LocalDensity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import com.mobile.macs_13.controller.AdvisorController
 import com.mobile.macs_13.controller.authentication.Login
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
 import com.mobile.macs_13.model.StudentNotificationData
@@ -26,7 +29,6 @@ class AdvisorActivity : AppCompatActivity() {
 
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
-    private lateinit var loginAuth: FirebaseAuth
 
     private lateinit var adapter: AdvisorHomeAdapter
     private lateinit var recyclerView: RecyclerView
@@ -35,14 +37,18 @@ class AdvisorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor)
-        getRequestListFromDB()
-
-        val layoutManager = LinearLayoutManager(this.baseContext)
-        recyclerView = findViewById(R.id.advisor_home_rv)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        adapter = AdvisorHomeAdapter(accomRequestList)
-        recyclerView.adapter = adapter
+        accomRequestList = arrayListOf<StudentAccomRequestModel>()
+        AdvisorController.getRequestListFromDB { list ->
+            if (!list.isEmpty()) {
+                val layoutManager = LinearLayoutManager(this.baseContext)
+                recyclerView = findViewById(R.id.advisor_home_rv)
+                recyclerView.layoutManager = layoutManager
+                recyclerView.setHasFixedSize(true)
+                Log.d("LIST2", list.toString())
+                adapter = AdvisorHomeAdapter(list)
+                recyclerView.adapter = adapter
+            }
+        }
 
         val advisorName = findViewById<TextView>(R.id.advisor_name)
         advisorName.text = "Hello! ${User.getCurrentUserProfile().name}"
@@ -56,8 +62,6 @@ class AdvisorActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(mActionBarDrawerToggle)
         mActionBarDrawerToggle.setDrawerIndicatorEnabled(true)
         mActionBarDrawerToggle.syncState()
-
-        loginAuth = FirebaseAuth.getInstance()
 
         val navigationView = findViewById<NavigationView>(R.id.navigationView)
 
@@ -82,7 +86,7 @@ class AdvisorActivity : AppCompatActivity() {
 
     }
 
-    private fun getRequestListFromDB() {
+/*    private fun getRequestListFromDB() {
 
         accomRequestList = arrayListOf<StudentAccomRequestModel>()
         val db = FirebaseFirestore.getInstance()
@@ -103,7 +107,7 @@ class AdvisorActivity : AppCompatActivity() {
 
                     for (document: DocumentChange in value?.documentChanges!!) {
 
-                        if (document.type == DocumentChange.Type.ADDED || document.type == DocumentChange.Type.MODIFIED /*|| document.type == DocumentChange.Type.REMOVED*/) {
+                        if (document.type == DocumentChange.Type.ADDED || document.type == DocumentChange.Type.MODIFIED *//*|| document.type == DocumentChange.Type.REMOVED*//*) {
                             accomRequestList.add(document.document.toObject(StudentAccomRequestModel::class.java))
                         }
                     }
@@ -114,7 +118,7 @@ class AdvisorActivity : AppCompatActivity() {
 
             })
 
-    }
+    }*/
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -126,7 +130,7 @@ class AdvisorActivity : AppCompatActivity() {
             drawerLayout.openDrawer(Gravity.LEFT);
             return true
         } else if (item.itemId == R.id.logout) {
-            loginAuth.signOut()
+            FirebaseRefSingleton.getFirebaseAuth().signOut()
             val logoutIntent = Intent(this, Login::class.java)
             User.setCurrentUserProfile(UserProfile())
             finish()
