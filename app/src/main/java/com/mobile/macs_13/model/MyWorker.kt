@@ -8,8 +8,6 @@ import android.app.PendingIntent
 import android.content.Context;
 import android.content.Intent
 import android.os.Build
-import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.Worker
@@ -17,25 +15,23 @@ import androidx.work.WorkerParameters
 import com.mobile.macs_13.MainActivity
 import com.mobile.macs_13.R
 
-
+// Worker class for sending reminder notifications.
 class MyWorker(context: Context, workerParameters: WorkerParameters) : Worker(context, workerParameters) {
 
     companion object{
         const val CHANNEL_ID="1"
         const val NOTIFICATION = 1
     }
+
     @SuppressLint("NewApi")
     override fun doWork(): Result {
-
-        Log.d("Work","I am in work");
-        showNotification(inputData.getString("advisorEmail"),  inputData.getString("appointmentDate"))
+        showNotification(inputData.getString("name"),  inputData.getString("time"))
         return Result.success();
     }
 
-
-
+    // Show notification method to send notification.
     @SuppressLint("NewApi")
-    private fun showNotification(advisorID: String?,  appointmentDateTime: String?) {
+    private fun showNotification(name: String?,  time: String?) {
 
         val intent = Intent(applicationContext, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -43,9 +39,8 @@ class MyWorker(context: Context, workerParameters: WorkerParameters) : Worker(co
 
         val pendingIntent = PendingIntent.getActivity(applicationContext, 0, intent, 0)
 
-        val notificationText = "You have appointment with $advisorID  at $appointmentDateTime."
-        val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID
-        )
+        val notificationText = "You have upcoming appointment with $name  at $time."
+        val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle("Appointment Reminder")
             .setContentText(notificationText)
@@ -56,6 +51,7 @@ class MyWorker(context: Context, workerParameters: WorkerParameters) : Worker(co
             .setContentIntent(pendingIntent)
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
             val channelName = "Channel name"
             val channelDesc = "Channel desc"
             val channelImportance = NotificationManager.IMPORTANCE_HIGH

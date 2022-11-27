@@ -55,8 +55,8 @@ object AddRemindNotification {
         val appointmentDate = convertTimeStampToDate(appointmentTimeStamp)
 
         val data = Data.Builder()
-            .putString("advisorEmail",advisorEmail)
-            .putString("appointmentDate", appointmentDate)
+            .putString("email",advisorEmail)
+            .putString("time", appointmentDate)
             .build()
 
         val request = OneTimeWorkRequest.Builder(

@@ -1,7 +1,5 @@
 package com.mobile.macs_13.model
 
-
-import com.google.firebase.Timestamp
 import java.util.*
 
 data class AdvisorAccomRequestModel(
