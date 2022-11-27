@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import com.mobile.macs_13.InstructorProfileActivity
 import com.mobile.macs_13.R
 
 class InstructorView : AppCompatActivity() {
@@ -16,31 +17,32 @@ class InstructorView : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_instructor_view)
+        val logoutIntent = Intent(this@InstructorView, InstructorProfileActivity::class.java)
+        startActivity(logoutIntent)
 
-        searchbutton = findViewById(R.id.button6)
-
-        selectsemdropdown=findViewById(R.id.spinnerSelectSemester);
-        var adaptersem = ArrayAdapter.createFromResource(this, R.array.selectSemInstructor,
-            androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-        adaptersem.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-        selectsemdropdown.setAdapter(adaptersem);
-
-        selectcoursedropdown=findViewById(R.id.spinnerSelectCourse);
-        var adaptercourse = ArrayAdapter.createFromResource(this, R.array.selectCourseInstructor,
-            androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-        adaptercourse.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-        selectcoursedropdown.setAdapter(adaptercourse);
-
-        searchbutton.setOnClickListener {
-
-            val selectedSem = selectsemdropdown.selectedItem.toString()
-            val selectedCourse = selectcoursedropdown.selectedItem.toString()
-
-            val searchDetailsIntent = Intent(this, InstructorCourseView::class.java)
-            searchDetailsIntent.putExtra("selectedSem",selectedSem)
-            searchDetailsIntent.putExtra("selectedCourse",selectedCourse)
-            startActivity(searchDetailsIntent)
-        }
+//        searchbutton = findViewById(R.id.button6)
+//
+//        selectsemdropdown=findViewById(R.id.spinnerSelectSemester);
+//        var adaptersem = ArrayAdapter.createFromResource(this, R.array.selectSemInstructor,
+//            androidx.transition.R.layout.support_simple_spinner_dropdown_item)
+//        adaptersem.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
+//        selectsemdropdown.setAdapter(adaptersem);
+//
+//        selectcoursedropdown=findViewById(R.id.spinnerSelectCourse);
+//        var adaptercourse = ArrayAdapter.createFromResource(this, R.array.selectCourseInstructor,
+//            androidx.transition.R.layout.support_simple_spinner_dropdown_item)
+//        adaptercourse.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
+//        selectcoursedropdown.setAdapter(adaptercourse);
+//
+//        searchbutton.setOnClickListener {
+//
+//            val selectedSem = selectsemdropdown.selectedItem.toString()
+//            val selectedCourse = selectcoursedropdown.selectedItem.toString()
+//
+//            val searchDetailsIntent = Intent(this, InstructorCourseView::class.java)
+//            searchDetailsIntent.putExtra("selectedSem",selectedSem)
+//            searchDetailsIntent.putExtra("selectedCourse",selectedCourse)
+//            startActivity(searchDetailsIntent)
+//        }
     }
 }

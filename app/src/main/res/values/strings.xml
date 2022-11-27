@@ -71,7 +71,7 @@
     </string-array>
     <string name="student_profile_title">Student Profile</string>
     <string name="advisor_profile_title">Advisor Profile</string>
-    <string name="instructor_profile_title">Instructor3 Profile</string>
+    <string name="instructor_profile_title">Instructor Profile</string>
     <string name="can_t_login">Can\'t Login?</string>
     <string name="forgotpswdText">Please provide your email. We\'ll send you a reset link.</string>
     <string name="reset_password">Reset Password</string>
