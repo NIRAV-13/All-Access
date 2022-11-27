@@ -27,6 +27,7 @@ class StudentBookAppointmentHome : AppCompatActivity() {
         setContentView(R.layout.activity_student_appointment_list)
         supportActionBar?.title = "Appointments"
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
+
         recyclerView = findViewById(R.id.studentAppointmentListRecyclerView)
         recyclerView.setHasFixedSize(true)
         studentAppointmentListAdapter = StudentAppointmentListAdapter()

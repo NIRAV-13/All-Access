@@ -52,7 +52,7 @@
         android:layout_marginTop="106dp"
         android:layout_marginEnd="159dp"
         android:layout_marginBottom="600dp"
-        android:text="Semester: Fall 2022"
+
         android:textColor="@color/black"
         android:textSize="19dp"
         android:textStyle="bold|italic"

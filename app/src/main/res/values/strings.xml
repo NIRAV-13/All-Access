@@ -81,9 +81,9 @@
         <item>Winter 2022</item>
     </string-array>
     <string-array name="selectCourseInstructor">
-        <item> CSCI 6603 Mobile Computing </item>
-        <item> CSCI 6609 Data Structure </item>
-        <item>CSCI 7001 Advance Communication </item>
+        <item> CSCI 1009</item>
+        <item> CSCI 6609 </item>
+        <item>CSCI 7001 </item>
     </string-array>
 
 </resources>
