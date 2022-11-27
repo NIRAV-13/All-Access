@@ -10,7 +10,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.compose.ui.platform.LocalDensity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,9 +19,9 @@ import com.google.firebase.firestore.*
 import com.mobile.macs_13.controller.AdvisorController
 import com.mobile.macs_13.controller.authentication.Login
 import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
+import com.mobile.macs_13.view.login.Login
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
-import com.mobile.macs_13.model.StudentNotificationData
 import com.mobile.macs_13.model.UserProfile
 
 class AdvisorActivity : AppCompatActivity() {
