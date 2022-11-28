@@ -4,6 +4,7 @@ import com.google.firebase.firestore.DocumentId
 import java.io.Serializable
 import java.util.*
 
+// Data class to store appointment details.
 data class AppointmentDetails(
     var advisorName: String? = null,
     var advisorEmail: String? = null,

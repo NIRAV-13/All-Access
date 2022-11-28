@@ -8,18 +8,21 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mobile.macs_13.AdvisorActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.advisor.AdvisorActivity
 import com.mobile.macs_13.R
-import com.mobile.macs_13.StudentActivity
-import com.mobile.macs_13.controller.Instructor.InstructorView
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentActivity
 import com.mobile.macs_13.controller.LoginController
-import com.mobile.macs_13.controller.about.AboutUs
+import com.mobile.macs_13.com.mobile.macs_13.view.about.AboutUs
 import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.com.mobile.macs_13.view.instructor.InstructorHomePageActivity
 
-// https://firebase.google.com/docs/auth/android/start#kotlin+ktx
-// https://firebase.google.com/docs/firestore/query-data/get-data#kotlin+ktx
-// https://stackoverflow.com/questions/46995080/how-do-i-get-the-document-id-for-a-firestore-document-using-kotlin-data-classes
-
+/**
+ * This class returns the view for the login page of the app
+ * It call the login activity and holds the logic redirecting to the user specific landing pages
+ * It also has the redirection logics for about us and forgot password activites
+ * On click listener on login button first makes a call to login controller to sign in using db and gets the user profile data
+ * @author: Meghna Kumar
+ **/
 class Login : AppCompatActivity() {
 
     private lateinit var edtEmail: EditText
@@ -42,8 +45,7 @@ class Login : AppCompatActivity() {
         aboutUsBtn = findViewById(R.id.aboutUsButton)
         forgotpswd = findViewById(R.id.forgot_pswd)
 
-
-
+        //to log in to the application
         loginBtn.setOnClickListener {
             val email = edtEmail.text.toString()
             val passwd = edtPass.text.toString()
@@ -52,6 +54,7 @@ class Login : AppCompatActivity() {
                 loginController.login(email, passwd){
                     success ->
                     if(success){
+                        Log.d("DATA","HII")
                         if (User.getCurrentUserProfile().type == 1) {
                             val studentHomePageIntent = Intent(this@Login, StudentActivity::class.java)
                             startActivity(studentHomePageIntent)
@@ -59,7 +62,7 @@ class Login : AppCompatActivity() {
                             val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
                             startActivity(advisorHomePageIntent)
                         } else if(User.getCurrentUserProfile().type == 3) {
-                            val instructorHomePageIntent = Intent(this@Login, InstructorView::class.java)
+                            val instructorHomePageIntent = Intent(this@Login, InstructorHomePageActivity::class.java)
                             startActivity(instructorHomePageIntent)
                         }
                     }
@@ -73,11 +76,13 @@ class Login : AppCompatActivity() {
                     .show()
         }
 
+        //to redirect to the about us page of the application
         aboutUsBtn.setOnClickListener {
             val aboutUsIntent = Intent(this, AboutUs::class.java)
             startActivity(aboutUsIntent)
         }
 
+        //to redirect to the forgot password page to reset the password
         forgotpswd.setOnClickListener {
             val forgotPswdIntent = Intent(this, ForgotPassword::class.java)
             forgotPswdIntent.setFlags(forgotPswdIntent.getFlags() or Intent.FLAG_ACTIVITY_NO_HISTORY)
@@ -85,56 +90,4 @@ class Login : AppCompatActivity() {
         }
 
     }
-
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-
-    }
-
-    /*private fun login(email: String, password: String) {
-
-        val mFirestore = FirebaseFirestore.getInstance()
-        mFirestore.firestoreSettings = FirebaseFirestoreSettings.Builder().build()
-        // logic for user login
-        loginAuth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val currentUser = loginAuth.currentUser
-                    if (currentUser != null) {
-                        Log.e(
-                            "Login",
-                            "currentUser: " + currentUser.uid + "currentUser.email: " + currentUser
-                        )
-
-                        mFirestore
-                            .collection("User Profile")
-                            .document(currentUser.uid)
-                            .get()
-                            .addOnSuccessListener { documents ->
-                                User.setCurrentUserProfile(documents.toObject(UserProfile::class.java)!!)
-                                Log.d("USER", User.getCurrentUserProfile().uid.toString())
-                            }
-                    }
-
-                    if (User.getCurrentUserProfile().type == 1) {
-                        val studentHomePageIntent = Intent(this@Login, StudentActivity::class.java)
-                        finish()
-                        startActivity(studentHomePageIntent)
-                    } else if (User.getCurrentUserProfile().type == 2) {
-                        val advisorHomePageIntent = Intent(this@Login, AdvisorActivity::class.java)
-                        finish()
-                        startActivity(advisorHomePageIntent)
-                    } else {
-                        Log.d("YOLO", User.getCurrentUserProfile().toString())
-                    }
-
-
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(this@Login, "User doesn't exist!", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }*/
 }

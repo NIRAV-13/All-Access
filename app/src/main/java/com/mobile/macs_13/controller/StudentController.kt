@@ -1,118 +1,99 @@
 package com.mobile.macs_13.controller
 
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import com.google.firebase.Timestamp
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.model.*
 import java.util.*
 
-
+// Student Controller class to handle operations for students.
 class StudentController {
 
+    // Firestore database.
+    private val fireStoreDB = FirebaseRefSingleton.getFirebaseDB()
 
+    // Fetching appointments for the student.
     fun fetchAppointments(studentEmail: String, function: (Boolean) -> Unit){
 
-        var db = FirebaseFirestore.getInstance()
-        db.collection("AppointmentDetails")
+        StudentAppointmentList.clearList()
+
+        // Query on firestore database to fetch appointments for student.
+        fireStoreDB.collection("AppointmentDetails")
             .whereEqualTo("studentEmail", studentEmail)
             .get()
-            .addOnSuccessListener {
-                    documents ->
+            .addOnSuccessListener { documents ->
 
                 for (document in documents){
-
-//                    val advisorEmail = document.data["advisorEmail"] as String
-//                    val startTime = (document.data["startTime"] as Timestamp).toDate()
-//                    val endTime = (document.data["endTime"] as Timestamp).toDate()
-//                    val studentEmail = document.data["studentEmail"] as String
-//                    val status = document.data["status"] as Boolean
-                    val appointmentDetails = document.toObject(AppointmentDetails::class.java)
-
-                    StudentAppointmentList.addAppointment(appointmentDetails)
-
+                    StudentAppointmentList.addAppointment(document.toObject(AppointmentDetails::class.java))
                 }
                 function(true)
+
             }
             .addOnFailureListener { exception ->
-                Log.w("firebase", "Error getting documents: ", exception)
+                Log.w("FirebaseException", "There was error in database", exception)
                 function(false)
             }
 
     }
 
+    // Booking an appointment with advisor.
     fun bookAppointment(appointmentDetails: AppointmentDetails?, function: (Boolean) -> Unit){
 
-        var db = FirebaseFirestore.getInstance()
-
-        db.collection("AppointmentDetails")
+        // Query on firestore database to book an appointment with advisor.
+        fireStoreDB.collection("AppointmentDetails")
             .add(appointmentDetails!!)
             .addOnSuccessListener {
                 function(true)
             }
-
             .addOnFailureListener { exception ->
+                Log.w("FirebaseException", "There was error in database", exception)
                 function(false)
             }
 
     }
 
+    // Fetching availability of an selected advisor for selected date.
     fun fetchAvailability( advisorEmail: String , startTime: Long, midNightEndTime: Long, function: (Boolean) -> Unit){
 
         AvailableAppointmentList.getAvailability().clear()
-        var db = FirebaseFirestore.getInstance()
 
-        db.collection("Availability")
+        // Query on firestore database to fetch an availability of appointments.
+        fireStoreDB.collection("Availability")
             .whereEqualTo("advisorEmail", advisorEmail)
             .whereEqualTo("isAvailable",true)
             .whereGreaterThanOrEqualTo("startTime", Date(startTime))
             .whereLessThanOrEqualTo("startTime", Date(midNightEndTime))
             .get()
-            .addOnSuccessListener {
-                    documents ->
-
+            .addOnSuccessListener { documents ->
                 for (document in documents){
-
-                    val advisorEmail = document.data["advisorEmail"] as String
-                    val isAvailable = document.data["isAvailable"] as Boolean
-                    val startTime = document.data["startTime"] as Timestamp
-                    val endTime = document.data["endTime"] as Timestamp
-                        val availability = Availability( document.id,
-                            advisorEmail, isAvailable, startTime, endTime)
-
-                        AvailableAppointmentList.addAvailability(availability)
-
+                    AvailableAppointmentList.addAvailability(document.toObject(Availability::class.java))
                 }
                 function(true)
+
             }
             .addOnFailureListener { exception ->
-                Log.w("firebase", "Error getting documents: ", exception)
+                Log.w("FirebaseException", "There was error in database", exception)
                 function(false)
             }
 
-
     }
 
+    // Fetching list of available advisors.
     fun fetchAdvisorList(function: (Boolean) -> Unit) {
 
+        AdvisorList.clearList()
 
-        var db = FirebaseFirestore.getInstance()
-        db.collection("Advisor")
+        // Fetching advisorList for an selected advisor for selected date.
+        fireStoreDB.collection("Advisor")
             .get()
-            .addOnSuccessListener {
-                    documents ->
+            .addOnSuccessListener { documents ->
 
                 for (document in documents){
-                    Log.d("data","$document")
-                    val advisor = document.toObject(UserProfile::class.java)
-                    AdvisorList.addAdvisor(advisor)
+                    AdvisorList.addAdvisor(document.toObject(UserProfile::class.java))
                 }
                 function(true)
             }
             .addOnFailureListener { exception ->
-                Log.w("firebase", "Error getting documents: ", exception)
+                Log.w("FirebaseException", "There was error in database", exception)
                 function(false)
             }
 

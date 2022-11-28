@@ -8,9 +8,7 @@
     tools:openDrawer="start"
     tools:context=".MainActivity">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E2E2F3"
@@ -19,48 +17,41 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="407dp"
-        android:layout_height="245dp"
-
-        android:layout_marginStart="3dp"
-
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="1dp"
-
-
-
-        android:layout_marginBottom="417dp"
-        android:thicknessRatio="1.9"
-
-        app:cardCornerRadius="30dp"
+        android:layout_width="402dp"
+        android:layout_height="265dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="134dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="14dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-       >
+        app:layout_constraintVertical_bias="0.004"
+        tools:ignore="MissingConstraints">
 
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="375dp"
+            android:layout_height="205dp">
 
             <TextView
                 android:id="@+id/info_text"
-                android:layout_width="396dp"
-                android:layout_height="86dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="11dp"
                 android:layout_marginBottom="500dp"
-                android:gravity="fill_horizontal"
-
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -80,7 +71,7 @@
                 android:background="@drawable/rounded_corner"
                 android:text="Download"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/info_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -89,39 +80,42 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="401dp"
-        android:layout_height="268dp"
-        android:layout_marginStart="3dp"
+        android:layout_width="407dp"
+        android:layout_height="260dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="329dp"
         android:layout_marginEnd="7dp"
         android:layout_marginBottom="134dp"
-        app:cardCornerRadius="30dp"
+        android:paddingLeft="10dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="14dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
             tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/info_text2"
-                android:layout_width="396dp"
-                android:layout_height="86dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="11dp"
                 android:layout_marginBottom="500dp"
-                android:gravity="fill_horizontal"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -176,7 +170,7 @@
         android:layout_marginBottom="45dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Upload file from here"
+        android:text="Upload Files Here"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -190,7 +184,7 @@
         android:id="@+id/textView4"
         android:layout_width="199dp"
         android:layout_height="46dp"
-        android:layout_marginStart="106dp"
+        android:layout_marginStart="156dp"
         android:layout_marginTop="23dp"
         android:layout_marginEnd="106dp"
         android:layout_marginBottom="662dp"
@@ -198,12 +192,14 @@
         android:textColor="#000000"
         android:textColorHighlight="#000000"
         android:textColorLink="#000000"
-        android:textSize="35dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

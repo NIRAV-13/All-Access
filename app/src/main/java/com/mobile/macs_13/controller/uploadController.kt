@@ -2,7 +2,7 @@ package com.mobile.macs_13.com.mobile.macs_13.controller
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mobile.macs_13.com.mobile.macs_13.model.uploadocument
-import com.mobile.macs_13.controller.FileOperation.UploadFile
+import com.mobile.macs_13.com.mobile.macs_13.view.FileOperation.UploadFile
 
 class uploadController {
 

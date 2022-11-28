@@ -15,25 +15,23 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mobile.macs_13.R
-import com.mobile.macs_13.StudentActivity
-import com.mobile.macs_13.StudentProfileActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentProfileActivity
 import com.mobile.macs_13.UserFeedbackActivity
 import com.mobile.macs_13.controller.DownloadFile
 import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
 import com.mobile.macs_13.model.UserProfile
-import com.mobile.macs_13.view.StudentBookAppointmentHome
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentBookAppointmentHome
 import com.mobile.macs_13.view.login.Login
 import java.util.*
 
-
+// Class that handles the student accommodation request form
+// student will submit this form to apply for accommodation
 class StudentAccomodation : AppCompatActivity() {
 
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
@@ -53,9 +51,8 @@ class StudentAccomodation : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_accomodation)
 
-        //to remove the action bar
-
-        supportActionBar?.title = "Accomodation"
+        // to set action bar as Accommodation
+        supportActionBar?.title = "Accommodation"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
@@ -106,8 +103,6 @@ class StudentAccomodation : AppCompatActivity() {
             true
         }
 
-
-
         edtStudEmail = findViewById(R.id.stud_email)
         edtStudName = findViewById(R.id.stud_name)
         edtStudPrefName = findViewById(R.id.edt_stud_pref_name)
@@ -122,18 +117,13 @@ class StudentAccomodation : AppCompatActivity() {
 
         submitBtn.setOnClickListener {
 
-            val studEmail = "alexjones@dal.ca"
-
-
-            val studName = edtStudName.text.toString().trim()
-            val studPrefName = edtStudPrefName.text.toString().trim()
             val studImpact = edtStudImpact.text.toString().trim()
             val studConsent = edtStudConsent.text.toString().trim()
             val status = "inProgress"
 
             // user profile database same data class object.
-            // accomodocation form details.
-            // getUserData(AdvisorAccomodationModel(studName,))
+            // accommodation form details.
+
 
             var studRequest: StudentAccomRequestModel = StudentAccomRequestModel(
                 User.getCurrentUserProfile().uid,
@@ -152,7 +142,6 @@ class StudentAccomodation : AppCompatActivity() {
                 Toast.makeText(this, "Please enter all the details!!", Toast.LENGTH_SHORT).show()
             } else {
                 // getting current user id
-                // val currentUserID= FirebaseAuth.getInstance().currentUser?.uid!!
                 studDB.collection("Accomodation").document().set(studRequest)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Request submitted successfully", Toast.LENGTH_SHORT)

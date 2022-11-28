@@ -4,10 +4,15 @@ import android.util.Log
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
+/**
+ * Push Student Notification - Util
+ * @author Ankush Mudgal
+ */
 class PushStudentNotification {
 
     companion object {
 
+        //Pushes notifications to the DB to be displayed in Student Home Page
         public fun pushStudentHomeNotification(notificationData: StudentNotificationData) {
 
             val notification = hashMapOf(
