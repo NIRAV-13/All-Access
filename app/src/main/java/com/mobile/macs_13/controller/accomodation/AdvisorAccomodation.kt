@@ -3,24 +3,44 @@ package com.mobile.macs_13.controller.accomodation
 import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.mobile.macs_13.AdvisorActivity
+import com.mobile.macs_13.AdvisorAppointments
+import com.mobile.macs_13.AdvisorProfileActivity
 import com.mobile.macs_13.R
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
+import com.mobile.macs_13.model.AdvisorAccomRequestModel
+import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.view.AccomodationListActivity
+import com.mobile.macs_13.view.chat.ChatView
+import com.mobile.macs_13.view.login.Login
 import java.io.File
 
 class AdvisorAccomodation : AppCompatActivity() {
+
+
+    lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
 
     private lateinit var studName: TextView
     private lateinit var studEmail: TextView
@@ -47,128 +67,166 @@ class AdvisorAccomodation : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor_accomodation)
 
+        val advisorAccommodation = this.intent.getSerializableExtra("advisorAccommodation") as AdvisorAccomRequestModel?
+
         mAuth = FirebaseAuth.getInstance()
         studName = findViewById(R.id.accom_stud_name)
         studUniv = findViewById(R.id.univ_name)
         studProgram = findViewById(R.id.prog_name)
         studCourse = findViewById(R.id.course_name)
         studTerm = findViewById(R.id.stud_term)
-        studEmail = findViewById(R.id.stud_email)
+        studEmail = findViewById(R.id.student_email)
         studYear = findViewById(R.id.stud_year)
         studPhone = findViewById(R.id.stud_phone)
         studDocuments = findViewById(R.id.stud_doc)
         studReason = findViewById(R.id.stud_reason)
         advAccept = findViewById(R.id.adv_accept)
         advReject = findViewById(R.id.adv_reject)
+
         studDocuments.setOnClickListener {
             downloadfile("Guide_for_Accomodation.pdf")
         }
-        supportActionBar?.hide()
-        // getting data
-        val studDbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
-        studDbRef.get().addOnSuccessListener{
-            if(it!= null){
-                val stud_course = it.data?.get("course")?.toString()
-                val stud_program = it.data?.get("program")?.toString()
-                val stud_phone = it.data?.get("phone")?.toString()
-                val stud_email = it.data?.get("email")?.toString()
-                val stud_year = it.data?.get("year")?.toString()
-                val stud_term = it.data?.get("term")?.toString()
-                val stud_Reason = it.data?.get("impact")?.toString()
-                val stud_name = it.data?.get("name")?.toString()
-//                val stud_Docs = it.data?.get("docs")?.toString()
-                studReason.text = stud_Reason
-                studPhone.text = stud_phone
-                studEmail.text = stud_email
-                studTerm.text = stud_term
-                studYear.text = stud_year
-                studProgram.text = stud_program
-                studCourse.text = stud_course
-                studName.text = stud_name
-//                studDocuments.text = stud_Docs
 
+        supportActionBar?.title = "Accomodations"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+        mActionBarDrawerToggle =
+            ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_closed)
+        drawerLayout.addDrawerListener(mActionBarDrawerToggle)
+        mActionBarDrawerToggle.setDrawerIndicatorEnabled(true)
+        mActionBarDrawerToggle.syncState()
+
+        val navigationView = findViewById<NavigationView>(R.id.navigationView)
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            // TODO: Handle menu item selected
+            if(menuItem.itemId == R.id.home_item){
+                val homeIntent = Intent(this, AdvisorActivity::class.java)
+                finish()
+                startActivity(homeIntent)
             }
+            if (menuItem.itemId == R.id.profile_item) {
+                val advisorProfile = Intent(this, AdvisorProfileActivity::class.java)
+                startActivity(advisorProfile)
+            }
+
+            if (menuItem.itemId == R.id.appointment_item) {
+                val advisorAppt = Intent(this, AdvisorAppointments::class.java)
+                startActivity(advisorAppt)
+            }
+
+            if (menuItem.itemId == R.id.accommodation_item) {
+                val advisorAccommodation = Intent(this, AccomodationListActivity::class.java)
+                startActivity(advisorAccommodation)
+            }
+
+            menuItem.isChecked = true
+            drawerLayout.close()
+            true
         }
-            .addOnFailureListener{
-                Toast.makeText(this, "Data retrieval failed!! ", Toast.LENGTH_SHORT).show()
-            }
+        // getting data
 
-        val advisorAcceptMap = hashMapOf(
+                studName.text = advisorAccommodation?.name.toString()
+                studProgram.text = advisorAccommodation?.program.toString()
+                studCourse.text = advisorAccommodation?.course.toString()
+                studTerm.text = advisorAccommodation?.term.toString()
+                studYear.text = advisorAccommodation?.year.toString()
+                studEmail.text = advisorAccommodation?.email.toString()
+                studPhone.text = advisorAccommodation?.phone.toString()
+                studReason.text = advisorAccommodation?.impact.toString()
+                studDocuments.text = "Click to download documents"
 
-            "status" to "Accepted",
-            "TimeStamp" to FieldValue.serverTimestamp()
-        )
-        val advisorRejectMap = hashMapOf(
+//                val stud_Docs = it.data?.get("docs")?.toString()
 
-            "status" to "Rejected",
-            "TimeStamp" to FieldValue.serverTimestamp()
-        )
 
+
+
+//            val reqObject: StudentAccomRequestModel = StudentAccomRequestModel()
+
+//            val sendWithAdvisorDetails : AdvisorAccomRequestModel = AdvisorAccomRequestModel(reqObject.uid,
+//                reqObject.name, reqObject.email, reqObject.phone, reqObject.program, reqObject.course,
+//                reqObject.year, reqObject.term, null, reqObject.imageLink, reqObject.impact,
+//                reqObject.consent, reqObject.status, reqObject.timeStamp, User.getCurrentUserProfile().name, User.getCurrentUserProfile().email, User.getCurrentUserProfile().imageLink,
+//                User.getCurrentUserProfile().phone)
+
+
+
+        Log.d("XYZ","$advisorAccommodation")
 
         advAccept.setOnClickListener{
+            val dbRef = accomDb.collection("Accomodation").document(advisorAccommodation?.documentId!!)
 
-            val dbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
             dbRef.get().addOnSuccessListener { documents ->
-                if (documents?.data?.get("status") == "Accepted" || documents?.data?.get("status") == "Rejected") {
+
+                val status = documents["status"]
+
+                if (status.toString().equals("Accepted") || status.toString().equals("Rejected")) {
                     Toast.makeText(
-                        this@AdvisorAccomodation,
+                        this,
                         "You have already made a decision on this request!",
                         Toast.LENGTH_SHORT
                     ).show()
-                } else {
-                    val accomDbRef =
-                        accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
-                    accomDbRef.update(advisorAcceptMap).addOnSuccessListener {
+                }
+
+                else {
+
+                    advisorAccommodation?.status = "Accepted"
+                    dbRef.set(advisorAccommodation!!).addOnSuccessListener {
+                        Log.d("HI","I AM HERE")
 
                         Toast.makeText(
-                            this@AdvisorAccomodation,
+                            this,
                             "Student request accepted!",
-                            Toast.LENGTH_SHORT
+                            Toast.LENGTH_LONG
                         ).show()
                     }
-                        .addOnFailureListener {
-                            Toast.makeText(this@AdvisorAccomodation, "Error!", Toast.LENGTH_SHORT)
+                        .addOnFailureListener{
+
+                            Toast.makeText(this, "Error!", Toast.LENGTH_SHORT)
                                 .show()
                         }
 
                 }
             }
+
         }
 
         advReject.setOnClickListener{
 
-            val dbRef = accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
+            val dbRef = accomDb.collection("Accomodation").document(advisorAccommodation?.documentId.toString())
             dbRef.get().addOnSuccessListener { documents ->
-                if (documents?.data?.get("status") == "Accepted" || documents?.data?.get("status") == "Rejected") {
+
+                val status = documents["status"] as String
+
+                if (status.equals("Accepted") || status.equals("Rejected")) {
                     Toast.makeText(
                         this@AdvisorAccomodation,
                         "You have already made a decision on this request!",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    val accomDbRef =
-                        accomDb.collection("Accomodation").document("muHaLbJ3Oc2nCCdDQmdM")
-                    accomDbRef.update(advisorRejectMap).addOnSuccessListener {
-
+                    advisorAccommodation?.status = "Rejected"
+                    dbRef.set(advisorAccommodation!!).addOnSuccessListener {
                         Toast.makeText(
                             this@AdvisorAccomodation,
                             "Student request rejected!",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                        .addOnFailureListener {
-                            Toast.makeText(
-                                this@AdvisorAccomodation,
-                                "Error!",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                        .addOnFailureListener{
+                            Toast.makeText(this@AdvisorAccomodation, "Error!", Toast.LENGTH_SHORT)
+                                .show()
                         }
+
 
                 }
             }
         }
 
     }
+
+
 
     private fun downloadfile(filename:String){
         val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
@@ -192,5 +250,30 @@ class AdvisorAccomodation : AppCompatActivity() {
             println(it.toString())
             Toast.makeText(this, "File download failure", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        mActionBarDrawerToggle.syncState()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.getItemId() == android.R.id.home) { // use android.R.id
+            drawerLayout.openDrawer(Gravity.LEFT);
+            return true
+        } else if (item.itemId == R.id.logout) {
+            FirebaseRefSingleton.getFirebaseAuth().signOut()
+            val logoutIntent = Intent(this, Login::class.java)
+            User.setCurrentUserProfile(UserProfile())
+            finish()
+            startActivity(logoutIntent)
+            return true
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.logout, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

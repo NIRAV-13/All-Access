@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E2E2F3"
-    tools:context=".controller.Instructor.instructorView">
+    tools:context=".controller.Instructor.InstructorView">
 
     <TextView
         android:id="@+id/textView5"

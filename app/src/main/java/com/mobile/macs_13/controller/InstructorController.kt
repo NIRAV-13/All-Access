@@ -1,5 +1,6 @@
 package com.mobile.macs_13.controller
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mobile.macs_13.model.AdvisorAccomRequestModel
 import com.mobile.macs_13.model.StudentAccomRequestModel
@@ -65,8 +66,10 @@ class InstructorController {
                     val advisorAccomRequestModel = document.toObject(AdvisorAccomRequestModel::class.java)
                     StudentWithAccommodationList.addStudentWithAccommodation(advisorAccomRequestModel)
                 }
+                function(true)
             }
             .addOnFailureListener{ exception ->
+                function(false)
             }
 
     }

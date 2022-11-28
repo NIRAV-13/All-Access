@@ -16,4 +16,8 @@ object AccomodationList {
         return accomodationList;
     }
 
+    fun clearList(){
+        accomodationList.clear()
+    }
+
 }

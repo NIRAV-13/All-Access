@@ -1,273 +1,368 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start"
+    android:background="#E2E2F3"
+    tools:context=".MainActivity">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/approval_request_card"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".controller.accomodation.AdvisorAccomodation">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp"
+    app:cardBackgroundColor="@color/white">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeCardView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Requests for Approval"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:id="@+id/request_approval"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Name:"
-        android:textSize="18dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:layout_below="@+id/request_approval"
-        android:id="@+id/accom_stud_name_head"
-        android:layout_marginStart="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/request_approval"
-        android:textSize="18dp"
-        android:text="Alex Ferguson"
-        android:id="@+id/accom_stud_name"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_below="@+id/accom_stud_name"
-        android:text="University:"
-        android:textColor="@color/black"
-        android:id="@+id/univ_name_head"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/accom_stud_name"
-        android:id="@+id/univ_name"
-        android:textSize="18dp"
-        android:text="Dalhousie University"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/prog_name_head"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:layout_below="@+id/univ_name_head"
-        android:text="Program:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/univ_name"
-        android:id="@+id/prog_name"
-        android:textSize="18dp"
-        android:text="Bachelor of Computer Science"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/course_name_head"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:layout_below="@+id/prog_name_head"
-        android:text="Course:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/prog_name"
-        android:id="@+id/course_name"
-        android:textSize="18dp"
-        android:text="CSCI 1005 Intro to Computer Science"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/term_head"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_below="@+id/course_name_head"
-        android:text="Term:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/course_name"
-        android:id="@+id/stud_term"
-        android:textSize="18dp"
-        android:text="2nd Term"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/year_head"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:layout_below="@+id/term_head"
-        android:text="Year:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_term"
-        android:textSize="18dp"
-        android:id="@+id/stud_year"
-        android:text="1st Year"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
+        android:layout_height="600dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="3dp">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/email_head"
-        android:layout_below="@+id/year_head"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:text="Email:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.972" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_year"
-        android:id="@+id/stud_email"
-        android:textSize="18dp"
-        android:text="alexferguson@dal.ca"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
+        <TextView
+            android:id="@+id/request_approval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/student_request_for_approval"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
 
+        <TextView
+            android:id="@+id/accom_stud_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/tom_cruise"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/phone_head"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:layout_below="@+id/email_head"
-        android:text="Phone:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/univ_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/dalhousie_university"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/accom_stud_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/accom_stud_name"
+            app:layout_constraintTop_toBottomOf="@+id/accom_stud_name" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_email"
-        android:textSize="18dp"
-        android:id="@+id/stud_phone"
-        android:text="1234567890"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
+        <TextView
+            android:id="@+id/prog_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/master_of_computer_science"
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/univ_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/univ_name"
+            app:layout_constraintTop_toBottomOf="@+id/univ_name" />
 
+        <Button
+            android:id="@+id/adv_reject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/reject"
+            android:padding="10dp"
+            android:text="@string/reject"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.729"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.947" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/doc_head"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:layout_below="@+id/phone_head"
-        android:text="Documents:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
+        <Button
+            android:id="@+id/adv_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00D100"
+            android:padding="10dp"
+            android:text="@string/accept"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.241"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.947" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_phone"
-        android:id="@+id/stud_doc"
-        android:text="Download"
-        android:textColor="@color/download"
-        android:textStyle="bold"
-        android:autoLink="web"
-        android:textSize="20dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginStart="110dp"/>
+        <TextView
+            android:id="@+id/accom_stud_name_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/accom_stud_name"
+            app:layout_constraintHorizontal_bias="0.388"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/reason_head"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:layout_below="@+id/doc_head"
-        android:text="Reason:"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"/>
+        <TextView
+            android:id="@+id/univ_name_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/university"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/accom_stud_name_head"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/accom_stud_name_head"
+            app:layout_constraintTop_toBottomOf="@+id/accom_stud_name_head"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_doc"
-        android:id="@+id/stud_reason"
-        android:textSize="18dp"
+        <TextView
+            android:id="@+id/prog_name_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/program"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/univ_name_head"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/univ_name_head"
+            app:layout_constraintTop_toBottomOf="@+id/univ_name_head"
+            tools:ignore="MissingConstraints" />
 
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="110dp"/>
+        <TextView
+            android:id="@+id/course_name_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/course"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/prog_name_head"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="@+id/prog_name_head"
+            app:layout_constraintTop_toBottomOf="@+id/prog_name_head" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_reason"
-        android:layout_marginTop="30dp"
-        android:text="Reject"
-        android:background="@color/reject"
-        android:id="@+id/adv_reject"
-        android:textColor="@color/white"
-        android:layout_marginStart="230dp"
-        />
+        <TextView
+            android:id="@+id/course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/csci_5708_mobile_computing"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/prog_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/prog_name"
+            app:layout_constraintTop_toBottomOf="@+id/prog_name" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_reason"
-        android:layout_marginTop="30dp"
-        android:text="Accept"
-        android:background="@color/accept"
-        android:layout_marginStart="105dp"
-        android:textColor="@color/white"
+        <TextView
+            android:id="@+id/term_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/term"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/course_name_head"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/course_name_head"
+            app:layout_constraintTop_toBottomOf="@+id/course_name_head" />
 
-        android:id="@+id/adv_accept"
-        />
+        <TextView
+            android:id="@+id/stud_term"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_3rd_term"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/course_name"
+            app:layout_constraintHorizontal_bias="0.006"
+            app:layout_constraintStart_toStartOf="@+id/course_name"
+            app:layout_constraintTop_toBottomOf="@+id/course_name" />
+
+        <TextView
+            android:id="@+id/year_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/year"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/term_head"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/term_head"
+            app:layout_constraintTop_toBottomOf="@+id/term_head" />
+
+        <TextView
+            android:id="@+id/stud_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_1st_year"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/stud_term"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/stud_term"
+            app:layout_constraintTop_toBottomOf="@+id/stud_term" />
+
+        <TextView
+            android:id="@+id/email_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/stuEmail"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/year_head"
+            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintStart_toStartOf="@+id/year_head"
+            app:layout_constraintTop_toBottomOf="@+id/year_head" />
+
+        <TextView
+            android:id="@+id/student_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/tom_cruise_dal_ca"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/stud_year"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/stud_year"
+            app:layout_constraintTop_toBottomOf="@+id/stud_year" />
+
+        <TextView
+            android:id="@+id/phone_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/phone"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/email_head"
+            app:layout_constraintHorizontal_bias="0.109"
+            app:layout_constraintStart_toStartOf="@+id/email_head"
+            app:layout_constraintTop_toBottomOf="@+id/email_head" />
+
+        <TextView
+            android:id="@+id/stud_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/_9235689878"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/student_email"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/student_email"
+            app:layout_constraintTop_toBottomOf="@+id/student_email" />
+
+        <TextView
+            android:id="@+id/doc_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="@string/documents"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/phone_head"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/phone_head"
+            app:layout_constraintTop_toBottomOf="@+id/phone_head" />
+
+        <TextView
+            android:id="@+id/stud_doc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:autoLink="web"
+            android:text="@string/download"
+            android:textColor="@color/download"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/stud_phone"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/stud_phone"
+            app:layout_constraintTop_toBottomOf="@+id/stud_phone" />
+
+        <TextView
+            android:id="@+id/reason_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:text="@string/reason"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/doc_head"
+            app:layout_constraintHorizontal_bias="0.029"
+            app:layout_constraintStart_toStartOf="@+id/doc_head"
+            app:layout_constraintTop_toBottomOf="@+id/doc_head" />
+
+        <TextView
+            android:id="@+id/stud_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/student_reason"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/stud_doc"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/stud_doc"
+            app:layout_constraintTop_toBottomOf="@+id/stud_doc" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/activity_advisor_navigation_drawer" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,15 +1,13 @@
 package com.mobile.macs_13.com.mobile.macs_13.model
 
-import android.content.Intent
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mobile.macs_13.databinding.AdvisorListItemBinding
 import com.mobile.macs_13.model.AdvisorAccomRequestModel
-import com.mobile.macs_13.model.UserProfile
-import com.mobile.macs_13.view.StudentBookAppointment
-import com.mobile.macs_13.databinding.StudentAppointmentListItemBinding
+
+import com.mobile.macs_13.databinding.StudentWithAccommodationItemBinding
 
 
 class StudentWithAccommodationAdapter(private val advisorAccomRequestModel: MutableList<AdvisorAccomRequestModel>) :
@@ -22,7 +20,7 @@ class StudentWithAccommodationAdapter(private val advisorAccomRequestModel: Muta
     ): StudentWithAccommodationAdapter.ViewHolder {
 
         return ViewHolder(
-            StudentAppointmentListItemBinding.inflate(
+            StudentWithAccommodationItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -31,34 +29,28 @@ class StudentWithAccommodationAdapter(private val advisorAccomRequestModel: Muta
     }
 
     override fun onBindViewHolder(holder: StudentWithAccommodationAdapter.ViewHolder, position: Int) {
-
         val accomRequestModel = advisorAccomRequestModel[position]
         holder.bindItem(accomRequestModel)
     }
 
     override fun getItemCount(): Int {
-//        Log.d("size", "${advisors.size}")
         return advisorAccomRequestModel.size
     }
 
-    inner class ViewHolder(val binding: StudentAppointmentListItemBinding) :
+    inner class ViewHolder(val binding: StudentWithAccommodationItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(advisorAccomRequestModel: AdvisorAccomRequestModel) {
 
-//            Log.d("advisor", "$advisor")
-//            binding.advisorEmailText.text = advisorAccomRequestModel.
-            binding.advisorEmailText.text = advisorAccomRequestModel.email
+            Log.d("advisor", "$advisorAccomRequestModel")
 
-            binding.selectAdvisor.setOnClickListener { onClick(advisor) }
-        }
-
-
-        fun onClick(advisor: UserProfile) {
-
-            val intent = Intent(binding.root.context, StudentBookAppointment::class.java)
-            intent.putExtra("advisor", advisor)
-            binding.root.context.startActivity(intent)
+            binding.studentEmailInstructorPage.text = advisorAccomRequestModel.email
+            binding.studentNameInstructorPage.text = advisorAccomRequestModel.name
+            binding.studentCourseInstructorPage.text = advisorAccomRequestModel.course
+            binding.studentPhoneInstructorPage.text = advisorAccomRequestModel.phone
+            binding.studentAccommodationStatusInstructorPage.text = advisorAccomRequestModel.status
+            binding.advisorEmailInstructorPage.text = advisorAccomRequestModel.advisorEmail
+            binding.advisorNameInstructorPage.text = advisorAccomRequestModel.advisorName
 
         }
 

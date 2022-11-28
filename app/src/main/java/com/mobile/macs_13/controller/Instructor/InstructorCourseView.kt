@@ -179,19 +179,5 @@
 //
 //        Log.d("XYZ", "$course")
 //
-//        instructorController.getStudentWithAccommodation(
-//            sem.toString(),
-//            course.toString()
-//        ) { status ->
-//            if (status) {
 //
-//                var studentWithAccommodation =
-//                    StudentWithAccommodationList.getStudentsWithAccommodation()
-//                storeStudentAccommodationDetails(studentWithAccommodation)
-//
-//            } else {
-//
-//            }
-//        }
-//    }
 //}

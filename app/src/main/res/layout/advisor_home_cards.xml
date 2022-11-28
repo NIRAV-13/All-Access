@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardCornerRadius="7dp"
-    app:cardElevation="5dp"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp"
     app:cardBackgroundColor="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,11 +48,14 @@
 
         <TextView
             android:id="@+id/requester_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="185dp"
+            android:layout_height="28dp"
             android:layout_marginTop="16dp"
             android:text="@string/app_requester_name"
             android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,25 +68,29 @@
             android:layout_marginTop="9dp"
             android:layout_marginBottom="12dp"
             android:text="@string/app_requester_course"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/request_details"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintHorizontal_bias="0.041"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/requester_name"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.653" />
 
         <TextView
             android:id="@+id/request_details"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="12dp"
             android:text="@string/app_request_details"
             android:textAlignment="textStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/requester_course" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.636" />
 
         <Button
             android:id="@+id/check_request"
@@ -93,6 +100,8 @@
             android:padding="10dp"
             android:text="@string/app_request_open"
             android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.942"

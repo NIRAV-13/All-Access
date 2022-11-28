@@ -39,7 +39,6 @@
             android:layout_marginTop="10dp"
             android:text="Student Email"
             android:textStyle="bold"
-
             app:layout_constraintEnd_toEndOf="@+id/textView10"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView10"
@@ -52,7 +51,6 @@
             android:layout_marginTop="10dp"
             android:text="Student Phone"
             android:textStyle="bold"
-
             app:layout_constraintEnd_toEndOf="@+id/textView11"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView11"
@@ -75,9 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Accommodation Status"
+            android:text="Status"
             android:textStyle="bold"
-
             app:layout_constraintEnd_toEndOf="@+id/textView15"
             app:layout_constraintHorizontal_bias="0.009"
             app:layout_constraintStart_toStartOf="@+id/textView15"
@@ -90,7 +87,6 @@
             android:layout_marginTop="10dp"
             android:text="Advisor Name"
             android:textStyle="bold"
-
             app:layout_constraintEnd_toEndOf="@+id/textView16"
             app:layout_constraintHorizontal_bias="0.016"
             app:layout_constraintStart_toStartOf="@+id/textView16"
@@ -115,6 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TextView"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.553"
             app:layout_constraintStart_toEndOf="@+id/textView10"
@@ -126,6 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TextView"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/studentNameInstructorPage"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/studentNameInstructorPage"
@@ -137,6 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TextView"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/studentEmailInstructorPage"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/studentEmailInstructorPage"
@@ -148,28 +147,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TextView"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/studentPhoneInstructorPage"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/studentPhoneInstructorPage"
             app:layout_constraintTop_toBottomOf="@+id/studentPhoneInstructorPage" />
 
-        <TextView
-            android:id="@+id/studentAccommodationStatusInstructorPage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="@+id/studentCourseInstructorPage"
-            app:layout_constraintStart_toStartOf="@+id/studentCourseInstructorPage"
-            app:layout_constraintTop_toBottomOf="@+id/studentCourseInstructorPage" />
 
         <TextView
             android:id="@+id/advisorNameInstructorPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-
+            android:textStyle="bold"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="@+id/advisorEmailInstructorPage"
             app:layout_constraintStart_toStartOf="@+id/advisorEmailInstructorPage"
@@ -181,10 +171,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="TextView"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/studentAccommodationStatusInstructorPage"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/studentAccommodationStatusInstructorPage"
             app:layout_constraintTop_toBottomOf="@+id/studentAccommodationStatusInstructorPage" />
+
+        <TextView
+            android:id="@+id/studentAccommodationStatusInstructorPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/studentCourseInstructorPage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/studentCourseInstructorPage"
+            app:layout_constraintTop_toBottomOf="@+id/studentCourseInstructorPage"
+            tools:ignore="MissingConstraints" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

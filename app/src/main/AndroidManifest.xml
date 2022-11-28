@@ -19,19 +19,19 @@
         android:theme="@style/Theme.macs_13"
         tools:targetApi="31">
         <activity
-            android:name=".InstructorHomePageActivity"
+            android:name=".view.InstructorHomePageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".uploadDoc"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+<!--        <activity-->
+<!--            android:name=".uploadDoc"-->
+<!--            android:exported="false">-->
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+<!--        </activity>-->
         <activity
             android:name=".AdvisorAppointments"
             android:exported="true">
@@ -55,13 +55,6 @@
         <activity
             android:name=".controller.accomodation.AdvisorAccomodation"
             android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -89,7 +82,8 @@
             android:exported="false"
             android:label="@string/title_activity_student_book_appointment"
             android:theme="@style/Theme.macs_13.NoActionBar"
-            tools:ignore="ExtraText">
+            tools:ignore="ExtraText"/>
+            <activity
             android:name=".AdvisorActivity"
             android:exported="false">
             <meta-data
@@ -99,17 +93,18 @@
         <activity
             android:name=".view.StudentAppointmentAdvisorListActivity"
             android:exported="true">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".controller.Instructor.instructorView"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+<!--        <activity-->
+<!--            android:name=".controller.Instructor.InstructorView"-->
+<!--            android:exported="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+<!--        </activity>-->
         <activity
             android:name=".controller.Instructor.InstructorStudentAccomodation"
             android:exported="true">
@@ -117,13 +112,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".controller.Instructor.InstructorCourseView"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+<!--        <activity-->
+<!--            android:name=".controller.Instructor.InstructorCourseView"-->
+<!--            android:exported="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+<!--        </activity>-->
         <activity
             android:name=".StudentProfileActivity"
             android:exported="true">
@@ -137,17 +132,15 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".view.chat.ChatScreenActivity"
-            android:exported="false">
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -167,38 +160,30 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.authentication.SignUp"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".view.chat.ChatView"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AdvisorActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".controller.authentication.Login"
             android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
+        </activity>
+        <activity
+            android:name=".view.login.Login"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+
         </activity>
         <activity
             android:name=".MainActivity"
@@ -215,7 +200,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.authentication.ForgotPassword"
+            android:name=".view.login.ForgotPassword"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"

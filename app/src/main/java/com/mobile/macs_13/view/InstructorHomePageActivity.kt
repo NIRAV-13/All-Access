@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.macs_13.R
-import com.mobile.macs_13.com.mobile.macs_13.model.InstructorHomePageAdapter
 import com.mobile.macs_13.com.mobile.macs_13.model.StudentWithAccommodationAdapter
 import com.mobile.macs_13.controller.InstructorController
 import com.mobile.macs_13.controller.StudentController
@@ -16,7 +15,6 @@ import com.mobile.macs_13.model.StudentWithAccommodationList
 
 class InstructorHomePageActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
-    private var studentController: StudentController = StudentController()
     private lateinit var studentWithAccommodationAdapter: StudentWithAccommodationAdapter
 
     private var instructorController: InstructorController = InstructorController()

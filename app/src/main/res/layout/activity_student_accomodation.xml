@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start"
+    tools:context=".MainActivity">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E2E2F3"
     tools:context="com.example.accomodationfeature.StudentAccomodation">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Accommodation Requests"
+        android:layout_marginTop="20dp"
+        android:text="@string/accommodation_requests"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:layout_marginBottom="50dp"
         android:id="@+id/request_approval"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Student Email"
-        android:textSize="18dp"
+        android:text="@string/student_email"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:id="@+id/name_head"
-        android:paddingLeft="10dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginStart="20dp"/>
+        android:paddingStart="10dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:layout_width="match_parent"
@@ -37,17 +51,20 @@
         android:paddingStart="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/message_bg"/>
+        android:background="@drawable/message_bg"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Student Name"
+        android:text="@string/student_name"
         android:textSize="18sp"
+        android:textColor="@color/black"
         android:layout_below="@+id/stud_email"
         android:paddingStart="10dp"
         android:id="@+id/stud_name"
-        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         tools:ignore="RtlSymmetry" />
 
@@ -58,57 +75,67 @@
         android:layout_marginStart="20dp"
         android:id="@+id/edt_stud_pref_name"
         android:layout_marginEnd="20dp"
-        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
         android:paddingTop="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/message_bg"/>
+        android:background="@drawable/message_bg"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Impact on Academics"
-        android:textSize="18dp"
+        android:text="@string/impact_on_academics"
+        android:textSize="18sp"
         android:layout_below="@+id/edt_stud_pref_name"
         android:id="@+id/impact_on_acad_head"
-        android:paddingLeft="10dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="20dp"/>
+        android:textStyle="bold"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="RtlSymmetry" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="150dp"
         android:layout_below="@+id/impact_on_acad_head"
         android:layout_marginStart="20dp"
         android:inputType="textMultiLine"
         android:id="@+id/impact_on_acad"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/message_bg"/>
+        android:paddingStart="10dp"
+        android:background="@drawable/message_bg"
+        tools:ignore="LabelFor,RtlSymmetry"
+        android:autofillHints="" />
 
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Note: Please use the documents section to download the request form and then upload it with the doctor's signature."
-        android:textSize="15dp"
+        android:text="@string/note_please_use_the_documents_section_to_download_the_request_form_and_then_upload_it_with_the_doctor_s_signature"
+        android:textSize="15sp"
         android:layout_below="@+id/impact_on_acad"
         android:id="@+id/upload_doc_head"
-        android:layout_marginTop="25dp"
-        android:paddingLeft="10dp"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginTop="20dp"
+        android:paddingStart="10dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:text="Consent"
+        android:textSize="18sp"
+        android:text="@string/consent"
         android:layout_below="@+id/upload_doc_head"
         android:id="@+id/consent_head"
-        android:layout_marginTop="25dp"
-        android:paddingLeft="10dp"
-        android:layout_marginStart="20dp"/>
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:paddingStart="10dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="RtlSymmetry" />
 
     <EditText
         android:layout_width="match_parent"
@@ -117,35 +144,47 @@
         android:layout_marginStart="20dp"
         android:id="@+id/stud_consent"
         android:layout_marginEnd="20dp"
-        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/message_bg"/>
+        android:background="@drawable/message_bg"
+        tools:ignore="RtlSymmetry" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/stud_consent"
-        android:layout_marginTop="20dp"
-        android:text="Submit"
         android:id="@+id/accom_submit_btn"
-        android:layout_marginStart="220dp"
-        android:background="@drawable/send_msg_bg"
-        android:textColor="@color/altwhite"
-        />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/stud_consent"
-        android:layout_marginTop="20dp"
-        android:text="Cancel"
-        android:layout_marginStart="80dp"
-        android:id="@+id/accom_cancel_btn"
+        android:layout_alignEnd="@+id/stud_consent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="75dp"
         android:background="@drawable/send_msg_bg"
-        android:textColor="@color/altwhite"
-        />
+        android:text="@string/submit"
+        android:textColor="@color/altwhite" />
 
-
+    <Button
+        android:id="@+id/accom_cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stud_consent"
+        android:layout_alignStart="@+id/stud_consent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="221dp"
+        android:background="@drawable/send_msg_bg"
+        android:text="@string/cancel"
+        android:textColor="@color/altwhite" />
 
 
 </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_drawer" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
