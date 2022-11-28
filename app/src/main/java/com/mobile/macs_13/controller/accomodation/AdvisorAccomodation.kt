@@ -153,7 +153,6 @@ class AdvisorAccomodation : AppCompatActivity() {
 
 
 
-        Log.d("XYZ","$advisorAccommodation")
 
         advAccept.setOnClickListener{
             val dbRef = accomDb.collection("Accomodation").document(advisorAccommodation?.documentId!!)
@@ -171,10 +170,15 @@ class AdvisorAccomodation : AppCompatActivity() {
                 }
 
                 else {
-
+                    val currentUser = User.getCurrentUserProfile()
                     advisorAccommodation?.status = "Accepted"
+                    advisorAccommodation?.advisorEmail = currentUser.email
+                    advisorAccommodation?.advisorName = currentUser.name
+                    advisorAccommodation?.advisorPhone = currentUser.phone
+                    advisorAccommodation?.advisorImageLink = currentUser.imageLink
+
+
                     dbRef.set(advisorAccommodation!!).addOnSuccessListener {
-                        Log.d("HI","I AM HERE")
 
                         Toast.makeText(
                             this,
