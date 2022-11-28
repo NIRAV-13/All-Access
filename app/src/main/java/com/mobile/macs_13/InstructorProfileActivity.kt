@@ -13,11 +13,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
-import com.mobile.macs_13.controller.Instructor.InstructorView
 import com.mobile.macs_13.controller.accomodation.AdvisorAccomodation
 import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
+import com.mobile.macs_13.view.InstructorHomePageActivity
 import com.mobile.macs_13.view.login.Login
 
 class InstructorProfileActivity : AppCompatActivity() {
@@ -61,7 +61,7 @@ class InstructorProfileActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
             if(menuItem.itemId == R.id.home_item){
-                val homeIntent = Intent(this, InstructorView::class.java)
+                val homeIntent = Intent(this, InstructorHomePageActivity::class.java)
                 finish()
                 startActivity(homeIntent)
             }
