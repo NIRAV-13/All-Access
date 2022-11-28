@@ -6,15 +6,16 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.mobile.macs_13.com.mobile.macs_13.model.*
 import com.mobile.macs_13.com.mobile.macs_13.view.TermList
 import com.mobile.macs_13.model.AdvisorAccomRequestModel
+import com.mobile.macs_13.controller.utils.FirebaseRefSingleton.firebadeDBInstance
+// Advisor controller class for doing interaction with the Firebase having the Accommodation Collection
 
-class AdvisorController {
+class AccommodationController {
 
     fun fetchAccomodations(selectedCourse: String, selectedProgram: String, selectedTerm: String, function: (Boolean) -> Unit){
-        var db = FirebaseFirestore.getInstance()
 
         AccomodationList.clearList()
 
-        db.collection("Accomodation")
+        firebadeDBInstance.collection("Accomodation")
             .whereEqualTo("course",selectedCourse)
             .whereEqualTo("term",selectedTerm)
             .whereEqualTo("program",selectedProgram)
@@ -38,16 +39,13 @@ class AdvisorController {
                     timeStamp = (document["timeStamp"] as Timestamp).toDate(),
                     documentId = document.id
                 )
-//                val AdvisorAccomRequestModel = document.toObject(AdvisorAccomRequestModel::class.java)
-                Log.d("XYZ","$advisorAccomRequestModel")
+
                 AccomodationList.addAccomodation(advisorAccomRequestModel)
             }
             function(true)
 
         }
             .addOnFailureListener{
-                Log.d("XYZ","error")
-
                 function(false)
             }
 

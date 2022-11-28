@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mobile.macs_13.R
@@ -16,17 +13,15 @@ import com.mobile.macs_13.com.mobile.macs_13.model.CourseList
 import com.mobile.macs_13.com.mobile.macs_13.model.ProgramList
 import com.mobile.macs_13.com.mobile.macs_13.view.TermList
 import com.mobile.macs_13.controller.accomodation.AccomodationList
-import com.mobile.macs_13.controller.accomodation.AdvisorController
+import com.mobile.macs_13.controller.accomodation.AccommodationController
 import com.mobile.macs_13.model.AccomodationListAdapter
 import com.mobile.macs_13.model.AdvisorAccomRequestModel
-
+// view class to handle the accomodation list with dropdown options for advisor
 class AccomodationListActivity : AppCompatActivity() {
 
     private lateinit var recyclerView : RecyclerView
     private lateinit var accomodationListAdapter: AccomodationListAdapter
-    private val advisorController = AdvisorController()
-    private var accomodationList = mutableListOf<AdvisorAccomRequestModel>()
-//    val formatted = getString(R.string.my_xml_string, yourString)
+    private val advisorController = AccommodationController()
     private lateinit var selectcoursedropdown: Spinner
     private lateinit var selectProgramDropdown: Spinner
     private lateinit var selectYearDropdown: Spinner
@@ -47,26 +42,8 @@ class AccomodationListActivity : AppCompatActivity() {
         recyclerView.adapter = accomodationListAdapter
 
         selectProgramDropdown=findViewById(R.id.spinnerSelectProgram);
-//        var adapterProgram = ArrayAdapter.createFromResource(this, R.array.selectProgram,
-//            androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-//        adapterProgram.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-//        selectProgramDropdown.setAdapter(adapterProgram);
-
         selectcoursedropdown=findViewById(R.id.spinnerSelectCourse);
-//        var adaptercourse = ArrayAdapter.createFromResource(this, R.array.selectCourse,
-//            androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-//        adaptercourse.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-//        selectcoursedropdown.setAdapter(adaptercourse);
-
         selectYearDropdown=findViewById(R.id.spinnerSelectYear);
-//        var adapterYear = ArrayAdapter.createFromResource(this, androidx.transition.R.layout.support_simple_spinner_dropdown_item, )
-//        adapterYear.setDropDownViewResource(androidx.transition.R.layout.support_simple_spinner_dropdown_item)
-//        selectYearDropdown.setAdapter(adapterYear);
-
-//        accomCheckBtn = findViewById(R.id.accom_req_check)
-//        accomCheckBtn.setOnClickListener{
-//
-//        }
 
         advisorController.fetchProgramsForDropDown{status ->
             if(status){
@@ -78,7 +55,7 @@ class AccomodationListActivity : AppCompatActivity() {
 
             }
             else{
-                // toast.
+                Toast.makeText(this,"Error! Please try again!", Toast.LENGTH_SHORT).show()
             }
         }
         advisorController.fetchCourseForDropDown{status ->
@@ -90,10 +67,12 @@ class AccomodationListActivity : AppCompatActivity() {
 
             }
             else{
-                // toast.
+                Toast.makeText(this,"Error! Please try again!", Toast.LENGTH_SHORT).show()
+
 
             }
         }
+        // to fetch data for the dropdown menus
         advisorController.fetchTermForDropDown{status ->
             if(status){
                 accommodationList.clear()
@@ -105,12 +84,11 @@ class AccomodationListActivity : AppCompatActivity() {
 
             }
             else{
-                // toast.
-                Log.d("XYZ","ERROR")
+                Toast.makeText(this,"Error! Please try again!", Toast.LENGTH_SHORT).show()
 
             }
         }
-
+// onclick listener on the dropdown menus
         selectProgramDropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -120,14 +98,12 @@ class AccomodationListActivity : AppCompatActivity() {
                 val selectedYear = selectYearDropdown.selectedItem.toString() //this is your selected item
                 val selectedProgram= parent.getItemAtPosition(position).toString() //this is your selected item
 
-                val advisorController = AdvisorController()
+                val advisorController = AccommodationController()
 
                 advisorController.fetchAccomodations(selectedCourse, selectedProgram, selectedYear){status->
                     accomodationListAdapter.notifyDataSetChanged()
                 }
             }
-
-
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 Log.d("data","nothing selected")
@@ -145,7 +121,7 @@ class AccomodationListActivity : AppCompatActivity() {
                 val selectedYear = selectYearDropdown.selectedItem.toString() //this is your selected item
                 val selectedProgram= selectProgramDropdown.selectedItem.toString() //this is your selected item
 
-                val advisorController = AdvisorController()
+                val advisorController = AccommodationController()
 
 
                 advisorController.fetchAccomodations(selectedCourse, selectedProgram, selectedYear){status->
@@ -156,8 +132,6 @@ class AccomodationListActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                Log.d("data","nothing selected")
-
             }
         }
 
@@ -169,7 +143,7 @@ class AccomodationListActivity : AppCompatActivity() {
                 val selectedYear = parent.getItemAtPosition(position).toString() //this is your selected item
                 val selectedProgram= selectProgramDropdown.selectedItem.toString() //this is your selected item
 
-                val advisorController = AdvisorController()
+                val advisorController = AccommodationController()
 
 
 
@@ -180,7 +154,6 @@ class AccomodationListActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                Log.d("data","nothing selected")
 
             }
         }

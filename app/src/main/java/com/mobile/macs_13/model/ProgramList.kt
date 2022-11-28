@@ -1,6 +1,6 @@
 package com.mobile.macs_13.com.mobile.macs_13.model
 
-
+// object for manipulating the programs of student
 object ProgramList {
 
     private var programList = mutableListOf<String>()

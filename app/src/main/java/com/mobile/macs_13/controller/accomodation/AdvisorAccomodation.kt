@@ -34,6 +34,8 @@ import com.mobile.macs_13.com.mobile.macs_13.view.student.AccomodationListActivi
 import com.mobile.macs_13.view.login.Login
 import java.io.File
 
+
+// This class handles the accommodation requests for approval for the students by the advisor
 class AdvisorAccomodation : AppCompatActivity() {
 
 
@@ -52,15 +54,11 @@ class AdvisorAccomodation : AppCompatActivity() {
     private lateinit var studReason: TextView
     private lateinit var advAccept: Button
     private lateinit var advReject: Button
-    private lateinit var advComments: TextView
-    private lateinit var accomDbRef : DatabaseReference
     private var accomDb = Firebase.firestore
-    private lateinit var studDb : DatabaseReference
     private lateinit var mAuth: FirebaseAuth
     private var storageinstance = FirebaseStorage.getInstance()
-//    val currentUserID = mAuth.currentUser
 
-    @SuppressLint("SuspiciousIndentation")
+    @SuppressLint("SuspiciousIndentation", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor_accomodation)
@@ -135,21 +133,6 @@ class AdvisorAccomodation : AppCompatActivity() {
                 studPhone.text = advisorAccommodation?.phone.toString()
                 studReason.text = advisorAccommodation?.impact.toString()
                 studDocuments.text = "Click to download documents"
-
-//                val stud_Docs = it.data?.get("docs")?.toString()
-
-
-
-
-//            val reqObject: StudentAccomRequestModel = StudentAccomRequestModel()
-
-//            val sendWithAdvisorDetails : AdvisorAccomRequestModel = AdvisorAccomRequestModel(reqObject.uid,
-//                reqObject.name, reqObject.email, reqObject.phone, reqObject.program, reqObject.course,
-//                reqObject.year, reqObject.term, null, reqObject.imageLink, reqObject.impact,
-//                reqObject.consent, reqObject.status, reqObject.timeStamp, User.getCurrentUserProfile().name, User.getCurrentUserProfile().email, User.getCurrentUserProfile().imageLink,
-//                User.getCurrentUserProfile().phone)
-
-
 
 
         advAccept.setOnClickListener{

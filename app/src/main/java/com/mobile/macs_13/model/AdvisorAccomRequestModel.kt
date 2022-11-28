@@ -3,6 +3,7 @@ package com.mobile.macs_13.model
 
 import java.io.Serializable
 import java.util.*
+// model class for the accommodation details of student and advisor
 
 data class AdvisorAccomRequestModel(
     var uid: String? = null,

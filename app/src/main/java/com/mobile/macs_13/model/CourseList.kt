@@ -1,5 +1,6 @@
 package com.mobile.macs_13.com.mobile.macs_13.model
 
+// object to manipulate the courses of student
 object CourseList {
 
     private var courseList = mutableListOf<String>()

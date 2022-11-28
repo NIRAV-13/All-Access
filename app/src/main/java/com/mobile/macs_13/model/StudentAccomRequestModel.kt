@@ -1,10 +1,10 @@
 package com.mobile.macs_13.model
 
-import android.provider.ContactsContract.CommonDataKinds.Phone
+
 import com.google.firebase.firestore.DocumentId
 import java.util.Date
 
-
+// model class for the accommodation details of student
 data class StudentAccomRequestModel(
     var uid: String? = null,
     var name: String? = null,
