@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#E2E2F3"
-        tools:context=".view.StudentBookAppointmentHome">
+        tools:context=".com.mobile.macs_13.view.student.StudentBookAppointmentHome">
 
         <include layout="@layout/content_student_book_appointment_home" />
 

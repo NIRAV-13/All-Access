@@ -13,7 +13,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.StudentAppointmentAdvisorListActivity">
+    tools:context=".com.mobile.macs_13.view.student.StudentAppointmentAdvisorListActivity">
 
     <include layout="@layout/content_student_appointment_list" />
 

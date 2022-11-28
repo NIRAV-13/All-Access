@@ -18,6 +18,7 @@ import com.mobile.macs_13.controller.LoginController
  * On successfull email sent to the user, it displays a toast message and redirects to the login activity
  * References: 1 - https://www.youtube.com/watch?v=nVhPqPpgndM
  *             2- https://stackoverflow.com/questions/12358485/android-open-activity-without-save-into-the-stack
+ *@author: Meghna Kumar
  **/
 class ForgotPassword : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

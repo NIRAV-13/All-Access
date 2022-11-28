@@ -8,19 +8,20 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.mobile.macs_13.AdvisorActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.advisor.AdvisorActivity
 import com.mobile.macs_13.R
-import com.mobile.macs_13.StudentActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentActivity
 import com.mobile.macs_13.controller.LoginController
-import com.mobile.macs_13.controller.about.AboutUs
+import com.mobile.macs_13.com.mobile.macs_13.view.about.AboutUs
 import com.mobile.macs_13.controller.utils.User
-import com.mobile.macs_13.view.InstructorHomePageActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.instructor.InstructorHomePageActivity
 
 /**
  * This class returns the view for the login page of the app
  * It call the login activity and holds the logic redirecting to the user specific landing pages
  * It also has the redirection logics for about us and forgot password activites
  * On click listener on login button first makes a call to login controller to sign in using db and gets the user profile data
+ * @author: Meghna Kumar
  **/
 class Login : AppCompatActivity() {
 

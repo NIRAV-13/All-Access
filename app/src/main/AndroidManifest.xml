@@ -19,7 +19,7 @@
         android:theme="@style/Theme.macs_13"
         tools:targetApi="31">
         <activity
-            android:name=".view.InstructorHomePageActivity"
+            android:name=".com.mobile.macs_13.view.instructor.InstructorHomePageActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -33,20 +33,20 @@
 <!--                android:value="" />-->
 <!--        </activity>-->
         <activity
-            android:name=".AdvisorAppointments"
+            android:name=".com.mobile.macs_13.view.advisor.AdvisorAppointments"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.StudentBookAppointmentFormActivity"
+            android:name=".com.mobile.macs_13.view.student.StudentBookAppointmentFormActivity"
             android:exported="false" />
         <activity
-            android:name=".AdvisorProfileActivity"
+            android:name=".com.mobile.macs_13.view.advisor.AdvisorProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".view.AccomodationListActivity"
+            android:name=".com.mobile.macs_13.view.student.AccomodationListActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -74,67 +74,46 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.StudentBookAppointmentHome"
+            android:name=".com.mobile.macs_13.view.student.StudentBookAppointmentHome"
             android:exported="false"
             android:label="@string/title_activity_student_book_appointment_home" />
         <activity
-            android:name=".view.StudentBookAppointment"
+            android:name=".com.mobile.macs_13.view.student.StudentBookAppointment"
             android:exported="false"
             android:label="@string/title_activity_student_book_appointment"
             android:theme="@style/Theme.macs_13.NoActionBar"
             tools:ignore="ExtraText"/>
             <activity
-            android:name=".AdvisorActivity"
+            android:name=".com.mobile.macs_13.view.advisor.AdvisorActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".InstructorProfileActivity"
+            android:name=".com.mobile.macs_13.view.instructor.InstructorProfileActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.StudentAppointmentAdvisorListActivity"
+            android:name=".com.mobile.macs_13.view.student.StudentAppointmentAdvisorListActivity"
             android:exported="true">
 
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-<!--        <activity-->
-<!--            android:name=".controller.Instructor.InstructorView"-->
-<!--            android:exported="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.app.lib_name"-->
-<!--                android:value="" />-->
-<!--        </activity>-->
         <activity
-            android:name=".controller.Instructor.InstructorStudentAccomodation"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-<!--        <activity-->
-<!--            android:name=".controller.Instructor.InstructorCourseView"-->
-<!--            android:exported="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.app.lib_name"-->
-<!--                android:value="" />-->
-<!--        </activity>-->
-        <activity
-            android:name=".StudentProfileActivity"
+            android:name=".com.mobile.macs_13.view.student.StudentProfileActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".StudentActivity"
+            android:name=".com.mobile.macs_13.view.student.StudentActivity"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -200,7 +179,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.about.AboutUs"
+            android:name=".com.mobile.macs_13.view.about.AboutUs"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -214,7 +193,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".controller.FileOperation.UploadFile"
+            android:name=".com.mobile.macs_13.view.FileOperation.UploadFile"
             android:exported="true" />
     </application>
 

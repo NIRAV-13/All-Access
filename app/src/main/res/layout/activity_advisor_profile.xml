@@ -27,7 +27,7 @@
             app:cardCornerRadius="17dp"
             app:cardElevation="25dp"
             app:cardBackgroundColor="@color/white"
-            tools:context=".AdvisorProfileActivity">
+            tools:context=".com.mobile.macs_13.view.advisor.AdvisorProfileActivity">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -15,21 +15,18 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mobile.macs_13.R
-import com.mobile.macs_13.StudentActivity
-import com.mobile.macs_13.StudentProfileActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentProfileActivity
 import com.mobile.macs_13.UserFeedbackActivity
 import com.mobile.macs_13.controller.DownloadFile
 import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
 import com.mobile.macs_13.model.UserProfile
-import com.mobile.macs_13.view.StudentBookAppointmentHome
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentBookAppointmentHome
 import com.mobile.macs_13.view.login.Login
 import java.util.*
 

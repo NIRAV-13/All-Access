@@ -8,7 +8,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -23,16 +22,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.mobile.macs_13.AdvisorActivity
-import com.mobile.macs_13.AdvisorAppointments
-import com.mobile.macs_13.AdvisorProfileActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.advisor.AdvisorActivity
+import com.mobile.macs_13.com.mobile.macs_13.view.advisor.AdvisorAppointments
+import com.mobile.macs_13.com.mobile.macs_13.view.advisor.AdvisorProfileActivity
 import com.mobile.macs_13.R
 import com.mobile.macs_13.controller.utils.FirebaseRefSingleton
 import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.AdvisorAccomRequestModel
 import com.mobile.macs_13.model.UserProfile
-import com.mobile.macs_13.view.AccomodationListActivity
-import com.mobile.macs_13.view.chat.ChatView
+import com.mobile.macs_13.com.mobile.macs_13.view.student.AccomodationListActivity
 import com.mobile.macs_13.view.login.Login
 import java.io.File
 

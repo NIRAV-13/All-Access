@@ -15,6 +15,7 @@ import com.mobile.macs_13.model.UserProfile
 * References: 1 - https://firebase.google.com/docs/auth/android/start#kotlin+ktx
 *             2 - https://firebase.google.com/docs/firestore/query-data/get-data#kotlin+ktx
 *             3 - https://stackoverflow.com/questions/46995080/how-do-i-get-the-document-id-for-a-firestore-document-using-kotlin-data-classes
+* @author: Meghna Kumar
 * */
 
 class LoginController {

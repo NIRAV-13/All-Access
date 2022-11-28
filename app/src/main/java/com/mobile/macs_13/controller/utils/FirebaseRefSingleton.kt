@@ -5,6 +5,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+/*
+* This class creates a singleton object for firebase
+* which is accessible globally across the app
+* @author: Meghna Kumar
+* */
 object FirebaseRefSingleton {
 
     private val firebaseDB = Firebase.firestore

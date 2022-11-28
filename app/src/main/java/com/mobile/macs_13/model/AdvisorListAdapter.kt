@@ -1,13 +1,12 @@
 package com.mobile.macs_13.model
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.mobile.macs_13.databinding.AdvisorListItemBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.mobile.macs_13.view.StudentBookAppointment
+import com.mobile.macs_13.com.mobile.macs_13.view.student.StudentBookAppointment
 import com.bumptech.glide.Glide
 import com.mobile.macs_13.R
 
