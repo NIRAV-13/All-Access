@@ -101,6 +101,7 @@
     <string name="download">Download</string>
     <string name="reason">Reason</string>
     <string name="student_reason">Student Reason</string>
+    <string name="instructor_profile_title">Instructor Profile</string>
     <string name="can_t_login">Can\'t Login?</string>
     <string name="forgotpswdText">Please provide your email. We\'ll send you a reset link.</string>
     <string name="reset_password">Reset Password</string>
