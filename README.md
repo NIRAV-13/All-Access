@@ -1,92 +1,137 @@
-# macs-13
+# Group 13 Project - All Access
+
+<b>Mobile Computing Final Project</b>
+
+<b>Date Created: 25 Nov 2022</b><br>
+<b>Last Modification Date: 27 Nov 2022</b><br>
+<b>Git URL: https://git.cs.dal.ca/courses/2022-fall/csci4176_5708/groupproject/macs-13</b>
+
+
+# Authors
+
+
+- <b>*[Adarsh Kannan Iyengar](mailto:adarsh.kaannan@dal.ca) – B00900913*</b>
+- <b>*[Ketul Patel](mailto:kt484025@dal.ca) – B00900957*</b>
+- <b>*[Meghna Kumar](mailto:meghna.kumar@dal.ca) – B00892970*</b>
+- <b>*[Ankush Mudgal](mailto:amudgal@dal.ca) – B00886779*</b>
+- <b>*[Nirav Radadiya](mailto:nr723865@dal.ca) – B00909651*</b>
+  
+
+# Application Introduction:
+
+Accessible Education is the process of designing courses and developing a teaching style to meet the needs of people from a variety of backgrounds, abilities, and learning styles. Just as there is no single way to teach, people learn in a variety of ways; using different instructional methods will help meet the needs of the greatest number of learners. Universities are legally bound to provide accessibility support to students who require assistance to meet their accessibility needs due to various challenges faced by them in their learning process. Very common accessibility support in academia extended to students is an academic accommodation. Accommodation reduces or removes barriers faced by people with disabilities or special needs to ensure fair and equitable access to classrooms, testing, co-op/fieldwork environments, extra-curricular activities, etc. Different universities provide different accommodations to students based on the unique physical and mental health challenges that the student might face. Academic Accommodations intends to provide support for students to make the most out of their courses by providing equitable access to the material and its delivery as well as help in making a fair assessment of the students with different needs. We noticed that the process for requesting an accommodation and getting it approved or getting help regarding accessibility needs can often be slow, convoluted, and decentralized
+
+## What We Propose:
+
+We propose to build an android native mobile app that offers a clean, comprehensive, well-designed, centralized, and optimal experience for the accessibility and accommodation management process at the Postsecondary/University level. The app will be user-friendly and would allow Accessibility Centers of various universities to let Students, Instructors, and Advisors communicate with each other, let students timely request accommodations, allow advisors to approve those accommodations, and then notify the instructors of the relevant accommodation a student in their course has. The app will have three flows; the Student flow where the students can log in, book an appointment with an advisor, download/upload relevant documents, submit forms for their accommodation requests, and chat with the advisors; the Advisor flow where the Advisors will be able to accept or reject (re-schedule) appointments with students, access the
+forms uploaded by the students, provide approval for accommodations requests, and then inform instructors about the accommodations granted to all the students in their course; and the Instructor/Professor flow, which will let the instructors communicate with Advisors about policies and how to go about implementing the granted accommodations, see the names of the students and which specific accommodations they have.
+
+# Running the Android application on local machine
+
+## Prerequisites
+
+You must first install the following software on your local computer in order to have a local copy of this assignment available.
+
+
+## Android Studio
+
+
+**Android Studio can be Installed from - its [this site](https://developer.android.com/studio?gclid=Cj0KCQiAsoycBhC6ARIsAPPbeLsU23wxDqWId5yqo1lFS-sYVvVviwZU8oAtGChS_0ohKZMLSA9Vvh0aAuvjEALw_wcB&gclsrc=aw.ds).**
+
+## Things our app consist
+
+[1]  &emsp;Login/Forgot Password/Sign up/Logout
+
+[2]  &emsp;About Us
+
+[3]  &emsp;Student Home
+
+[4]  &emsp;Student Appointment
+
+[5]  &emsp;Student Check Date
+
+[6]  &emsp;Student Booking
+
+[7]  &emsp;Student Accommodation Request
+
+[8]  &emsp;Student Documents
+
+[9]  &emsp;Student Feedback
+
+[10] &emsp;Student Profile
+
+[11] &emsp;Advisor Home
+
+[12] &emsp;Advisor Appointment
+
+[13] &emsp;Advisor Accommodation Request
+
+[14] &emsp;Advisor Profile
+
+[15] &emsp;Instructor Home, and
+
+[16] &emsp;Instructor Profile
 
 
 
-## Getting started
+### Run on local Machine
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Download our project source code by cloning the remote git repository at - [repo link](https://git.cs.dal.ca/courses/2022-fall/csci4176_5708/groupproject/macs-13) 
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Open the application in the android studio platform and click the Run button to start with the running the application with emulator and build file
 
-## Add your files
+## Built With
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+- [Android Studio](https://developer.android.com/studio/intro) [1] - Android Studio is the official Integrated Development Environment (IDE) for Android app development
+- [Kotlin](https://kotlinlang.org/) [2] - Android application development language.
+- [Firebase](https://firebase.google.com/) [3] - For database
+- [Map Integration](https://developers.google.com/maps/documentation/android-sdk/start) [4]
 
-```
-cd existing_repo
-git remote add origin https://git.cs.dal.ca/courses/2022-fall/csci4176_5708/groupproject/macs-13.git
-git branch -M main
-git push -uf origin main
-```
+---
 
-## Integrate with your tools
+# References
 
-- [ ] [Set up project integrations](https://git.cs.dal.ca/courses/2022-fall/csci4176_5708/groupproject/macs-13/-/settings/integrations)
+[1] ActionBar &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved November 09, 2022, from https://developer.android.com/reference/android/app/ActionBar
 
-## Collaborate with your team
+[2] Android Studio &amp; App Tools. Android Developers. (n.d.). Retrieved November 27, 2022, from https://developer.android.com/studio?gclid=Cj0KCQiAsoycBhC6ARIsAPPbeLsU23wxDqWId5yqo1lFS-sYVvVviwZU8oAtGChS_0ohKZMLSA9Vvh0aAuvjEALw_wcB&amp;gclsrc=aw.ds
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+[3] Google. (n.d.). Firebase Authentication. Google. Retrieved November 27, 2022, from https://firebase.google.com/docs/auth/android/start
 
-## Test and Deploy
+[4] Google. (n.d.). Firestore. Google. Retrieved November 27, 2022, from https://firebase.google.com/docs/firestore
 
-Use the built-in continuous integration in GitLab.
+[5] Create dynamic lists with RecyclerView &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved October 29, 2022, from https://developer.android.com/develop/ui/views/layout/recyclerview
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+[6] Fragment manager &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved November 27, 2022, from https://developer.android.com/guide/fragments/fragmentmanager
 
-***
+[7] Kotlin. (n.d.). Retrieved November 03, 2022, from https://kotlinlang.org/
 
-# Editing this README
+[8] Exposed Dropdown Menu. Exposed Drop-Down Menu in Android. (n.d.). Retrieved November 27, 2022, from https://www.geeksforgeeks.org/exposed-drop-down-menu-in-android/amp/
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+[9] Google. (n.d.). Firebase. Google. Retrieved November 27, 2022, from https://firebase.google.com/
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+[10] Activity &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved November 27, 2022, from https://developer.android.com/reference/android/app/Activity#onOptionsItemSelected(android.view.MenuItem)
 
-## Name
-Choose a self-explaining name for your project.
+[11] Add multi-density vector graphics &nbsp;: &nbsp; Android developers. Android Developers. (n.d.). Retrieved October 29, 2022, from https://developer.android.com/studio/write/vector-asset-studio.html#materialicon
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+[12] Navigation &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved November 27, 2022, from https://developer.android.com/guide/navigation
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+[13] Fragments &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved November 24, 2022, from https://developer.android.com/guide/fragments
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+[14] LinearLayoutManager &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved November 23, 2022, from https://developer.android.com/reference/kotlin/androidx/recyclerview/widget/LinearLayoutManager
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+[15] Create a card-based layout &nbsp;: &nbsp; android developers. Android Developers. (n.d.). Retrieved November 27, 2022, from https://developer.android.com/develop/ui/views/layout/cardview
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+[16] Accessibility. Dalhousie University. Retrieved November 28, 2022 from https://www.dal.ca/campus_life/academic-support/accessibility.html
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+[17] TableLayout. Android Developers. Retrieved November 28, 2022 from https://developer.android.com/reference/kotlin/android/widget/TableLayout
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+[18] How to insert data in TableLayout from .java file? Stack Overflow. Retrieved November 28, 2022 from https://stackoverflow.com/questions/13270805/how-to-insert-data-in-tablelayout-from-java-file
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+[19] How To Insert Data In Tablelayout From .Java file? Solutions. Folkstalk.com. Retrieved November 28, 2022 from https://www.folkstalk.com/tech/how-to-insert-data-in-tablelayout-from-java-file-solutions/
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+[20] Color. Android Developers. Retrieved November 28, 2022 from https://developer.android.com/training/wearables/design/color
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
 
-## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
