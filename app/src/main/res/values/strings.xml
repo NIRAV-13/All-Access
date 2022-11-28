@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">StuAccess</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -13,20 +13,112 @@
     <string name="sent_message">Sent Message</string>
     <string name="logout">Logout</string>
     <string name="send_message_button">Send Message</string>
-    <string name="stuaccess">StuAccess</string>
+    <string name="stuaccess">AllAccess</string>
     <string name="student_accesibility_logo">Student Accesibility Logo</string>
     <string name="new_user">New User?</string>
+    <string name="title_activity_student_book_appointment">StudentBookAppointment</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_student_book_appointment_home">StudentBookAppointmentHome</string>
+    <string-array name="timeslots">
+        <item>10:00 to 10:30</item>
+        <item>10:30 to 11:00</item>
+        <item>11:00 to 11:30</item>
+        <item>11:30 to 12:00</item>
+        <item>12:00 to 12:30</item>
+        <item>12:30 to 13:00</item>
+        <item>14:00 to 14:30</item>
+        <item>14:30 to 15:00</item>
+    </string-array>
+    <string name="title_activity_student_appointment_list">StudentAppointmentList</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="about_us">About Us</string>
-    <string name="about_us_desc">Lorem ipsum dolor sit amet. Et error expedita a aliquam voluptatibus ad recusandae labore ut quisquam quia sit quis neque. Non alias quis est rerum dolor et nesciunt accusamus sit consequatur consequatur sit quas aliquam. Ab consequatur facilis eum odit tempora eum porro labore quo voluptatibus perferendis rem facere nobis in nulla laboriosam. Est debitis facere ut sapiente commodi id deleniti sapiente aut pariatur vitae!</string>
+    <string name="about_us_desc">The Student Accessibility Centre is Dalhousie’s centre of expertise on student access, inclusion, and accommodation support. They facilitate access to academic courses and programs, facilities, services and activities. Also assist in accessing funding for students with disabilities.</string>
     <string name="dalca">\@dal.ca</string>
     <string name="student_home_notif">Notification Here</string>
     <string name="student_name_placeholder">Hello! Student Name</string>
     <string name="advisor_name_placeholder">Hello! Advisor Name</string>
+    <string name="welcome_hello">Hello! </string>
+    <string name="advisor_home_msg"> Here are the latest Requests for Accommodations.</string>
+    <string name="advisor_appointment_msg"> Here are your Upcoming Appointments.</string>
     <string name="app_requester_name">Requester Name</string>
     <string name="app_requester_course">Requester Course</string>
     <string name="app_request_details">Request Details</string>
     <string name="app_request_open">Check Request</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_closed">Drawer Closed</string>
+    <string-array name="selectProgram">
+        <item>Computer Science</item>
+        <item>Engineering</item>
+        <item>Commerce</item>
+    </string-array>
+    ![](C:/Users/ADARSH~1/AppData/Local/Temp/download.jpg)
+    <string-array name="selectCourse">
+        <item> CSCI 6603 Mobile Computing </item>
+        <item> CSCI 6609 Data Structure </item>
+        <item>CSCI 7001 Advance Communication </item>
+    </string-array>
+    <string-array name="selectYear">
+        <item> 1 </item>
+        <item> 2 </item>
+        <item>3</item>
+    </string-array>
+    <string name="student_profile_title">Student Profile</string>
+    <string name="advisor_profile_title">Advisor Profile</string>
+    <string name="consent">Consent</string>
+    <string name="note_please_use_the_documents_section_to_download_the_request_form_and_then_upload_it_with_the_doctor_s_signature">Note: Please use the documents section to download the request form and then upload it with the doctor\'s signature.</string>
+    <string name="impact_on_academics">Reason for Request</string>
+    <string name="student_name">Student Name</string>
+    <string name="student_email">Student Email</string>
+    <string name="accommodation_requests">Accommodation Requests</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="master_of_computer_science">Master of Computer Science</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="dalhousie_university">Dalhousie University</string>
+    <string name="tom_cruise">Tom Cruise</string>
+    <string name="student_request_for_approval">Student Request for Approval</string>
+    <string name="university">University</string>
+    <string name="program">Program</string>
+    <string name="course">Course</string>
+    <string name="csci_5708_mobile_computing">CSCI 5708 Mobile Computing</string>
+    <string name="term">Term</string>
+    <string name="_3rd_term">3rd Term</string>
+    <string name="year">Year</string>
+    <string name="_1st_year">1st Year</string>
+    <string name="stuEmail">Email</string>
+    <string name="tom_cruise_dal_ca">tom.cruise@dal.ca</string>
+    <string name="phone">Phone</string>
+    <string name="_9235689878">9235689878</string>
+    <string name="documents">Documents</string>
+    <string name="download">Download</string>
+    <string name="reason">Reason</string>
+    <string name="student_reason">Student Reason</string>
+    <string name="instructor_profile_title">Instructor Profile</string>
+    <string name="can_t_login">Can\'t Login?</string>
+    <string name="forgotpswdText">Please provide your email. We\'ll send you a reset link.</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="address">Student Accessibility Centre\nKillam Library Atrium\n6225 University Avenue</string>
+    <string-array name="options">
+        <item> Yes </item>
+        <item> No </item>
+    </string-array>
+    <string-array name="selectSemInstructor">
+        <item> Fall 2022 </item>
+        <item> Summer 2022 </item>
+        <item>Winter 2022</item>
+    </string-array>
+    <string-array name="selectCourseInstructor">
+        <item> CSCI 1009</item>
+        <item> CSCI 6609 </item>
+        <item>CSCI 7001 </item>
+    </string-array>
+
 </resources>

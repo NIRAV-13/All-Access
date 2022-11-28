@@ -13,8 +13,8 @@ import com.google.firebase.database.*
 import com.mobile.macs_13.R
 
 
-import com.mobile.macs_13.controller.authentication.Login
-import com.mobile.macs_13.controller.chat.UserAdapter
+import com.mobile.macs_13.view.login.Login
+import com.mobile.macs_13.com.mobile.macs_13.view.chat.UserAdapter
 import com.mobile.macs_13.model.chat.UserModel
 
 

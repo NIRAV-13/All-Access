@@ -16,21 +16,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_us"
+            android:layout_marginTop="10dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="Find us at:"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1030 South Park Street\nHalifax\nNova Scotia"
+            android:layout_marginTop="5dp"
+            android:text="@string/address"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
+<!--        Reference: https://github.com/osmdroid/osmdroid/wiki/How-to-use-the-osmdroid-library-(Java)-->
         <org.osmdroid.views.MapView
             android:id="@+id/map"
             android:layout_width="match_parent"
@@ -41,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="8dp"
+            android:layout_marginTop="10dp"
             android:text="@string/about_us_desc"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
