@@ -69,7 +69,11 @@ class StudentProfileActivity : AppCompatActivity() {
         val navigationView = findViewById<NavigationView>(R.id.navigationView)
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
-            // TODO: Handle menu item selected
+            if(menuItem.itemId == R.id.home_item){
+                val homeIntent = Intent(this, StudentActivity::class.java)
+                finish()
+                startActivity(homeIntent)
+            }
             if (menuItem.itemId == R.id.feeback_item) {
                 val feedbackIntent = Intent(this, UserFeedbackActivity::class.java)
                 finish()
