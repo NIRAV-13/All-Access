@@ -8,30 +8,43 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mobile.macs_13.R
 import com.mobile.macs_13.model.StudentNotificationData
 
+/**
+ * Student Home Adapter - Adapter for the Student Home Notification
+ *
+ * @property notifList
+ * @author Ankush Mudgal
+ */
 class StudentHomeAdapter(private val notifList: ArrayList<StudentNotificationData>) :
-    RecyclerView.Adapter<StudentHomeAdapter.NotifViewHolder>() {
+    RecyclerView.Adapter<StudentHomeAdapter.NotifyViewHolder>() {
 
-    inner class NotifViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    /**
+     * Notify View Holder
+     * @param itemView
+     */
+    inner class NotifyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val notifTitle: TextView = itemView.findViewById(R.id.student_notif_title)
-        val notifText: TextView = itemView.findViewById(R.id.student_notif_text)
+        // Create Holders for the Recycler View fields
+        val notifyTitle: TextView = itemView.findViewById(R.id.student_notif_title)
+        val notifyText: TextView = itemView.findViewById(R.id.student_notif_text)
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotifViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotifyViewHolder {
 
+        // Inflate Layout of the Item in Recycler View
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.student_home_cards, parent, false)
 
-        return NotifViewHolder(itemView)
+        return NotifyViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: NotifViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NotifyViewHolder, position: Int) {
 
         val currentNotification = notifList[position]
 
-        holder.notifTitle.text = currentNotification.notifTitle
-        holder.notifText.text = currentNotification.notifText
+        //Populate the data for the Recycler View for current Notification
+        holder.notifyTitle.text = currentNotification.notifTitle
+        holder.notifyText.text = currentNotification.notifText
     }
 
     override fun getItemCount(): Int {

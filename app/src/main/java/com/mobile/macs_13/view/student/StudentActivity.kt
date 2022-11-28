@@ -27,11 +27,14 @@ import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
 
 
+/**
+ * Student Home Page - Loads the Student Flow's homepage, and populates it with notifications.
+ * @author Ankush Mudgal
+ */
 class StudentActivity : AppCompatActivity() {
+
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
-    lateinit var  drawerLayout: DrawerLayout
-
-
+    lateinit var drawerLayout: DrawerLayout
     private lateinit var adapter: StudentHomeAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var notificationList: ArrayList<StudentNotificationData>
@@ -40,9 +43,10 @@ class StudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student)
 
+        //Initiate the fetch for Data for the Adapter
         getNotificationListFromDB()
         val layoutManager = LinearLayoutManager(this.baseContext)
-        recyclerView = findViewById (R.id.student_home_rv)
+        recyclerView = findViewById(R.id.student_home_rv)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         adapter = StudentHomeAdapter(notificationList)
@@ -54,8 +58,9 @@ class StudentActivity : AppCompatActivity() {
         val studentName = findViewById<TextView>(R.id.student_name)
         studentName.text = "Hello! ${User.getCurrentUserProfile().name}"
 
-        drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
-        mActionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout,
+        drawerLayout = findViewById(R.id.drawerLayout)
+        mActionBarDrawerToggle = ActionBarDrawerToggle(
+            this, drawerLayout,
             R.string.drawer_open,
             R.string.drawer_closed
         )
@@ -67,35 +72,35 @@ class StudentActivity : AppCompatActivity() {
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // TODO: Handle menu item selected
-            if(menuItem.itemId == R.id.home_item){
+            if (menuItem.itemId == R.id.home_item) {
                 val homeIntent = Intent(this, StudentActivity::class.java)
                 finish()
                 startActivity(homeIntent)
             }
-            if(menuItem.itemId == R.id.feeback_item){
+            if (menuItem.itemId == R.id.feeback_item) {
                 val feedbackIntent = Intent(this, UserFeedbackActivity::class.java)
                 finish()
                 startActivity(feedbackIntent)
             }
 
-            if(menuItem.itemId == R.id.documents_item){
+            if (menuItem.itemId == R.id.documents_item) {
                 val documentsIntent = Intent(this, DownloadFile::class.java)
                 finish()
                 startActivity(documentsIntent)
             }
 
-            if(menuItem.itemId == R.id.accommodation_item){
-                val accomodationIntent = Intent(this, StudentAccomodation::class.java)
+            if (menuItem.itemId == R.id.accommodation_item) {
+                val accommodationIntent = Intent(this, StudentAccomodation::class.java)
                 finish()
-                startActivity(accomodationIntent)
+                startActivity(accommodationIntent)
             }
 
-            if(menuItem.itemId == R.id.appointment_item){
+            if (menuItem.itemId == R.id.appointment_item) {
                 val studentAppointmentHome = Intent(this, StudentBookAppointmentHome::class.java)
                 startActivity(studentAppointmentHome)
             }
 
-            if(menuItem.itemId == R.id.profile_item){
+            if (menuItem.itemId == R.id.profile_item) {
                 val studentProfile = Intent(this, StudentProfileActivity::class.java)
                 startActivity(studentProfile)
             }
@@ -106,6 +111,7 @@ class StudentActivity : AppCompatActivity() {
         }
 
     }
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         mActionBarDrawerToggle.syncState()
@@ -117,7 +123,7 @@ class StudentActivity : AppCompatActivity() {
 
         getNotificationListFromDB()
         val layoutManager = LinearLayoutManager(this.baseContext)
-        recyclerView = findViewById (R.id.student_home_rv)
+        recyclerView = findViewById(R.id.student_home_rv)
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         adapter = StudentHomeAdapter(notificationList)
@@ -126,12 +132,12 @@ class StudentActivity : AppCompatActivity() {
 
     }
 
-
+    // Method to fetch the Notifications list From Firestore DB
     private fun getNotificationListFromDB() {
 
-        notificationList = arrayListOf<StudentNotificationData>()
-        val db = FirebaseFirestore.getInstance()
-        db.collection("StudentHomeNotifications").orderBy("timestamp",Query.Direction.DESCENDING)
+        notificationList = arrayListOf()
+        //get the notifications in the descending order
+        FirebaseRefSingleton.getFirebaseDBInstance().collection("StudentHomeNotifications").orderBy("timestamp", Query.Direction.DESCENDING)
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
 
@@ -145,7 +151,9 @@ class StudentActivity : AppCompatActivity() {
 
                     for (document: DocumentChange in value?.documentChanges!!) {
 
+                        // Add New or Modified Notifications on the View
                         if (document.type == DocumentChange.Type.ADDED || document.type == DocumentChange.Type.MODIFIED /*|| document.type == DocumentChange.Type.REMOVED*/) {
+                            // Add the notifications to the list
                             notificationList.add(document.document.toObject(StudentNotificationData::class.java))
                         }
                     }
@@ -158,11 +166,10 @@ class StudentActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.getItemId() == android.R.id.home) { // use android.R.id
-            drawerLayout.openDrawer(Gravity.LEFT);
+        if (item.itemId == android.R.id.home) { // use android.R.id
+            drawerLayout.openDrawer(Gravity.LEFT)
             return true
-        }
-        else if(item.itemId == R.id.logout){
+        } else if (item.itemId == R.id.logout) {
             FirebaseRefSingleton.getFirebaseAuth().signOut()
             val logoutIntent = Intent(this, Login::class.java)
             User.setCurrentUserProfile(UserProfile())
@@ -170,7 +177,7 @@ class StudentActivity : AppCompatActivity() {
             startActivity(logoutIntent)
             return true
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -23,6 +23,10 @@ import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.StudentAccomRequestModel
 import com.mobile.macs_13.model.UserProfile
 
+/**
+ * Advisor Home Page - Loads the Advisor Flow's homepage, and populates it with latest Accommodation requests.
+ * @author Ankush Mudgal
+ */
 class AdvisorActivity : AppCompatActivity() {
 
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
@@ -36,6 +40,8 @@ class AdvisorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_advisor)
         accomRequestList = arrayListOf<StudentAccomRequestModel>()
+
+        // Call method in the controller to pull data from the DB
         AdvisorController.getRequestListFromDB { list ->
             if (!list.isEmpty()) {
                 val layoutManager = LinearLayoutManager(this.baseContext)
@@ -43,6 +49,7 @@ class AdvisorActivity : AppCompatActivity() {
                 recyclerView.layoutManager = layoutManager
                 recyclerView.setHasFixedSize(true)
                 Log.d("LIST2", list.toString())
+                // Push the data to Adapter for the Recycler View
                 adapter = AdvisorHomeAdapter(list)
                 recyclerView.adapter = adapter
             }

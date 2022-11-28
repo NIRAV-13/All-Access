@@ -19,6 +19,10 @@ import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
 import com.mobile.macs_13.view.login.Login
 
+/**
+ * Instructor Profile Activity - Shows the Profile Information for the Instructor
+ * @author Ankush Mudgal
+ */
 class InstructorProfileActivity : AppCompatActivity() {
 
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
@@ -34,6 +38,7 @@ class InstructorProfileActivity : AppCompatActivity() {
         val advisorPhone = findViewById<TextView>(R.id.instructor_profile_phone)
         val advisorInfo = findViewById<TextView>(R.id.instructor_profile_text)
 
+        // fetch the Image to be displayed
         Glide.with(this.baseContext)
             .load(User.getCurrentUserProfile().imageLink)
             .centerCrop().placeholder(R.drawable.ic_profile).fallback(R.drawable.ic_profile)

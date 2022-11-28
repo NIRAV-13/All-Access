@@ -26,10 +26,12 @@ class AdvisorController {
 
     companion object {
 
+        // Method to fetch the Accommodations Request list From Firestore DB
         fun getRequestListFromDB(function: (ArrayList<StudentAccomRequestModel>) -> Unit) {
 
             var accomRequestList: ArrayList<StudentAccomRequestModel> =
                 arrayListOf<StudentAccomRequestModel>()
+            //get the notifications in the descending order
             FirebaseRefSingleton.getFirebaseDBInstance().collection("Accomodation")
                 .orderBy("timeStamp", Query.Direction.DESCENDING)
                 .whereEqualTo("status", "inProgress")

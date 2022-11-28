@@ -21,6 +21,10 @@ import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
 import com.mobile.macs_13.view.login.Login
 
+/**
+ * Student Profile Activity - Shows the Profile Information for the Student
+ * @author Ankkush Mudgal
+ */
 class StudentProfileActivity : AppCompatActivity() {
 
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
@@ -40,11 +44,13 @@ class StudentProfileActivity : AppCompatActivity() {
         val studentProgram = findViewById<TextView>(R.id.student_profile_program)
         val studentTerm = findViewById<TextView>(R.id.student_profile_term)
 
+        // fetch the Image to be displayed
         Glide.with(this.baseContext)
             .load(User.getCurrentUserProfile().imageLink)
             .centerCrop().placeholder(R.drawable.ic_profile).fallback(R.drawable.ic_profile)
             .into(studentImage);
 
+        //Populate the information on the CardView
         studentName.text = "NAME - " + User.getCurrentUserProfile().name
         studentEmail.text = "EMAIL - " + User.getCurrentUserProfile().email
         studentPhone.text = "PHONE - " + User.getCurrentUserProfile().phone

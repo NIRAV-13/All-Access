@@ -19,6 +19,10 @@ import com.mobile.macs_13.controller.utils.User
 import com.mobile.macs_13.model.UserProfile
 import com.mobile.macs_13.view.login.Login
 
+/**
+ * Advisor Profile Activity - Shows the Profile Information for the Advisor
+ * @author Ankush Mudgal
+ */
 class AdvisorProfileActivity : AppCompatActivity() {
 
     lateinit var mActionBarDrawerToggle: ActionBarDrawerToggle
@@ -37,11 +41,13 @@ class AdvisorProfileActivity : AppCompatActivity() {
         val advisorPhone = findViewById<TextView>(R.id.advisor_profile_phone)
         val advisorInfo = findViewById<TextView>(R.id.advisor_profile_text)
 
+        // fetch the Image to be displayed
         Glide.with(this.baseContext)
             .load(User.getCurrentUserProfile().imageLink)
             .centerCrop().placeholder(R.drawable.ic_profile).fallback(R.drawable.ic_profile)
             .into(advisorImage);
 
+        //Populate the information on the CardView
         advisorName.text = "NAME - " + User.getCurrentUserProfile().name
         advisorEmail.text = "EMAIL - " + User.getCurrentUserProfile().email
         advisorPhone.text = "PHONE - " + User.getCurrentUserProfile().phone
