@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
+    android:background="#E2E2F3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start"
+
     tools:context=".MainActivity">
 
 
@@ -31,14 +33,13 @@
             android:layout_marginTop="32dp"
             android:text="Students with accommodation in current term."
             android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
