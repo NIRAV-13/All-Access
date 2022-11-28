@@ -361,6 +361,7 @@
             android:text="@string/student_reason"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="@+id/stud_doc"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/stud_doc"

@@ -130,7 +130,7 @@ class AdvisorAccomodation : AppCompatActivity() {
                 studName.text = advisorAccommodation?.name.toString()
                 studProgram.text = advisorAccommodation?.program.toString()
                 studCourse.text = advisorAccommodation?.course.toString()
-                studTerm.text = advisorAccommodation?.term.toString()
+                studTerm.text = "2nd Term"
                 studYear.text = advisorAccommodation?.year.toString()
                 studEmail.text = advisorAccommodation?.email.toString()
                 studPhone.text = advisorAccommodation?.phone.toString()
