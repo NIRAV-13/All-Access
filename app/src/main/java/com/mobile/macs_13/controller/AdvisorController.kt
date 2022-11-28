@@ -9,11 +9,9 @@ import com.mobile.macs_13.model.StudentAccomRequestModel
 
 class AdvisorController {
 
-    var db = FirebaseFirestore.getInstance()
-
     fun changeAvailabilityToFalse(availabilityId: String?, function: (Boolean) -> Unit) {
 
-        db.collection("Availability")
+        FirebaseRefSingleton.getFirebaseDBInstance().collection("Availability")
             .document(availabilityId.toString())
             .update("isAvailable", false)
             .addOnSuccessListener {
