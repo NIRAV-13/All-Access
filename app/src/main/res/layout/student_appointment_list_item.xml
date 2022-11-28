@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    app:cardCornerRadius="7dp"
-    app:cardElevation="5dp"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp"
     app:cardBackgroundColor="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,19 +20,17 @@
 
                 <ImageView
                     android:id="@+id/advisorImageStudentAppointment"
-                    android:layout_width="144dp"
-                    android:layout_height="137dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="263dp"
-                    android:layout_marginBottom="14dp"
+                    android:layout_width="104dp"
+                    android:layout_height="95dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="84dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintVertical_bias="1.0"
                     tools:ignore="ImageContrastCheck"
+
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <View
@@ -53,26 +51,27 @@
                     android:id="@+id/appointmentDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     android:text="Advisor Details"
                     android:textAlignment="center"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.708"
+                    app:layout_constraintHorizontal_bias="0.234"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
                 <TextView
                     android:id="@+id/advisorNameStudentAppointment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:text="Email"
                     android:textAlignment="viewStart"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.455"
+                    app:layout_constraintHorizontal_bias="0.138"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/appointmentDetails" />
 
@@ -80,12 +79,13 @@
                     android:id="@+id/appointmentTimeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="24dp"
                     android:text="Time"
+                    android:textColor="@color/black"
                     android:textAlignment="viewStart"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.46"
+                    app:layout_constraintHorizontal_bias="0.137"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/advisorNameStudentAppointment" />
 
@@ -93,24 +93,13 @@
                     android:id="@+id/advisorEmailText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="56dp"
                     android:text="EmailView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.207"
+                    app:layout_constraintHorizontal_bias="0.139"
                     app:layout_constraintStart_toEndOf="@+id/advisorNameStudentAppointment"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints" />
-
-                <TextView
-                    android:id="@+id/appointmentTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="TimeView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.201"
-                    app:layout_constraintStart_toEndOf="@+id/appointmentTimeText"
-                    app:layout_constraintTop_toBottomOf="@+id/advisorEmailText" />
 
                 <!--        <Button-->
                 <!--            android:id="@+id/remindButton"-->
@@ -141,6 +130,17 @@
                 <!--            app:layout_constraintVertical_bias="0.883" />-->
 
 
+                <TextView
+                    android:id="@+id/appointmentTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="TimeView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.147"
+                    app:layout_constraintStart_toEndOf="@+id/appointmentTimeText"
+                    app:layout_constraintTop_toBottomOf="@+id/advisorEmailText" />
+
                 <ImageButton
                     android:id="@+id/remindButton"
                     android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                     android:minHeight="48dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.783"
+                    app:layout_constraintHorizontal_bias="0.726"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
@@ -168,7 +168,7 @@
                     android:minHeight="48dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.916"
                     app:layout_constraintStart_toEndOf="@+id/remindButton"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.764"

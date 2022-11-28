@@ -18,6 +18,7 @@ object AdvisorList {
         return advisorList;
     }
 
+    // Clear the list.
     fun clearList(){
         advisorList.clear()
     }

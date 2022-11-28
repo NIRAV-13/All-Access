@@ -9,22 +9,24 @@ import java.util.*
 class StudentController {
 
     // Firestore database.
-    private var fireStoreDB = FirebaseRefSingleton.getFirebaseDB()
+    private val fireStoreDB = FirebaseRefSingleton.getFirebaseDB()
 
     // Fetching appointments for the student.
     fun fetchAppointments(studentEmail: String, function: (Boolean) -> Unit){
+
         StudentAppointmentList.clearList()
+
+        // Query on firestore database to fetch appointments for student.
         fireStoreDB.collection("AppointmentDetails")
             .whereEqualTo("studentEmail", studentEmail)
             .get()
             .addOnSuccessListener { documents ->
 
                 for (document in documents){
-                    val appointmentDetails = document.toObject(AppointmentDetails::class.java)
-                    StudentAppointmentList.addAppointment(appointmentDetails)
+                    StudentAppointmentList.addAppointment(document.toObject(AppointmentDetails::class.java))
                 }
-
                 function(true)
+
             }
             .addOnFailureListener { exception ->
                 Log.w("FirebaseException", "There was error in database", exception)
@@ -36,12 +38,12 @@ class StudentController {
     // Booking an appointment with advisor.
     fun bookAppointment(appointmentDetails: AppointmentDetails?, function: (Boolean) -> Unit){
 
+        // Query on firestore database to book an appointment with advisor.
         fireStoreDB.collection("AppointmentDetails")
             .add(appointmentDetails!!)
             .addOnSuccessListener {
                 function(true)
             }
-
             .addOnFailureListener { exception ->
                 Log.w("FirebaseException", "There was error in database", exception)
                 function(false)
@@ -53,7 +55,8 @@ class StudentController {
     fun fetchAvailability( advisorEmail: String , startTime: Long, midNightEndTime: Long, function: (Boolean) -> Unit){
 
         AvailableAppointmentList.getAvailability().clear()
-        Log.d("XYZ","$midNightEndTime")
+
+        // Query on firestore database to fetch an availability of appointments.
         fireStoreDB.collection("Availability")
             .whereEqualTo("advisorEmail", advisorEmail)
             .whereEqualTo("isAvailable",true)
@@ -61,34 +64,32 @@ class StudentController {
             .whereLessThanOrEqualTo("startTime", Date(midNightEndTime))
             .get()
             .addOnSuccessListener { documents ->
-
                 for (document in documents){
-                    val availability = document.toObject(Availability::class.java)
-                    AvailableAppointmentList.addAvailability(availability)
+                    AvailableAppointmentList.addAvailability(document.toObject(Availability::class.java))
                 }
-
                 function(true)
+
             }
             .addOnFailureListener { exception ->
                 Log.w("FirebaseException", "There was error in database", exception)
                 function(false)
             }
 
-
     }
 
     // Fetching list of available advisors.
     fun fetchAdvisorList(function: (Boolean) -> Unit) {
+
         AdvisorList.clearList()
+
+        // Fetching advisorList for an selected advisor for selected date.
         fireStoreDB.collection("Advisor")
             .get()
             .addOnSuccessListener { documents ->
 
                 for (document in documents){
-                    val advisor = document.toObject(UserProfile::class.java)
-                    AdvisorList.addAdvisor(advisor)
+                    AdvisorList.addAdvisor(document.toObject(UserProfile::class.java))
                 }
-
                 function(true)
             }
             .addOnFailureListener { exception ->

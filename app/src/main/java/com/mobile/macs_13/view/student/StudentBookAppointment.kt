@@ -151,6 +151,7 @@ class StudentBookAppointment : AppCompatActivity(){
     // On submit click button.
     private fun onSubmitClick(){
 
+        // Fetch the data
         val selectedDate = Date(lastSelectedCalendar.time.time)
         val calendar: Calendar = GregorianCalendar()
         calendar.time = selectedDate
@@ -159,56 +160,68 @@ class StudentBookAppointment : AppCompatActivity(){
         val month = calendar.get(Calendar.MONTH) + 1;
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
+        // Fetch the slots
         spinnerSlots = findViewById(R.id.spinner)
 
-        var selectedSlot = spinnerSlots.selectedItem.toString()
-        val slotDetail = slotDetailMap[selectedSlot]
+        // Checking if slots are selected or not.
+        if(spinnerSlots.selectedItem == null){
+            Toast.makeText(this,"Please select the slot to go to next page.",Toast.LENGTH_LONG).show()
+        }
+        else {
 
-        val startCal = Calendar.getInstance()
-        startCal[Calendar.HOUR_OF_DAY] = slotDetail?.startHour?.toInt()!!
-        startCal[Calendar.MINUTE] = slotDetail?.startMinute?.toInt()!!
-        startCal[Calendar.SECOND] = 0
-        startCal[Calendar.MILLISECOND] = 0
-        startCal[Calendar.YEAR] = year
-        startCal[Calendar.MONTH] = month - 1
-        startCal[Calendar.DAY_OF_MONTH] = day
+            var selectedSlot = spinnerSlots.selectedItem.toString()
+            val slotDetail = slotDetailMap[selectedSlot]
 
-        val startTime = startCal.time
+            if (slotDetail.toString().isBlank()) {
+                val startCal = Calendar.getInstance()
+                startCal[Calendar.HOUR_OF_DAY] = slotDetail?.startHour?.toInt()!!
+                startCal[Calendar.MINUTE] = slotDetail?.startMinute?.toInt()!!
+                startCal[Calendar.SECOND] = 0
+                startCal[Calendar.MILLISECOND] = 0
+                startCal[Calendar.YEAR] = year
+                startCal[Calendar.MONTH] = month - 1
+                startCal[Calendar.DAY_OF_MONTH] = day
 
-        val endCal = Calendar.getInstance()
-        endCal[Calendar.HOUR_OF_DAY] = slotDetail?.endHour?.toInt()!!
-        endCal[Calendar.MINUTE] = slotDetail?.endMinute?.toInt()!!
-        endCal[Calendar.SECOND] = 0
-        endCal[Calendar.MILLISECOND] = 0
-        endCal[Calendar.YEAR] = year
-        endCal[Calendar.MONTH] = month - 1
-        endCal[Calendar.DAY_OF_MONTH] = day
+                val startTime = startCal.time
 
-        val endTime = endCal.time
+                val endCal = Calendar.getInstance()
+                endCal[Calendar.HOUR_OF_DAY] = slotDetail?.endHour?.toInt()!!
+                endCal[Calendar.MINUTE] = slotDetail?.endMinute?.toInt()!!
+                endCal[Calendar.SECOND] = 0
+                endCal[Calendar.MILLISECOND] = 0
+                endCal[Calendar.YEAR] = year
+                endCal[Calendar.MONTH] = month - 1
+                endCal[Calendar.DAY_OF_MONTH] = day
 
-        val advisor = intent.getSerializableExtra("advisor") as UserProfile?
+                val endTime = endCal.time
 
-        val appointmentDetails = AppointmentDetails(
-            advisor?.name,
-            advisor?.email,
-            advisor?.phone,
-            advisor?.imageLink,
-            student.email,
-            student.name,
-            student.phone,
-            student.program,
-            student.course,
-            student.year,
-            student.imageLink,
-            startTime,
-            endTime,
-            true
-        )
+                val advisor = intent.getSerializableExtra("advisor") as UserProfile?
 
-        val studentBookAppointmentFormIntent = Intent(this, StudentBookAppointmentFormActivity::class.java)
-        studentBookAppointmentFormIntent.putExtra("appointmentDetails", appointmentDetails)
-        studentBookAppointmentFormIntent.putExtra("slotDetail", slotDetail)
-        startActivity(studentBookAppointmentFormIntent)
+                val appointmentDetails = AppointmentDetails(
+                    advisor?.name,
+                    advisor?.email,
+                    advisor?.phone,
+                    advisor?.imageLink,
+                    student.email,
+                    student.name,
+                    student.phone,
+                    student.program,
+                    student.course,
+                    student.year,
+                    student.imageLink,
+                    startTime,
+                    endTime,
+                    true
+                )
+
+                val studentBookAppointmentFormIntent =
+                    Intent(this, StudentBookAppointmentFormActivity::class.java)
+                studentBookAppointmentFormIntent.putExtra("appointmentDetails", appointmentDetails)
+                studentBookAppointmentFormIntent.putExtra("slotDetail", slotDetail)
+                startActivity(studentBookAppointmentFormIntent)
+
+            }
+        }
 
     }
 
