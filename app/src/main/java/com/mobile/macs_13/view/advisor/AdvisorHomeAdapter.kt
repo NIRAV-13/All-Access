@@ -53,6 +53,7 @@ class AdvisorHomeAdapter(private val appReqList: ArrayList<StudentAccomRequestMo
 
         val currentRequest = appReqList[position]
 
+        Log.d("FIX", currentRequest.toString())
         // fetch the Image to be displayed
         Glide.with(holder.itemView)
             .load(currentRequest.imageLink)
