@@ -80,7 +80,7 @@ class AdvisorAccomodation : AppCompatActivity() {
         studDocuments.setOnClickListener {
             downloadfile("Guide_for_Accomodation.pdf")
         }
-        supportActionBar?.title = "Appointments"
+        supportActionBar?.title = "Accomodation"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
