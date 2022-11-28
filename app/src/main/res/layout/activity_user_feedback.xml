@@ -7,9 +7,7 @@
     android:layout_height="match_parent"
     tools:openDrawer="start"
     tools:context=".MainActivity">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E2E2F3"
@@ -18,7 +16,7 @@
 
     <EditText
         android:id="@+id/edt_advisor"
-        android:layout_width="373dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="205dp"
@@ -28,6 +26,8 @@
         android:hint="What is the advisor name?"
         android:inputType="textPersonName"
         android:textColorHint="#0C0303"
+        android:textAlignment="center"
+        android:background="@drawable/message_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
 
     <EditText
         android:id="@+id/edt_discussion"
-        android:layout_width="373dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="325dp"
@@ -46,7 +46,9 @@
         android:ems="10"
         android:hint="What discussion was done?"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         android:textColorHint="#0C0303"
+        android:background="@drawable/message_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +56,7 @@
 
     <EditText
         android:id="@+id/edt_duration"
-        android:layout_width="373dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="267dp"
@@ -64,6 +66,8 @@
         android:hint="Last meeting Duration?"
         android:inputType="textPersonName"
         android:textColorHint="#0C0303"
+        android:textAlignment="center"
+        android:background="@drawable/message_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +75,7 @@
 
     <EditText
         android:id="@+id/edt_subj"
-        android:layout_width="373dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="135dp"
@@ -82,30 +86,32 @@
         android:inputType="textPersonName"
         android:textColor="#000000"
         android:textColorHint="#040000"
+        android:textAlignment="center"
+        android:background="@drawable/message_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="109dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="437dp"
-        android:layout_marginEnd="280dp"
         android:layout_marginBottom="255dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
-
 
     <EditText
         android:id="@+id/edt_suggestion"
-        android:layout_width="373dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
 
         android:layout_marginStart="19dp"
@@ -116,7 +122,9 @@
         android:hint="Do you have any suggestion?"
         android:inputType="textPersonName"
         android:textColorHighlight="#000000"
+        android:textAlignment="center"
         android:textColorHint="#000000"
+        android:background="@drawable/message_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +133,7 @@
 
     <EditText
         android:id="@+id/textView3"
-        android:layout_width="373dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
 
         android:layout_marginStart="19dp"
@@ -137,6 +145,8 @@
         android:inputType="textPersonName"
         android:textColorHighlight="#000000"
         android:textColorHint="#000000"
+        android:textAlignment="center"
+        android:background="@drawable/message_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,10 +161,10 @@
         android:layout_marginTop="590dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="93dp"
-        android:background="@color/black"
         android:text="submit"
         android:textColor="#FFFFFF"
         android:textColorHint="#0B0404"
+        android:background="@drawable/rounded_corner"
         android:textCursorDrawable="@android:drawable/stat_sys_download_done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -167,13 +177,13 @@
         android:layout_width="201dp"
         android:layout_height="46dp"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="45dp"
         android:layout_marginEnd="140dp"
         android:layout_marginBottom="644dp"
         android:scrollbarSize="50dp"
         android:text="Feedback Form"
         android:textColor="#000000"
         android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -186,7 +196,7 @@
         android:layout_width="409dp"
         android:layout_height="2dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="85dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="632dp"
         android:background="@color/black"

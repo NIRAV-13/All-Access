@@ -88,6 +88,7 @@ class AdvisorAccomodation : AppCompatActivity() {
         }
 
         supportActionBar?.title = "Accomodations"
+        supportActionBar?.title = "Accomodation"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
